@@ -4,9 +4,11 @@ Class {
 	#instVars : [
 		'user',
 		'adminUser',
-		'esp32Controller',
-		'shellyWlanController',
-		'rpiController'
+		'esp32Drivers',
+		'shellyDrivers',
+		'relayDevicesLicht',
+		'sensorDeviceMotion',
+		'deviceModules'
 	],
 	#classVars : [
 		'WriteMutex'
@@ -56,6 +58,15 @@ ASDSCDataBase class >> esp32LichtMitte [
 		  setup
 ]
 
+{ #category : #drivers }
+ASDSCDataBase class >> esp32SystemMitte [
+
+	^ ESP32Driver new
+		  deviceName: 'systemMitte';
+		  brokerIP: 'mqtt://192.168.1.187';
+		  setup
+]
+
 { #category : #'class initialization' }
 ASDSCDataBase class >> initialize [
 	self reset
@@ -87,7 +98,7 @@ ASDSCDataBase class >> reset [
 
 	uniqueInstancePlanung := nil.
 	VORepository current reset.
-	self initializeLocalhostMongoDB
+	self initializeVoyageOnMemoryDB
 ]
 
 { #category : #'default values' }
@@ -106,30 +117,11 @@ ASDSCDataBase >> allUsers [
 	^ ASDSCUser selectAll
 ]
 
-{ #category : #accessing }
-ASDSCDataBase >> esp32Controller [
-
-	^ esp32Controller
-]
-
 { #category : #initialization }
 ASDSCDataBase >> initialize [
 
 	super initialize.
-	esp32Controller := PotsController new driver:
-		                   (self class esp32LichtMitte)
-]
-
-{ #category : #accessing }
-ASDSCDataBase >> rpiController [
-
-	^ rpiController
-]
-
-{ #category : #accessing }
-ASDSCDataBase >> shellyWlanController [
-
-	^ shellyWlanController
+	
 ]
 
 { #category : #operations }

@@ -7,6 +7,12 @@ Class {
 	#category : #'AsdSmartCaravan-Model'
 }
 
+{ #category : #testing }
+ASDSCDeviceSensor class >> isAbstract [
+
+	^ self = ASDSCDeviceSensor 
+]
+
 { #category : #voyage }
 ASDSCDeviceSensor class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents

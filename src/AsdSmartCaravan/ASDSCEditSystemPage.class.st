@@ -1,5 +1,5 @@
 Class {
-	#name : #ASDSCAdminPage,
+	#name : #ASDSCEditSystemPage,
 	#superclass : #ASDSCPageAdmin,
 	#instVars : [
 		'taskComponente'
@@ -8,22 +8,23 @@ Class {
 }
 
 { #category : #accessing }
-ASDSCAdminPage class >> pageName [
-	^ 'Übersicht'
+ASDSCEditSystemPage class >> pageName [
+
+	^ 'System'
 ]
 
 { #category : #accessing }
-ASDSCAdminPage class >> priority [
+ASDSCEditSystemPage class >> priority [
 	^ 1
 ]
 
 { #category : #hooks }
-ASDSCAdminPage >> children [
+ASDSCEditSystemPage >> children [
 	^ { self taskComponente }
 ]
 
 { #category : #initalize }
-ASDSCAdminPage >> initialize [
+ASDSCEditSystemPage >> initialize [
 
 	super initialize.
 	
@@ -31,18 +32,18 @@ ASDSCAdminPage >> initialize [
 ]
 
 { #category : #rendering }
-ASDSCAdminPage >> renderContentOn: html [
+ASDSCEditSystemPage >> renderContentOn: html [
 	html div
 		style: 'min-height: 400px;';
 		with: 'Hello world#############################################################################################################################################'
 ]
 
 { #category : #accessing }
-ASDSCAdminPage >> taskComponente [
+ASDSCEditSystemPage >> taskComponente [
 	^ taskComponente
 ]
 
 { #category : #accessing }
-ASDSCAdminPage >> taskComponente: anObject [
+ASDSCEditSystemPage >> taskComponente: anObject [
 	taskComponente := anObject
 ]

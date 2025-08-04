@@ -11,3 +11,11 @@ ASDSCDeviceSensorBatterieValue class >> isVoyageRoot [
 
 	^ true
 ]
+
+{ #category : #accessing }
+ASDSCDeviceSensorBatterieValue class >> type [
+
+	"Title of the page that will be used in menus and URLs."
+
+	^ 'BatterieStand'
+]

@@ -11,3 +11,11 @@ ASDSCDeviceSensorTemperatur class >> isVoyageRoot [
 
 	^ true
 ]
+
+{ #category : #accessing }
+ASDSCDeviceSensorTemperatur class >> type [
+
+	"Title of the page that will be used in menus and URLs."
+
+	^ 'Temperatur'
+]

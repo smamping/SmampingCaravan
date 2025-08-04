@@ -117,7 +117,8 @@ ASDSCRoot >> componentToDisplay: aComponent [
 
 { #category : #components }
 ASDSCRoot >> defaultHeader [
-	^ ASDSCHeader new
+
+	^ ASDSCPageHome new
 ]
 
 { #category : #updating }
@@ -127,7 +128,7 @@ ASDSCRoot >> displayInstanceOf: aComponentClass [
 
 { #category : #actions }
 ASDSCRoot >> goToAdminView [
-	self displayInstanceOf: ASDSCAdminPage
+	self displayInstanceOf: ASDSCEditSystemPage
 ]
 
 { #category : #actions }

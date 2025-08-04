@@ -11,3 +11,11 @@ ASDSCDeviceSensorGasBottle class >> isVoyageRoot [
 
 	^ true
 ]
+
+{ #category : #accessing }
+ASDSCDeviceSensorGasBottle class >> type [
+
+	"Title of the page that will be used in menus and URLs."
+
+	^ 'GasStand'
+]

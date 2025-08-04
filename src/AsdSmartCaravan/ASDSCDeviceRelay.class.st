@@ -4,6 +4,12 @@ Class {
 	#category : #'AsdSmartCaravan-Model'
 }
 
+{ #category : #testing }
+ASDSCDeviceRelay class >> isAbstract [
+
+	^ self = ASDSCDeviceRelay 
+]
+
 { #category : #voyage }
 ASDSCDeviceRelay class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
@@ -16,17 +22,33 @@ ASDSCDeviceRelay class >> isVoyageRoot [
 ASDSCDeviceRelay >> initialize [
 
 	super initialize.
-	driver beDigitalOutputOnPin: pinNr 
+	
+	driver beDigitalOutputOnPin: pinNr
+]
+
+{ #category : #testing }
+ASDSCDeviceRelay >> isOn [
+
+	deviceValue > 0
+		ifTrue: [ ^ true ]
+		ifFalse: [ ^ false ]
 ]
 
 { #category : #operations }
 ASDSCDeviceRelay >> off [
-
-	self driver digitalValue: 0 intoPin: pinNr
+	deviceValue := 0.
+	self setRelayState: deviceValue
 ]
 
 { #category : #operations }
 ASDSCDeviceRelay >> on [
 
-	self driver digitalValue: 1 intoPin: pinNr 
+	deviceValue := 1.
+	self setRelayState: deviceValue
+]
+
+{ #category : #private }
+ASDSCDeviceRelay >> setRelayState: aState [
+
+self driver digitalValue: aState intoPin: pinNr
 ]

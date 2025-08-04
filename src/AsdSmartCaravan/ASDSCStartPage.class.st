@@ -1,22 +1,28 @@
 Class {
-	#name : #ASDSCSystemPage,
-	#superclass : #ASDSCPageCarSystem,
+	#name : #ASDSCStartPage,
+	#superclass : #ASDSCPageStart,
 	#category : #'AsdSmartCaravan-Pages'
 }
 
 { #category : #accessing }
-ASDSCSystemPage class >> pageName [
-
-	^ 'FahrzeugSystem'
+ASDSCStartPage class >> pageName [
+	^ 'Home'
 ]
 
 { #category : #accessing }
-ASDSCSystemPage class >> priority [
-	^ 2
+ASDSCStartPage class >> priority [
+	^ 1
+]
+
+{ #category : #initalize }
+ASDSCStartPage >> initialize [
+
+	super initialize.
+	
 ]
 
 { #category : #rendering }
-ASDSCSystemPage >> renderContentOn: html [
+ASDSCStartPage >> renderContentOn: html [
 
 	html mdlGrid
 		shadow: 0;
@@ -24,22 +30,26 @@ ASDSCSystemPage >> renderContentOn: html [
 		with: [ 
 			html mdlCell
 				class: 'grid-middle';
-				id: '#licht' middle;
+				id:'#system'
+				middle;
 				size: 3;
 				with: [ 'Top' ].
 			html mdlCell
 				class: 'grid-cell-demo';
-				id: '#sensoren' middle;
+				id: '#energie'
+				middle;
 				size: 3;
 				with: 'Middle'.
 			html mdlCell
 				class: 'grid-cell-demo';
-				id: '#tuer' middle;
+				id: '#multimedia'
+				middle;
 				size: 3;
 				with: 'Bottom'.
 			html mdlCell
 				class: 'grid-cell-demo';
-				id: '#heizen' middle;
+				id: '#sicherheit'
+				middle;
 				size: 3;
 				with: 'Stretch' ]
 ]

@@ -21,14 +21,6 @@ ASDSCDeviceModul class >> type [
 ]
 
 { #category : #accessing }
-ASDSCDeviceModul class >> types [
-	^ OrderedCollection
-		newFrom:
-			{'Licht' . 'Heizung' . 'Termostat' . 'Wassertank' . 'BatterieStand'.
-			'GasStand'}
-]
-
-{ #category : #accessing }
 ASDSCDeviceModul >> output [
 	^ output
 ]

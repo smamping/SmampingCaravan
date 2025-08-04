@@ -1,22 +1,23 @@
 Class {
-	#name : #ASDSCSystemPage,
+	#name : #ASDSCSystemPageDeviceModulView,
 	#superclass : #ASDSCPageCarSystem,
 	#category : #'AsdSmartCaravan-Pages'
 }
 
 { #category : #accessing }
-ASDSCSystemPage class >> pageName [
+ASDSCSystemPageDeviceModulView class >> pageName [
 
-	^ 'FahrzeugSystem'
+	^ 'DeviceModul Ansicht'
 ]
 
 { #category : #accessing }
-ASDSCSystemPage class >> priority [
-	^ 2
+ASDSCSystemPageDeviceModulView class >> priority [
+
+	^ 3
 ]
 
 { #category : #rendering }
-ASDSCSystemPage >> renderContentOn: html [
+ASDSCSystemPageDeviceModulView >> renderContentOn: html [
 
 	html mdlGrid
 		shadow: 0;

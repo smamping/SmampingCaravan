@@ -2,8 +2,8 @@ Class {
 	#name : #ASDSCModulModel,
 	#superclass : #Object,
 	#instVars : [
-		'geraeteListe',
-		'controller',
+		'relayListe',
+		'sensorListe',
 		'type'
 	],
 	#category : #'AsdSmartCaravan-Model'
@@ -19,22 +19,21 @@ ASDSCModulModel class >> isVoyageRoot [
 ]
 
 { #category : #actions }
-ASDSCModulModel >> addGeraet: aDevice [
-	self geraeteListe add: aDevice
+ASDSCModulModel >> addRelay: aDevice [
+
+	relayListe add: aDevice
 ]
 
-{ #category : #accessing }
-ASDSCModulModel >> geraeteListe [
-	^ geraeteListe ifNil: [ geraeteListe := OrderedCollection new ]
-]
+{ #category : #actions }
+ASDSCModulModel >> addSensor: aSensor [
 
-{ #category : #accessing }
-ASDSCModulModel >> geraeteListe: anObject [
-	geraeteListe := anObject
+	sensorListe add: aSensor
 ]
 
 { #category : #initialization }
 ASDSCModulModel >> initialize [
-super initialize.
-	
+
+	super initialize.
+	relayListe := OrderedCollection new.
+	sensorListe := OrderedCollection new
 ]

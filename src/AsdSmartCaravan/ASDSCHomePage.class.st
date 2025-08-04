@@ -29,27 +29,32 @@ ASDSCHomePage >> initialize [
 { #category : #rendering }
 ASDSCHomePage >> renderContentOn: html [
 
-		html mdlGrid
-		shadow: 2;
+	html mdlGrid
+		shadow: 0;
 		style: 'height: 100%;';
-		with: [ html mdlCell
+		with: [ 
+			html mdlCell
 				class: 'grid-middle';
+				id:'#system'
 				middle;
 				size: 3;
-				with: 'Top'.
+				with: [ 'Top' ].
 			html mdlCell
 				class: 'grid-cell-demo';
+				id: '#energie'
 				middle;
 				size: 3;
 				with: 'Middle'.
 			html mdlCell
 				class: 'grid-cell-demo';
-				bottom;
+				id: '#multimedia'
+				middle;
 				size: 3;
 				with: 'Bottom'.
 			html mdlCell
 				class: 'grid-cell-demo';
-				stretch;
+				id: '#sicherheit'
+				middle;
 				size: 3;
 				with: 'Stretch' ]
 ]

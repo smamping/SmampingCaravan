@@ -1,6 +1,9 @@
 Class {
 	#name : #ASDSCDeviceModulLicht,
 	#superclass : #ASDSCModulModel,
+	#instVars : [
+		'deviceSensorMotion'
+	],
 	#category : #'AsdSmartCaravan-Model'
 }
 
