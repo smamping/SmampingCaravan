@@ -49,11 +49,12 @@ ASDSCSession >> currentUser: anObject [
 
 { #category : #initialization }
 ASDSCSession >> initialize [
+
 	super initialize.
-	self
-		currentUser: (ASDSCUser benutzerName: 'asdmundt' password: 'pwd' admin: false).
-		model := ASDSCDataBase current.
-		installIndex := 1
+	self currentUser: nil.
+		"(ASDSCUser benutzerName: 'asdmundt' password: 'pwd' admin: false)."
+	model := ASDSCDataBase current.
+	installIndex := 1
 ]
 
 { #category : #accessing }

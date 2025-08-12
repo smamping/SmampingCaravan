@@ -1,9 +1,9 @@
 Class {
-	#name : #ASDSCInstallTask,
+	#name : #ASDSCInstallDevicesTask,
 	#superclass : #WATask,
 	#category : #'AsdSmartCaravan-Components'
 }
 
 { #category : #running }
-ASDSCInstallTask >> go [
+ASDSCInstallDevicesTask >> go [
 ]

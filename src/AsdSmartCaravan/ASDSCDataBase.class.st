@@ -8,7 +8,10 @@ Class {
 		'shellyDrivers',
 		'relayDevicesLicht',
 		'sensorDeviceMotion',
-		'deviceModules'
+		'deviceModules',
+		'system',
+		'fahrzeug',
+		'installReady'
 	],
 	#classVars : [
 		'WriteMutex'
@@ -90,7 +93,7 @@ ASDSCDataBase class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
 
-	^ false
+	^ true
 ]
 
 { #category : #'class initialization' }
@@ -117,11 +120,65 @@ ASDSCDataBase >> allUsers [
 	^ ASDSCUser selectAll
 ]
 
+{ #category : #accessing }
+ASDSCDataBase >> deviceModules [
+
+	^ deviceModules
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> esp32Drivers [
+
+	^ ASDSCESP32Driver selectAll 
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> fahrzeug [
+
+	^ fahrzeug
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> fahrzeug: anObject [
+
+	fahrzeug := anObject
+]
+
 { #category : #initialization }
 ASDSCDataBase >> initialize [
 
 	super initialize.
-	
+	self installReady: false
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> installReady [
+
+	^ installReady
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> installReady: anObject [
+
+	installReady := anObject
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> relayDevicesLicht [
+
+	^ ASDSCDeviceRelayLicht selectAll 
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> sensorDeviceMotion [
+
+	^ sensorDeviceMotion
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> shellyDrivers [
+
+	^ shellyDrivers
 ]
 
 { #category : #operations }
@@ -132,6 +189,18 @@ ASDSCDataBase >> storeObject: anObject [
 { #category : #operations }
 ASDSCDataBase >> storeUser: aUser [
 	aUser save.
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> system [
+
+	^ system
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> system: anObject [
+
+	system := anObject
 ]
 
 { #category : #accessing }

@@ -6,7 +6,8 @@ Class {
 
 { #category : #accessing }
 ASDSCStartPage class >> pageName [
-	^ 'Home'
+
+	^ 'Start'
 ]
 
 { #category : #accessing }

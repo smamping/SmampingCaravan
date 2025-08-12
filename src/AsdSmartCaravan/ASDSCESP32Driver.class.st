@@ -4,6 +4,17 @@ Class {
 	#category : #'AsdSmartCaravan-Model'
 }
 
+{ #category : #voyage }
+ASDSCESP32Driver class >> isVoyageRoot [
+
+	"Indicates that instances of this class are top level documents
+    in noSQL databases"
+
+	^ true
+
+	
+]
+
 { #category : #descriptions }
 ASDSCESP32Driver >> brokerIPDescription [
 
@@ -24,7 +35,7 @@ ASDSCESP32Driver >> deviceNameDescription [
 
 	<magritteDescription>
 	^ MAStringDescription new
-		  priority: 10;
+		  priority: 20;
 		  label: 'Name';
 		  accessor: #deviceName;
 		  beRequired;

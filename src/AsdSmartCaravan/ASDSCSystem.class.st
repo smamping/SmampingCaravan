@@ -27,6 +27,81 @@ ASDSCSystem >> descriptionContainer [
 		yourself
 ]
 
+{ #category : #'magritte descriptions' }
+ASDSCSystem >> descriptionHostName [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  label: 'Hostname';
+		  priority: 1;
+		  accessor: #hostName;
+		  beRequired;
+		  requiredErrorMessage: 'Hostnamen angeben';
+		  comment: 'Bitte Hostnamen eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
+{ #category : #'magritte descriptions' }
+ASDSCSystem >> descriptionIp [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  label: 'Ip der Zentrale';
+		  priority: 2;
+		  accessor: #ip;
+		  beRequired;
+		  requiredErrorMessage: 'Ip Zentrale angeben';
+		  comment: 'Bitte Ip Zentrale eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
+{ #category : #'magritte descriptions' }
+ASDSCSystem >> descriptionMqttIp [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  label: 'Ip des Brockers';
+		  priority: 3;
+		  accessor: #mqttIp;
+		  beRequired;
+		  requiredErrorMessage: 'Ip Brocker angeben';
+		  comment: 'Bitte Ip Brocker eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
+{ #category : #'magritte descriptions' }
+ASDSCSystem >> descriptionSsId [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  label: 'Wlanname eingeben';
+		  priority: 4;
+		  accessor: #ssId;
+		  beRequired;
+		  requiredErrorMessage: 'Wlanname eingeben';
+		  comment: 'Bitte Wlanname eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
+{ #category : #'magritte descriptions' }
+ASDSCSystem >> descriptionWlanPwd [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  label: 'Wlan Passwort eingeben';
+		  priority: 4;
+		  accessor: #wlanPwd;
+		  beRequired;
+		  requiredErrorMessage: 'Wlan Passwort eingeben';
+		  comment: 'Bitte Wlan Passwort eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
 { #category : #accessing }
 ASDSCSystem >> hostName [
 

@@ -28,7 +28,7 @@ ASDSCEditDriverPage >> initialize [
 
 	super initialize.
 	
-	self taskComponente: ASDSCInstallTask new
+	self taskComponente: ASDSCInstallSystemTask new
 ]
 
 { #category : #rendering }

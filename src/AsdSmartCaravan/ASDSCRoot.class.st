@@ -118,7 +118,7 @@ ASDSCRoot >> componentToDisplay: aComponent [
 { #category : #components }
 ASDSCRoot >> defaultHeader [
 
-	^ ASDSCPageHome new
+	^ ASDSCHeader new
 ]
 
 { #category : #updating }
