@@ -82,6 +82,18 @@ ASDSCUser >> descriptionPassword [
 		yourself
 ]
 
+{ #category : #initialization }
+ASDSCUser >> initialize [ 
+super initialize.
+self admin: false
+]
+
+{ #category : #accessing }
+ASDSCUser >> isAdmin [
+
+	^ self admin
+]
+
 { #category : #accessing }
 ASDSCUser >> password [
 	^ password

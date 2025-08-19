@@ -1,6 +1,10 @@
 Class {
 	#name : #ASDSCESP32Driver,
 	#superclass : #ESP32Driver,
+	#instVars : [
+		'deviceIp',
+		'deviceId'
+	],
 	#category : #'AsdSmartCaravan-Model'
 }
 
@@ -15,34 +19,28 @@ ASDSCESP32Driver class >> isVoyageRoot [
 	
 ]
 
-{ #category : #descriptions }
-ASDSCESP32Driver >> brokerIPDescription [
+{ #category : #accessing }
+ASDSCESP32Driver >> deviceId [
 
-	<magritteDescription>
-	^ MAStringDescription new
-		  priority: 10;
-		  label: 'IP Mqtt';
-		  accessor: #brokerIP;
-		  beRequired;
-		  requiredErrorMessage: 'Bitte eine Mqtt IP eingeben ';
-		  comment: 'Bitte eine Mqtt IP eingeben';
-		  componentClass: MDLMATextInputComponent;
-		  yourself
+	^ deviceId
 ]
 
-{ #category : #descriptions }
-ASDSCESP32Driver >> deviceNameDescription [
+{ #category : #accessing }
+ASDSCESP32Driver >> deviceId: anObject [
 
-	<magritteDescription>
-	^ MAStringDescription new
-		  priority: 20;
-		  label: 'Name';
-		  accessor: #deviceName;
-		  beRequired;
-		  requiredErrorMessage: 'Bitte einen Namen eingeben ';
-		  comment: 'Bitte einen Namen eingeben';
-		  componentClass: MDLMATextInputComponent;
-		  yourself
+	deviceId := anObject
+]
+
+{ #category : #accessing }
+ASDSCESP32Driver >> deviceIp [
+
+	^ deviceIp
+]
+
+{ #category : #accessing }
+ASDSCESP32Driver >> deviceIp: anObject [
+
+	deviceIp := anObject
 ]
 
 { #category : #initialization }

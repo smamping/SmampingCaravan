@@ -6,7 +6,9 @@ Class {
 		'ip',
 		'ssId',
 		'wlanPwd',
-		'mqttIp'
+		'mqttIp',
+		'ipCam',
+		'ipMultimedia'
 	],
 	#category : #'AsdSmartCaravan-Model'
 }
@@ -130,6 +132,30 @@ ASDSCSystem >> ip [
 ASDSCSystem >> ip: anObject [
 
 	ip := anObject
+]
+
+{ #category : #accessing }
+ASDSCSystem >> ipCam [
+
+	^ ipCam
+]
+
+{ #category : #accessing }
+ASDSCSystem >> ipCam: anObject [
+
+	ipCam := anObject
+]
+
+{ #category : #accessing }
+ASDSCSystem >> ipMultimedia [
+
+	^ ipMultimedia
+]
+
+{ #category : #accessing }
+ASDSCSystem >> ipMultimedia: anObject [
+
+	ipMultimedia := anObject
 ]
 
 { #category : #accessing }

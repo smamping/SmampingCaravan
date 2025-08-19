@@ -37,3 +37,21 @@ ASDSCModulModel >> initialize [
 	relayListe := OrderedCollection new.
 	sensorListe := OrderedCollection new
 ]
+
+{ #category : #accessing }
+ASDSCModulModel >> relayListe [
+
+	^ relayListe
+]
+
+{ #category : #accessing }
+ASDSCModulModel >> sensorListe [
+
+	^ sensorListe
+]
+
+{ #category : #accessing }
+ASDSCModulModel >> type [
+
+	^ type
+]

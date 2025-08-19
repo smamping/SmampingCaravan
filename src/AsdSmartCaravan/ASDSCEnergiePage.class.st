@@ -6,7 +6,8 @@ Class {
 
 { #category : #accessing }
 ASDSCEnergiePage class >> pageName [
-	^ 'System'
+
+	^ 'Energie'
 ]
 
 { #category : #accessing }

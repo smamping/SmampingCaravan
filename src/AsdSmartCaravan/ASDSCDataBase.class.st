@@ -148,7 +148,7 @@ ASDSCDataBase >> fahrzeug: anObject [
 ASDSCDataBase >> initialize [
 
 	super initialize.
-	self installReady: false
+	self installReady: false 
 ]
 
 { #category : #accessing }
@@ -158,9 +158,9 @@ ASDSCDataBase >> installReady [
 ]
 
 { #category : #accessing }
-ASDSCDataBase >> installReady: anObject [
+ASDSCDataBase >> installReady: boolean [
 
-	installReady := anObject
+	installReady := boolean
 ]
 
 { #category : #accessing }
@@ -214,7 +214,7 @@ ASDSCDataBase >> userFromLogin: aLogin andPassword: aPassword [
 
 	^ ASDSCUser selectOne: [ :each | 
 		  each benutzerName = aLogin & (each password = aPassword)
-		  & (each admin = false) ]
+		   ]
 ]
 
 { #category : #operations }

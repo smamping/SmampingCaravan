@@ -1,5 +1,5 @@
 Class {
-	#name : #ASDSCEditSystemPage,
+	#name : #ASDSCEditDevicePage,
 	#superclass : #ASDSCPageEdit,
 	#instVars : [
 		'systemComponente'
@@ -8,24 +8,24 @@ Class {
 }
 
 { #category : #accessing }
-ASDSCEditSystemPage class >> pageName [
+ASDSCEditDevicePage class >> pageName [
 
-	^ 'System'
+	^ 'Devices'
 ]
 
 { #category : #accessing }
-ASDSCEditSystemPage class >> priority [
+ASDSCEditDevicePage class >> priority [
 	^ 1
 ]
 
 { #category : #hooks }
-ASDSCEditSystemPage >> children [
+ASDSCEditDevicePage >> children [
 
 	^ { self systemComponente }
 ]
 
 { #category : #initalize }
-ASDSCEditSystemPage >> initialize [
+ASDSCEditDevicePage >> initialize [
 
 	super initialize.
 
@@ -34,7 +34,7 @@ ASDSCEditSystemPage >> initialize [
 ]
 
 { #category : #rendering }
-ASDSCEditSystemPage >> renderContentOn: html [
+ASDSCEditDevicePage >> renderContentOn: html [
 
 	html div
 		style: 'min-height: 400px;';
@@ -42,13 +42,13 @@ ASDSCEditSystemPage >> renderContentOn: html [
 ]
 
 { #category : #accessing }
-ASDSCEditSystemPage >> systemComponente [
+ASDSCEditDevicePage >> systemComponente [
 
 	^ systemComponente
 ]
 
 { #category : #accessing }
-ASDSCEditSystemPage >> systemComponente: anObject [
+ASDSCEditDevicePage >> systemComponente: anObject [
 
 	systemComponente := anObject
 ]

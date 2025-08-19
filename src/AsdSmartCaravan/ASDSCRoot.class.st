@@ -132,8 +132,26 @@ ASDSCRoot >> goToAdminView [
 ]
 
 { #category : #actions }
+ASDSCRoot >> goToEditDriverView [
+
+	self displayInstanceOf: ASDSCEditDriverPage
+]
+
+{ #category : #actions }
+ASDSCRoot >> goToEditSystemView [
+
+	self displayInstanceOf: ASDSCEditSystemPage
+]
+
+{ #category : #actions }
 ASDSCRoot >> goToOverviewView [
 	self displayInstanceOf: ASDSCHomePage
+]
+
+{ #category : #actions }
+ASDSCRoot >> goToStartView [
+
+	self displayInstanceOf: ASDSCStartPage 
 ]
 
 { #category : #accessing }
@@ -196,6 +214,9 @@ ASDSCRoot >> renderContentOn: html [
 								stretch;
 								with: [ 
 									html div
+										style: 'width: 100%';
+										id: #msg.
+									html div
 										id: #main;
 										with: [ html render: self componentToDisplay ].
 									html render: self rightPanel ] ] ] ].
@@ -214,23 +235,26 @@ ASDSCRoot >> rightPanel: anObject [
 
 { #category : #actions }
 ASDSCRoot >> tryConnectionWithLogin: login andPassword: password [
-	| user |
-	user := self session model userFromLogin: login andPassword: password.
 
-	"self halt."
+	| user installReady |
+	user := self session model userFromLogin: login andPassword: password.
+	installReady := self session model installReady.
+	
 	user
 		ifNotNil: [ :arg | 
 			self session currentUser: arg.
 
 			"arg logged: true."
-			
-			self session first: true.
-			arg isAdmin 
-				ifTrue: [  self goToAdminView ]
-						
+
+
+			arg isAdmin
+				ifTrue: [ 
+					installReady
+						ifTrue: [ self goToStartView ]
+						ifFalse: [ self goToEditSystemView ].
+					self goToAdminView ]
 				ifFalse: [ self goToOverviewView ] ]
-		ifNil: [ 
-			self goToOverviewView ]
+		ifNil: [ self goToStartView ]
 ]
 
 { #category : #updating }

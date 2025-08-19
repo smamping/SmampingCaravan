@@ -20,7 +20,9 @@ Class {
 		'model',
 		'ip',
 		'installIndex',
-		'arrayInstallSize'
+		'arrayInstallSize',
+		'esp32Driver',
+		'modulModel'
 	],
 	#category : #'AsdSmartCaravan-Core'
 }
@@ -47,12 +49,24 @@ ASDSCSession >> currentUser: anObject [
 	currentUser := anObject
 ]
 
+{ #category : #accessing }
+ASDSCSession >> esp32Driver [
+
+	^ esp32Driver
+]
+
+{ #category : #accessing }
+ASDSCSession >> esp32Driver: anObject [
+
+	esp32Driver := anObject
+]
+
 { #category : #initialization }
 ASDSCSession >> initialize [
 
 	super initialize.
-	self currentUser: nil.
-		"(ASDSCUser benutzerName: 'asdmundt' password: 'pwd' admin: false)."
+	self currentUser: (ASDSCUser benutzerName: 'asdmundt' password: 'pwd' admin: false).
+	
 	model := ASDSCDataBase current.
 	installIndex := 1
 ]
@@ -93,9 +107,15 @@ ASDSCSession >> model [
 ]
 
 { #category : #accessing }
-ASDSCSession >> model: anObject [
+ASDSCSession >> modulModel [
 
-	model := anObject
+	^ modulModel
+]
+
+{ #category : #accessing }
+ASDSCSession >> modulModel: anObject [
+
+	modulModel := anObject
 ]
 
 { #category : #accessing }

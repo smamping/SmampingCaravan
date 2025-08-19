@@ -41,6 +41,13 @@ ASDSCPage class >> priority [
 	^ self subclassResponsibility
 ]
 
+{ #category : #initialization }
+ASDSCPage >> initialize [
+
+	super initialize.
+	self session rootComponent header: ASDSCHeader new
+]
+
 { #category : #accessing }
 ASDSCPage >> pathName [
 	^ self class pathName

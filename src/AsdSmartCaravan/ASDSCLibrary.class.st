@@ -48,6 +48,9 @@ ASDSCLibrary >> projectCss [
     display: flex;
     min-height: 48px;
 }
+* {
+  box-sizing: border-box;
+}
 body{
 	background-color: var(--mainBg-color);
 	color: #c9d1d;
@@ -56,7 +59,7 @@ main{
 background-color: var(--mainBg-color);
 	color: #c9d1d9;
 	background: url(''/files/ASDSCLibrary/bodybg.jpg'') no-repeat center / cover;
-	opacity: 0.3;
+	opacity: 0.7;
 }
 
 .mdl-layout__header{
@@ -129,16 +132,17 @@ color: var(--element-label-color);
 .mdl-textfield__input {
     background-color: var(--element-zIndex2-bGcolor) !important;
     border: 1px solid var(--element-border-bGcolor) !important;
-    border-bottom: none !important;  
+    
     -webkit-box-shadow: none;
     box-shadow: none;
     height: 30px;
+	width: 250px !important;
 	 color: var(--element-label-color) !important;
-      display: block;
+      display: block !important;
     font-size: 12px !important;
     font-family: "Helvetica","Arial",sans-serif;
-     margin: 10px;
-    padding: 4px 4px;
+     margin: 15px !important;
+    padding: 12px; !important;
         text-align: left;
 }
 
@@ -151,18 +155,18 @@ color: var(--element-label-color);
 .mdl-textfield {
     position: relative;
     font-size: 12px;
-    display: inline-block;
+    display: block !important;
     box-sizing: border-box;
     max-width: 100%;
-    margin: 5px !important;
-    padding: 0px 10px !important;
+    margin: 15px !important;
+    padding: 12px; !important;
 }
 
 .mdl-textfield__label {
-    top: -12px;
+    
    color: var(--element-label-color) !important;
-    left: 19px;
-    right: 0;
+   left: 10px !important;
+  display: inline-block !important;
 	font-size: 12px !important;
 }
 
@@ -182,8 +186,7 @@ height: 90% !important;
 }
 
 .mdl-card {
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    
     display: flex;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -195,9 +198,9 @@ height: 90% !important;
     width: auto;
     z-index: 1;
     position: relative;
-    border: 1px solid #005ffe !important;
+    border: 1px solid var(--element-border-bGcolor) !important;
     border-radius: 2px;
-    background-color: #001a50 !important;
+    background-color: var(--element-zIndex1-bGcolor) !important;
  }  
 
 .div-form {
@@ -564,6 +567,10 @@ vertical-align: top !important;
 .asdTableHeading { 
 	position: relativ; top: -10px;
  }
+
+.asdTableCell { 
+background-color: var(--element-zIndex3-bGcolor);
+}
 
 .background {
 width: 100%;

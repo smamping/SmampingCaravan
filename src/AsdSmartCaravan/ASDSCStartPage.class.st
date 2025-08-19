@@ -1,6 +1,6 @@
 Class {
 	#name : #ASDSCStartPage,
-	#superclass : #ASDSCPageStart,
+	#superclass : #ASDSCPage,
 	#category : #'AsdSmartCaravan-Pages'
 }
 
@@ -23,34 +23,53 @@ ASDSCStartPage >> initialize [
 ]
 
 { #category : #rendering }
-ASDSCStartPage >> renderContentOn: html [
+ASDSCStartPage >> rendeModalLoginButtonOn: html [
 
-	html mdlGrid
-		shadow: 0;
-		style: 'height: 100%;';
-		with: [ 
-			html mdlCell
-				class: 'grid-middle';
-				id:'#system'
-				middle;
-				size: 3;
-				with: [ 'Top' ].
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#energie'
-				middle;
-				size: 3;
-				with: 'Middle'.
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#multimedia'
-				middle;
-				size: 3;
-				with: 'Bottom'.
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#sicherheit'
-				middle;
-				size: 3;
-				with: 'Stretch' ]
+	html form: [ 
+		html render: (ASDLoginCardWidget new
+				 callback: [ :login :password | 
+					 self rootComponent
+						 tryConnectionWithLogin: login
+						 andPassword: password ];
+				 yourself) ].
+	self rootComponent class development ifTrue: [ 
+		html anchor
+			callback: [ self show: (WAInspector current on: self session) ];
+			with: 'Inspect Session' ]
+]
+
+{ #category : #rendering }
+ASDSCStartPage >> renderContentOn: html [
+|ready|
+	ready := self session model installReady.
+	ready printString.
+	ready
+		ifTrue: [ 
+			html mdlGrid
+				shadow: 0;
+				style: 'align-items: center; height: 100%';
+				with: [ 
+					html mdlCell
+						middle;
+						desktopOffset: 3;
+						tabletOffset: 3;
+						phoneOffset: 2;
+						desktopSize: 8;
+						tabletSize: 5;
+						phoneSize: 2;
+						with: [ html div ] ] ]
+		ifFalse: [ 
+			html mdlGrid
+				shadow: 0;
+				style: 'align-items: center; height: 100%';
+				with: [ 
+					html mdlCell
+						middle;
+						desktopOffset: 3;
+						tabletOffset: 3;
+						phoneOffset: 2;
+						desktopSize: 8;
+						tabletSize: 5;
+						phoneSize: 2;
+						with: [ self rendeModalLoginButtonOn: html ] ] ]
 ]

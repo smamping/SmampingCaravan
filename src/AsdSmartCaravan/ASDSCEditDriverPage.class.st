@@ -1,8 +1,8 @@
 Class {
 	#name : #ASDSCEditDriverPage,
-	#superclass : #ASDSCPageAdmin,
+	#superclass : #ASDSCPageEdit,
 	#instVars : [
-		'taskComponente'
+		'driverComponente'
 	],
 	#category : #'AsdSmartCaravan-Pages'
 }
@@ -20,30 +20,34 @@ ASDSCEditDriverPage class >> priority [
 
 { #category : #hooks }
 ASDSCEditDriverPage >> children [
-	^ { self taskComponente }
+
+	^ { self driverComponente }
+]
+
+{ #category : #accessing }
+ASDSCEditDriverPage >> driverComponente [
+
+	^ driverComponente
+]
+
+{ #category : #accessing }
+ASDSCEditDriverPage >> driverComponente: anObject [
+
+	driverComponente := anObject
 ]
 
 { #category : #initalize }
 ASDSCEditDriverPage >> initialize [
 
 	super initialize.
-	
-	self taskComponente: ASDSCInstallSystemTask new
+
+	self driverComponente: ASDSCObjectViewTableDriverComponent new
 ]
 
 { #category : #rendering }
 ASDSCEditDriverPage >> renderContentOn: html [
+
 	html div
 		style: 'min-height: 400px;';
-		with: 'Hello world#############################################################################################################################################'
-]
-
-{ #category : #accessing }
-ASDSCEditDriverPage >> taskComponente [
-	^ taskComponente
-]
-
-{ #category : #accessing }
-ASDSCEditDriverPage >> taskComponente: anObject [
-	taskComponente := anObject
+		with:[html render: self driverComponente ]
 ]
