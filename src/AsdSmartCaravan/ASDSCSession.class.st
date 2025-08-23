@@ -22,7 +22,8 @@ Class {
 		'installIndex',
 		'arrayInstallSize',
 		'esp32Driver',
-		'modulModel'
+		'modulModel',
+		'device'
 	],
 	#category : #'AsdSmartCaravan-Core'
 }

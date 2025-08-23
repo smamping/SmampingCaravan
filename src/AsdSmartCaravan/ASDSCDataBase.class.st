@@ -11,7 +11,8 @@ Class {
 		'deviceModules',
 		'system',
 		'fahrzeug',
-		'installReady'
+		'installReady',
+		'devices'
 	],
 	#classVars : [
 		'WriteMutex'

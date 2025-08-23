@@ -1,10 +1,9 @@
 Class {
 	#name : #ASDSCModulModel,
-	#superclass : #Object,
+	#superclass : #ASDModel,
 	#instVars : [
 		'relayListe',
-		'sensorListe',
-		'type'
+		'sensorListe'
 	],
 	#category : #'AsdSmartCaravan-Model'
 }

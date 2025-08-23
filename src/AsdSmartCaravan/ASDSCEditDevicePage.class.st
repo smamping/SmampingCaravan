@@ -2,6 +2,7 @@ Class {
 	#name : #ASDSCEditDevicePage,
 	#superclass : #ASDSCPageEdit,
 	#instVars : [
+		'deviceComponente',
 		'systemComponente'
 	],
 	#category : #'AsdSmartCaravan-Pages'
