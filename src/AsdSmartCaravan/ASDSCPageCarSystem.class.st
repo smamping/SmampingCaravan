@@ -6,8 +6,7 @@ Class {
 
 { #category : #testing }
 ASDSCPageCarSystem class >> isAbstract [
-
-	^ self = ASDSCPageCarSystem
+	^ self = ASDSCPage
 ]
 
 { #category : #accessing }

@@ -16,14 +16,13 @@ ASDSCEditDevicePage class >> pageName [
 
 { #category : #accessing }
 ASDSCEditDevicePage class >> priority [
-
-	^ 3
+	^ 1
 ]
 
 { #category : #hooks }
 ASDSCEditDevicePage >> children [
 
-	^ { self deviceComponente }
+	^ { self systemComponente }
 ]
 
 { #category : #accessing }
@@ -41,15 +40,10 @@ ASDSCEditDevicePage >> deviceComponente: anObject [
 { #category : #initalize }
 ASDSCEditDevicePage >> initialize [
 
-	| devices |
 	super initialize.
-	devices := self session model devices .
-	devices size < 1
-		ifTrue: [ 
-		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
-		ifFalse: [ 
-			self deviceComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: devices) ]
+
+	self systemComponente: ASDSCSystemComponent new.
+	
 ]
 
 { #category : #rendering }
@@ -57,7 +51,7 @@ ASDSCEditDevicePage >> renderContentOn: html [
 
 	html div
 		style: 'min-height: 400px;';
-		with: [ html render: self deviceComponente ]
+		with: [ html render: self systemComponente  ]
 ]
 
 { #category : #accessing }

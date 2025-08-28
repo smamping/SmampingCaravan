@@ -15,7 +15,6 @@ ASDSCEditSystemPage class >> pageName [
 
 { #category : #accessing }
 ASDSCEditSystemPage class >> priority [
-
 	^ 1
 ]
 

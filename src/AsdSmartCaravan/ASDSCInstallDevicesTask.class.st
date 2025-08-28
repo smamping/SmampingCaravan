@@ -62,23 +62,6 @@ ASDSCInstallDevicesTask >> deviceSubs: anObject [
 
 { #category : #running }
 ASDSCInstallDevicesTask >> go [
-
-	[ 
-	self selected: self chooseModel.
-	self selected isNil ifTrue: [ self chooseModel ].
-	self confirmModel ] whileFalse.
-
-	self tmpDevices
-		detect: [ :each | each type = self selected ]
-		ifFound: [ :class | 
-			self selectedDevice: class.
-
-			self show: self createModel onAnswer: [ :a | 
-				a ifNotNil: [ 
-					self session device: a.
-					self session model storeObject: a.
-					self session model installReady: true.
-					] ] ]
 ]
 
 { #category : #initialization }

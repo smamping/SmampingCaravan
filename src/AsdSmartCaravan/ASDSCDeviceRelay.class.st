@@ -22,8 +22,8 @@ ASDSCDeviceRelay class >> isVoyageRoot [
 ASDSCDeviceRelay >> initialize [
 
 	super initialize.
-
 	
+	driver beDigitalOutputOnPin: pinNr
 ]
 
 { #category : #testing }

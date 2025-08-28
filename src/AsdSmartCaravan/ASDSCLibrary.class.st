@@ -135,28 +135,39 @@ color: var(--element-label-color);
     
     -webkit-box-shadow: none;
     box-shadow: none;
-	
-	 color: var(--element-label-color); 
-    
+    height: 30px;
+	width: 250px !important;
+	 color: var(--element-label-color) !important;
+      display: block !important;
+    font-size: 12px !important;
+    font-family: "Helvetica","Arial",sans-serif;
+     margin: 15px !important;
+    padding: 12px; !important;
+        text-align: left;
 }
 
 .mdl-textfield__input:focus {
      border: 1px solid var(--element-border-bGcolor)  !important;
 	border-radius: 2px;
-   
+
 }
 
 .mdl-textfield {
-   display: block !important;
-   
+    position: relative;
+    font-size: 12px;
+    display: block !important;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 15px !important;
+    padding: 12px; !important;
 }
 
 .mdl-textfield__label {
     
    color: var(--element-label-color) !important;
-	top: -4px !important;
-  
-
+   left: 10px !important;
+  display: inline-block !important;
+	font-size: 12px !important;
 }
 
 .mdl-textfield.is-dirty .mdl-textfield__label,.mdl-textfield.has-placeholder .mdl-textfield__label {
@@ -176,13 +187,36 @@ height: 90% !important;
 
 .mdl-card {
     
-   
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 200px;
+    overflow: hidden;
+    width: auto;
+    z-index: 1;
+    position: relative;
     border: 1px solid var(--element-border-bGcolor) !important;
     border-radius: 2px;
     background-color: var(--element-zIndex1-bGcolor) !important;
  }  
 
 .div-form {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 200px;
+    overflow: hidden;
+    width: 330px;
+    z-index: 1;
+    position: relative;
     
  }  
 
@@ -242,9 +276,10 @@ height: 90% !important;
     background-color: #001a50 !important;
 }
 .ui-dialog {
- border: 1px solid var(--element-border-bGcolor) !important;
+border: 1px solid #005ffe !important;
     border-radius: 2px;
-    background-color: var(--element-zIndex1-bGcolor) !important;}
+    background-color: #001a50 !important;
+}
 
 
 .titleBar {
@@ -297,14 +332,14 @@ height: 90% !important;
 }
 
 .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
-
+background-color: #30c94c !important;
 }
 
 
 .containerCard{
- border: 1px solid var(--element-border-bGcolor) !important;
-    border-radius: 2px;
-    background-color: var(--element-zIndex1-bGcolor) !important;}
+border: 1px solid #005ffe !important;
+ background-color: #001a50 !important;
+}
 
   #loaderWrapper {
 display: none;
@@ -359,9 +394,8 @@ html{box-sizing:border-box}
     border-collapse: collapse;
     white-space: nowrap;
     font-size: 13px;
- border: 1px solid var(--element-border-bGcolor) !important;
-    border-radius: 2px;
-    background-color: var(--element-zIndex1-bGcolor) !important;
+    background-color: #001a50 !important;
+    border: 1px solid #005ffe !important;
     width: 100%;
 }
 
@@ -372,14 +406,20 @@ height:  50% !important;
 
 .mdl-textfield__label:after{
     background-color: #001a50 !important;
-   
+    
+    content: '''';
+    height: 0px !important;
+    left: 45%;
+    position: absolute;
+    
+    visibility: hidden;
+    width: 10px;
 }
 dialog{
 
-  border: 1px solid var(--element-border-bGcolor) !important;
-    border-radius: 2px;
-    background-color: var(--element-zIndex1-bGcolor) !important;
-   color: var(--element-label-color) !important;
+    background: #001a50 !important;
+    color: #c9d1d9 !important;
+    display: none;
 }
 
 .mdl-dialog__title {
@@ -389,7 +429,7 @@ dialog{
 .message{
 border: 1px solid #005ffe !important;
  background-color: #001a50 !important;
-    color: var(--element-label-color) !important;
+    color: #c9d1d9 !important;
 }
 
 .mdl-list__item-primary-content {
@@ -401,7 +441,7 @@ border: 1px solid #005ffe !important;
 }
 
 .mdl-data-table th{
-color: var(--element-label-color) !important;
+color: #c9d1d9 !important;
 }
 
 .mdl-list__item--three-line {
@@ -433,7 +473,7 @@ width: 100%;
 	font-size: 12px;
     padding: 0 0;
     list-style: none;
-	color: var(--element-label-color) !important;
+	color: #c9d1d9aa !important;
 }
 
 .mdl-list__item-tree {
@@ -441,7 +481,7 @@ width: 100%;
     font-size: 14px !important;
     min-height: 30px !important;
     padding: 6px;
-    color: var(--element-label-color) !important;
+    color: #ffffff94;
     overflow: hidden;
 }
 
@@ -469,7 +509,7 @@ vertical-align: top !important;
     letter-spacing: 0;
     line-height: 18px;
     height: 52px;
-    color: var(--element-label-color) !important;
+    color: #ffffff8a;
     display: block;
     padding: 5px 5px 5px 40px;
 }
@@ -488,7 +528,7 @@ vertical-align: top !important;
     font-feature-settings: ''liga'';
     -webkit-font-feature-settings: ''liga'';
     -webkit-font-smoothing: antialiased;
-	color: var(--element-label-color) !important;
+	color: #ffffff8a;
 }
 
 .mdl-chip__contact {
@@ -516,21 +556,20 @@ vertical-align: top !important;
     font-weight: 500;
     font-size: 14px;
     text-transform: uppercase;
-    color: var(--element-label-color) !important;
+    color: rgba(0,0,0,.54);
     overflow: hidden;
 }
 
 .mdl-expansion-panel .mdl-expansion-panel__header .mdl-expansion-panel__header-icon {
-    color: var(--element-label-color) !important;
+    color: #ffffffd9 !important;
 }
 
 .asdTableHeading { 
 	position: relativ; top: -10px;
-	background-color: var(--element-zIndex2-bGcolor);
  }
 
 .asdTableCell { 
-background-color: var(--element-zIndex2-bGcolor);
+background-color: var(--element-zIndex3-bGcolor);
 }
 
 .background {
@@ -538,9 +577,7 @@ width: 100%;
     min-height: 400px;
     overflow-y: auto;
     height: 100%;
-    border: 1px solid var(--element-border-bGcolor) !important;
-    border-radius: 2px;
-    background-color: var(--element-zIndex1-bGcolor) !important;
+    background-color: #001a50;
     /*display: flex;*/
     flex-direction: row;
     padding: 15px;
@@ -561,13 +598,13 @@ justify-content: flex-end !important;
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: var(--element-label-color) !important;
+  color: --element-border-bGcolor !important;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: var(--element-label-color) !important;
+  color: #f1f1f1;
 }
 
 .sidenav .closebtn {
@@ -709,5 +746,5 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
 { #category : #accessing }
 ASDSCLibrary >> selectorsToInclude [
 
-	^ #( #materialdeeppurplepinkminCss #darkBlueThemeCss #projectCss ) "#projectCss #roundMenuCss "
+	^ #( #darkBlueThemeCss #projectCss #roundMenuCss #materialdeeppurplepinkminCss )
 ]
