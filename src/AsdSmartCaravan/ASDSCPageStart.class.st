@@ -6,7 +6,8 @@ Class {
 
 { #category : #testing }
 ASDSCPageStart class >> isAbstract [
-	^ self = ASDSCPage
+
+	^ self = ASDSCPageStart
 ]
 
 { #category : #accessing }

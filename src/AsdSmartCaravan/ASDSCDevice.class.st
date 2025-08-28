@@ -20,6 +20,14 @@ ASDSCDevice class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
+ASDSCDevice class >> newFromDriver: aDriver [
+
+	^ self new
+		  driver: aDriver;
+		  yourself
+]
+
+{ #category : #'instance creation' }
 ASDSCDevice class >> newFromDriver: aDriver AndPinNr: aPinNr [
 
 	^ self new
@@ -88,13 +96,20 @@ ASDSCDevice >> driver [
 	^ driver
 ]
 
+{ #category : #accessing }
+ASDSCDevice >> driver: anObject [
+
+	driver := anObject
+]
+
 { #category : #initalize }
 ASDSCDevice >> initialize [
 
 	super initialize.
 	deviceValue := 0.
 	displayValue := 'Aus'.
-	self type: self class type
+
+	
 ]
 
 { #category : #accessing }

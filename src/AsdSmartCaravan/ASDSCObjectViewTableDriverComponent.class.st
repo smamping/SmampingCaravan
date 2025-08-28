@@ -19,7 +19,7 @@ ASDSCObjectViewTableDriverComponent >> initialize [
 	"asdTableCell"
 	self labelDeviceId: 'Device Id'.
 	self labelBrokerIp: 'Ip Adr. Broker'.
-	self labelDeviceName: 'DeviceName'.
+	self labelDeviceName: 'Device Name'.
 	self labelAddEsp32Driver: 'Esp32 Treiber'.
 	self labelSelectDevices: 'Devices'
 ]
@@ -154,7 +154,7 @@ ASDSCObjectViewTableDriverComponent >> renderInnerContentOn: html [
 							html mdlTableHeading
 								nonNumerical;
 								class: 'asdTableHeading';
-								with: self labelSelectDevices  ] ].
+								with: self labelSelectDevices ] ].
 			html tableBody with: [ "style: 'overflow: scroll;height: 400px;';"
 				self list doWithIndex: [ :each :index | 
 					html tableRow: [ 
@@ -185,14 +185,15 @@ ASDSCObjectViewTableDriverComponent >> renderInnerContentOn: html [
 									onClickUpdateRootDialogWith: [ :r | 
 										self renderDialog: r withModel: each ];
 									with: [ html mdlIcon: 'edit' ] ].
-								html mdlTableCell
+						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
 							style: 'background-color: #0d1117;';
 							with: [ 
 								html mdlAnchorButton
-									icon;
 									id: html nextId;
-									callback:[self session esp32Driver: each];
-									with: [ html mdlIcon: 'edit' ] ] ] ] ] ]
+									callback: [ self session esp32Driver: each .
+										self session rootComponent goToEditDeviceView.
+										];
+									with: 'Device' ] ] ] ] ]
 ]

@@ -34,7 +34,7 @@ ASDSCDeviceRelayWS28b class >> type [
 
 	"Title of the page that will be used in menus and URLs."
 
-	^ 'SchalterLicht'
+	^ 'Led'
 ]
 
 { #category : #accessing }
@@ -53,7 +53,7 @@ ASDSCDeviceRelayWS28b >> color: anObject [
 ASDSCDeviceRelayWS28b >> initialize [
 
 	super initialize.
-	
+	self bez: self class type
 ]
 
 { #category : #accessing }

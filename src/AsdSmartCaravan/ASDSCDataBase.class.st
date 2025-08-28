@@ -128,6 +128,12 @@ ASDSCDataBase >> deviceModules [
 ]
 
 { #category : #accessing }
+ASDSCDataBase >> devices [
+
+	^ ASDSCDevice selectAll 
+]
+
+{ #category : #accessing }
 ASDSCDataBase >> esp32Drivers [
 
 	^ ASDSCESP32Driver selectAll 

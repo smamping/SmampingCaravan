@@ -7,9 +7,19 @@ Class {
 	#category : #'AsdSmartCaravan-Model'
 }
 
+{ #category : #voyage }
+ASDSCDeviceModulLicht class >> isVoyageRoot [
+
+	"Indicates that instances of this class are top level documents
+    in noSQL databases"
+
+	^ true
+]
+
 { #category : #accessing }
 ASDSCDeviceModulLicht class >> type [
-^ 'Licht'
+
+	^ 'Licht'
 ]
 
 { #category : #accessing }
@@ -26,5 +36,7 @@ ASDSCDeviceModulLicht >> deviceSensorMotion: anObject [
 
 { #category : #initialize }
 ASDSCDeviceModulLicht >> initialize [
+
 	super initialize.
+	self bez: self class type
 ]

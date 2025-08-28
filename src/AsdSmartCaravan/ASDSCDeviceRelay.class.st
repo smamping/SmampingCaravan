@@ -22,8 +22,8 @@ ASDSCDeviceRelay class >> isVoyageRoot [
 ASDSCDeviceRelay >> initialize [
 
 	super initialize.
+
 	
-	driver beDigitalOutputOnPin: pinNr
 ]
 
 { #category : #testing }
@@ -45,6 +45,13 @@ ASDSCDeviceRelay >> on [
 
 	deviceValue := 1.
 	self setRelayState: deviceValue
+]
+
+{ #category : #accessing }
+ASDSCDeviceRelay >> pinNr: anObject [
+
+pinNr := anObject.
+self driver beDigitalOutputOnPin: pinNr
 ]
 
 { #category : #private }

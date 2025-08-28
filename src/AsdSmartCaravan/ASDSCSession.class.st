@@ -51,6 +51,18 @@ ASDSCSession >> currentUser: anObject [
 ]
 
 { #category : #accessing }
+ASDSCSession >> device [
+
+	^ device
+]
+
+{ #category : #accessing }
+ASDSCSession >> device: anObject [
+
+	device := anObject
+]
+
+{ #category : #accessing }
 ASDSCSession >> esp32Driver [
 
 	^ esp32Driver

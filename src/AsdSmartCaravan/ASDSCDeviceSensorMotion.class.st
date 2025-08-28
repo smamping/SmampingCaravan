@@ -24,6 +24,13 @@ ASDSCDeviceSensorMotion class >> type [
 ASDSCDeviceSensorMotion >> initialize [
 
 	super initialize.
-	driver beDigitalInputOnPin: pinNr.
-	self bez: 'Bewegungssensor'
+	self bez: self class type
+]
+
+{ #category : #testing }
+ASDSCDeviceSensorMotion >> isOn [
+
+	(self driver beDigitalInputOnPin: (self pinNr))  > 0
+		ifTrue: [ ^ true ]
+		ifFalse: [ ^ false ]
 ]
