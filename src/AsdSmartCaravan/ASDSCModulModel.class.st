@@ -20,7 +20,7 @@ ASDSCModulModel class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
 
-	^ false
+	^ true
 ]
 
 { #category : #accessing }
@@ -48,7 +48,8 @@ ASDSCModulModel >> initialize [
 
 	super initialize.
 	relayListe := OrderedCollection new.
-	sensorListe := OrderedCollection new
+	sensorListe := OrderedCollection new.
+	
 ]
 
 { #category : #accessing }

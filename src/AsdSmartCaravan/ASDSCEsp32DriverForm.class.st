@@ -55,14 +55,13 @@ ASDSCEsp32DriverForm >> labelDeviceName [
 ASDSCEsp32DriverForm >> renderBrokerIPOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelBrokerIp.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model brokerIP;
 				callback: [ :aString | self model brokerIP: aString ] ]
 ]
@@ -71,14 +70,13 @@ ASDSCEsp32DriverForm >> renderBrokerIPOn: html [
 ASDSCEsp32DriverForm >> renderDeviceIdOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelDeviceId.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model deviceId;
 				callback: [ :aString | self model deviceId: aString ] ]
 ]
@@ -87,14 +85,13 @@ ASDSCEsp32DriverForm >> renderDeviceIdOn: html [
 ASDSCEsp32DriverForm >> renderDeviceIpOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelDeviceIp.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model deviceIp;
 				callback: [ :aString | self model deviceIp: aString ] ]
 ]
@@ -103,14 +100,13 @@ ASDSCEsp32DriverForm >> renderDeviceIpOn: html [
 ASDSCEsp32DriverForm >> renderDeviceNameOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelDeviceName.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model deviceName;
 				callback: [ :aString | self model deviceName: aString ] ]
 ]

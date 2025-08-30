@@ -89,14 +89,14 @@ ASDSCSystemForm >> renderFieldsOn: html [
 ASDSCSystemForm >> renderHostNameOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
-				with: self labelHostName .
+				with: self labelHostName.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
+				
 				value: self model hostName;
 				callback: [ :aString | self model hostName: aString ] ]
 ]
@@ -105,14 +105,13 @@ ASDSCSystemForm >> renderHostNameOn: html [
 ASDSCSystemForm >> renderIpCamOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelIpCam.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model ipCam;
 				callback: [ :aString | self model ipCam: aString ] ]
 ]
@@ -121,14 +120,13 @@ ASDSCSystemForm >> renderIpCamOn: html [
 ASDSCSystemForm >> renderIpMultimediaOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelIpMultimedia.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model ipMultimedia;
 				callback: [ :aString | self model ipMultimedia: aString ] ]
 ]
@@ -137,14 +135,13 @@ ASDSCSystemForm >> renderIpMultimediaOn: html [
 ASDSCSystemForm >> renderIpOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
-				with: self labelIp .
+				with: self labelIp.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model ip;
 				callback: [ :aString | self model ip: aString ] ]
 ]
@@ -153,14 +150,13 @@ ASDSCSystemForm >> renderIpOn: html [
 ASDSCSystemForm >> renderMqttIpOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelMqttIp.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model mqttIp;
 				callback: [ :aString | self model mqttIp: aString ] ]
 ]
@@ -169,14 +165,13 @@ ASDSCSystemForm >> renderMqttIpOn: html [
 ASDSCSystemForm >> renderSsidOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelSsid.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model ssId;
 				callback: [ :aString | self model ssId: aString ] ]
 ]
@@ -185,14 +180,13 @@ ASDSCSystemForm >> renderSsidOn: html [
 ASDSCSystemForm >> renderWlanPwdOn: html [
 
 	html mdlTextFieldContainer
-		style: 'width: 50px';
+		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelWlanPwd.
 			html mdlTextFieldInput
 				id: html lastId;
-				style: 'width: 50px';
 				value: self model wlanPwd;
 				callback: [ :aString | self model wlanPwd: aString ] ]
 ]

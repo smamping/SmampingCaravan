@@ -18,7 +18,8 @@ ASDSCDeviceModulLicht class >> isVoyageRoot [
 
 { #category : #accessing }
 ASDSCDeviceModulLicht class >> type [
-^ 'Licht'
+
+	^ 'Licht'
 ]
 
 { #category : #accessing }
@@ -35,5 +36,7 @@ ASDSCDeviceModulLicht >> deviceSensorMotion: anObject [
 
 { #category : #initialize }
 ASDSCDeviceModulLicht >> initialize [
+
 	super initialize.
+	self bez: self class type
 ]

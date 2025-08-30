@@ -108,7 +108,8 @@ ASDSCDevice >> initialize [
 	super initialize.
 	deviceValue := 0.
 	displayValue := 'Aus'.
-	self type: self class type
+
+	
 ]
 
 { #category : #accessing }

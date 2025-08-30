@@ -15,7 +15,8 @@ ASDSCEditDriverPage class >> pageName [
 
 { #category : #accessing }
 ASDSCEditDriverPage class >> priority [
-	^ 1
+
+	^ 2
 ]
 
 { #category : #hooks }
@@ -39,9 +40,15 @@ ASDSCEditDriverPage >> driverComponente: anObject [
 { #category : #initalize }
 ASDSCEditDriverPage >> initialize [
 
+	| drivers |
 	super initialize.
-
-	self driverComponente: ASDSCObjectViewTableDriverComponent new
+	drivers := self session model esp32Drivers.
+	drivers size < 1
+		ifTrue: [ 
+		self driverComponente: ASDSCObjectViewTableDriverComponent new ]
+		ifFalse: [ 
+			self driverComponente:
+				(ASDSCObjectViewTableDriverComponent withList: drivers) ]
 ]
 
 { #category : #rendering }
