@@ -32,9 +32,13 @@ ASDSCInstallModuleTaskLicht >> bez: anObject [
 
 { #category : #accessing }
 ASDSCInstallModuleTaskLicht >> chooseRelay [
-
-	self relayBez: (self chooseFrom: relayBezList caption: 'Bitte Endgerät auswählen').
-	self relayBez isNil ifTrue: [ self chooseRelay  ]
+| relay |
+	self relayBez:
+		(self chooseFrom: relayBezList caption: 'Bitte Endgerät auswählen').
+	self relayBez isNil ifTrue: [ self chooseRelay ]
+	ifFalse: [ relay := self session model relayDeviceLichtFromBez: self relayBez].
+	relay isNil ifTrue: [ ^ Error  ].
+	
 ]
 
 { #category : #accessing }
@@ -61,7 +65,7 @@ ASDSCInstallModuleTaskLicht >> go [
 
 	self chooseRelay.
 	self addRelayToModel.
-	self confirmNextRelay ] whileTrue
+	self confirmNextRelay ] repeat
 ]
 
 { #category : #initialization }

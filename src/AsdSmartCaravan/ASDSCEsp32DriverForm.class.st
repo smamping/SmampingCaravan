@@ -58,12 +58,23 @@ ASDSCEsp32DriverForm >> renderBrokerIPOn: html [
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: html nextId;
+				for: 'brokerIP';
 				with: self labelBrokerIp.
 			html mdlTextFieldInput
-				id: html lastId;
+				id: 'brokerIP';
 				value: self model brokerIP;
-				callback: [ :aString | self model brokerIP: aString ] ]
+				callback: [ :aString | self model brokerIP: aString ];
+				 pattern: '^\S+$' errorMessage: 'kein leerstring'.
+			html mdlTextFieldError: 'Bitte eine BrokerIp eingeben' ].
+		
+"	
+MDLTextFieldWidget new
+		  beFloatingLabel;
+		  type: 'text';
+		  label: gmailLabel;
+		  pattern: '^\S+$' errorMessage: 'kein leerstring';
+		  callback: [ :aString | self model gmail: aString ];
+		  value: self model gmail"
 ]
 
 { #category : #rendering }
