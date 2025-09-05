@@ -28,15 +28,15 @@ ASDSCEditModulePage >> children [
 { #category : #initalize }
 ASDSCEditModulePage >> initialize [
 
-	| devices |
+	| modules |
 	super initialize.
-	devices := self session model devices .
-	devices size < 1
+	modules := self session model deviceModules.
+	modules size < 1
 		ifTrue: [ 
 		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
 		ifFalse: [ 
 			self deviceComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: devices) ]
+				(ASDSCObjectViewTableDevicesComponent withList: modules) ]
 ]
 
 { #category : #accessing }

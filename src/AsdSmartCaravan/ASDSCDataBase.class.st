@@ -124,7 +124,7 @@ ASDSCDataBase >> allUsers [
 { #category : #accessing }
 ASDSCDataBase >> deviceModules [
 
-	^ deviceModules
+	^ ASDSCModulModel selectAll 
 ]
 
 { #category : #accessing }
@@ -170,6 +170,13 @@ ASDSCDataBase >> installReady: boolean [
 	installReady := boolean
 ]
 
+{ #category : #operations }
+ASDSCDataBase >> relayDeviceLichtFromBez: aString [ 
+
+	^ ASDSCDeviceRelayLicht selectOne: [ :each | 
+		  each bez = aString  ]
+]
+
 { #category : #accessing }
 ASDSCDataBase >> relayDevicesLicht [
 
@@ -180,6 +187,18 @@ ASDSCDataBase >> relayDevicesLicht [
 ASDSCDataBase >> sensorDeviceMotion [
 
 	^ sensorDeviceMotion
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> sensorDeviceMotionFromBez: aString [
+
+	^ ASDSCDeviceSensorMotion selectOne: [ :each | each bez = aString ]
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> sensorDeviceMotionList [
+
+	^ ASDSCDeviceSensorMotion selectAll
 ]
 
 { #category : #accessing }
