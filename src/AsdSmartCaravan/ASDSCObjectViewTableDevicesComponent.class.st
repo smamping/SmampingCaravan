@@ -135,11 +135,11 @@ ASDSCObjectViewTableDevicesComponent >> labelTyp [
 { #category : #rendering }
 ASDSCObjectViewTableDevicesComponent >> renderDialog: html withModel: aModel [
 
-	| driverTable |
+	| deviceTable |
 	html form: [ 
 		html mdlDialogTitle: self labelDevice.
 		html mdlDialogContent: [ 
-			html render: (ASDSCEsp32DriverForm withModel: aModel) ].
+			html render: (ASDSCDevicesForm withModel: aModel) ].
 		html mdlDialogActions: [ 
 			html mdlButton
 				id: self rootDialogCloseId;
@@ -148,10 +148,10 @@ ASDSCObjectViewTableDevicesComponent >> renderDialog: html withModel: aModel [
 						 serializeForm;
 						 callback: [ "serializeForm;"
 							 self session model storeObject: aModel.
-							 driverTable := ASDSCObjectViewTableDriverComponent withList:
-									                self session model esp32Drivers ];
+							 deviceTable := ASDSCObjectViewTableDevicesComponent withList:
+									                self session model devices ];
 						 onComplete: ((html jQuery id: self id) load
-								  html: [ :ajaxHtml | ajaxHtml render: driverTable ];
+								  html: [ :ajaxHtml | ajaxHtml render: deviceTable ];
 								  onComplete: 'componentHandler.upgradeElements(this);' js));
 				with: 'Accept'.
 			html mdlButton

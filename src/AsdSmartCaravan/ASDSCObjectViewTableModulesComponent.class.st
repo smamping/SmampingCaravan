@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'labelModuleBezeichnung',
 		'labelModuleTyp',
-		'addTask'
+		'addTask',
+		'labelSelectModules'
 	],
 	#category : #'AsdSmartCaravan-Components'
 }
@@ -82,12 +83,12 @@ ASDSCObjectViewTableModulesComponent >> children [
 ASDSCObjectViewTableModulesComponent >> initialize [
 
 	super initialize.
-	self id: 'tableDevices'.
+	self id: 'tableModules'.
 	"asdTableCell"
 	labelModuleBezeichnung := 'Bezeichnung'.
 	labelModuleTyp := 'Typ'.
 
-	self addTask: ASDSCInstallDevicesTask new.
+	self addTask: ASDSCInstallModuleTask new.
 	self addTask addDecoration: ASDCardDecoration new
 ]
 
@@ -113,6 +114,18 @@ ASDSCObjectViewTableModulesComponent >> labelModuleTyp [
 ASDSCObjectViewTableModulesComponent >> labelModuleTyp: anObject [
 
 	labelModuleTyp := anObject
+]
+
+{ #category : #accessing }
+ASDSCObjectViewTableModulesComponent >> labelSelectModules [
+
+	^ labelSelectModules
+]
+
+{ #category : #accessing }
+ASDSCObjectViewTableModulesComponent >> labelSelectModules: anObject [
+
+	labelSelectModules := anObject
 ]
 
 { #category : #rendering }
@@ -168,15 +181,12 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 							html mdlTableHeading
 								nonNumerical;
 								class: 'asdTableHeading';
-								with: self labelTyp.
+								with: self labelModuleTyp.
 							html mdlTableHeading
 								nonNumerical;
 								class: 'asdTableHeading';
-								with: self labelDeviceBezeichnung.
-							html mdlTableHeading
-								nonNumerical;
-								class: 'asdTableHeading';
-								with: self labelPinNr.
+								with: self labelModuleBezeichnung.
+
 							html mdlTableHeading
 								nonNumerical;
 								class: 'asdTableHeading';
@@ -184,7 +194,7 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 							html mdlTableHeading
 								nonNumerical;
 								class: 'asdTableHeading';
-								with: self labelSelectDevices ] ].
+								with: self labelSelectModules ] ].
 			html tableBody with: [ "style: 'overflow: scroll;height: 400px;';"
 				self list doWithIndex: [ :each :index | 
 					index odd
@@ -203,15 +213,10 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 								class: 'asdTableCell';
 								style: ' max-width: 20px;';
 								with: each bez.
+							
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
-								style: ' max-width: 20px;';
-								with: each pinNr.
-							html mdlTableCell
-								nonNumerical;
-								class: 'asdTableCell';
-								
 								with: [ 
 									html mdlAnchorButton
 										icon;
@@ -223,10 +228,8 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
-								
 								with: [ 
 									html mdlAnchorButton
-										
 										id: html nextId;
 										callback: [ self session rootComponent goToEditModuleView ];
 										with: 'Modul' ] ] ] ] ]

@@ -35,22 +35,11 @@ ASDSCInstallModuleTask >> createModel [
 
 { #category : #running }
 ASDSCInstallModuleTask >> go [
-
-	[ 
+|lichtTask|
+	
 	self selected: self chooseModule.
-	self selected isNil ifTrue: [ self chooseModule ].
-	self confirmModel ] whileFalse.
-
-	self tmpModules 
-		detect: [ :each | each type = self selected ]
-		ifFound: [ :class | 
-			self selectedModule: class.
-
-			self show: self createModel onAnswer: [ :a | 
-				a ifNotNil: [ 
-					self session device: a.
-					self session model storeObject: a.
-					self session model installReady: true ] ] ]
+	lichtTask := ('ASDSCInstallModuleTask',self selected) asSymbol.
+self show: lichtTask new .
 ]
 
 { #category : #initialization }

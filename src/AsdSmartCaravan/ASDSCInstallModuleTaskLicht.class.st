@@ -32,13 +32,22 @@ ASDSCInstallModuleTaskLicht >> bez: anObject [
 
 { #category : #accessing }
 ASDSCInstallModuleTaskLicht >> chooseRelay [
-| relay |
+
+	
 	self relayBez:
 		(self chooseFrom: relayBezList caption: 'Bitte Endgerät auswählen').
-	self relayBez isNil ifTrue: [ self chooseRelay ]
-	ifFalse: [ relay := self session model relayDeviceLichtFromBez: self relayBez].
-	relay isNil ifTrue: [ ^ Error  ].
+	self relayBez isNil
+		ifTrue: [ self chooseRelay ]
+		ifFalse: [ 
+			self session device:
+				(self session model relayDeviceLichtFromBez: self relayBez) ].
 	
+]
+
+{ #category : #accessing }
+ASDSCInstallModuleTaskLicht >> confirmMotion [
+
+	^ self confirm: 'Ein Bewegungssensor auswählen'
 ]
 
 { #category : #accessing }
@@ -58,10 +67,13 @@ ASDSCInstallModuleTaskLicht >> go [
 
 	[ 
 	self bez: self requestBezeichnung.
-	self bez isNil ifTrue: [ self go ].
+
 	self modelModule: self createModel.
 	self session model storeObject: self modelModule.
-
+	self session model installReady: true.
+	self confirmMotion ifTrue: [
+		self session model 
+		  ].
 
 	self chooseRelay.
 	self addRelayToModel.

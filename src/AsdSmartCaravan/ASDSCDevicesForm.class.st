@@ -47,6 +47,7 @@ ASDSCDevicesForm >> renderDeviceBezeichnungOn: html [
 			html mdlTextFieldInput
 				id: 'bezeichnung';
 				value: self model bez;
+				required;
 				callback: [ :aString | self model bez: aString ] ]
 ]
 
@@ -70,5 +71,6 @@ ASDSCDevicesForm >> renderPinNrOn: html [
 			html mdlTextFieldInput
 				id: 'pinNr';
 				value: self model pinNr;
+				required;
 				callback: [ :aString | self model pinNr: aString ] ]
 ]

@@ -300,6 +300,10 @@ height: 90% !important;
 
 }
 
+.mdl-button {
+    background-color: var(--element-zIndex1-bGcolor) !important;
+    
+}
 
 .containerCard{
  border: 1px solid var(--element-border-bGcolor) !important;

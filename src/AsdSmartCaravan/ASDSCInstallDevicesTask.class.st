@@ -85,11 +85,11 @@ ASDSCInstallDevicesTask >> go [
 ASDSCInstallDevicesTask >> initialize [
 
 	super initialize.
+	self addDecoration: (ASDCardDecoration new label: '').
 	self tmpDevices: (ASDSCDevice allSubclasses reject: #isAbstract).
 
 	self deviceSubs: (self tmpDevices collect: [ :each | each type ]).
-	self addDecoration: (ASDCardDecoration new
-			 label: '')
+	
 ]
 
 { #category : #accessing }

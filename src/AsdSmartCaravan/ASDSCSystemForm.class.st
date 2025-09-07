@@ -92,12 +92,12 @@ ASDSCSystemForm >> renderHostNameOn: html [
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: html nextId;
+				for: 'hostName';
 				with: self labelHostName.
 			html mdlTextFieldInput
-				id: html lastId;
-				
+				id: 'hostName';
 				value: self model hostName;
+				required;
 				callback: [ :aString | self model hostName: aString ] ]
 ]
 
@@ -138,11 +138,12 @@ ASDSCSystemForm >> renderIpOn: html [
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: html nextId;
+				for: 'ip';
 				with: self labelIp.
 			html mdlTextFieldInput
-				id: html lastId;
+				id: 'ip';
 				value: self model ip;
+				required;
 				callback: [ :aString | self model ip: aString ] ]
 ]
 
@@ -158,6 +159,7 @@ ASDSCSystemForm >> renderMqttIpOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model mqttIp;
+				required;
 				callback: [ :aString | self model mqttIp: aString ] ]
 ]
 
@@ -173,6 +175,7 @@ ASDSCSystemForm >> renderSsidOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model ssId;
+				required;
 				callback: [ :aString | self model ssId: aString ] ]
 ]
 
@@ -188,5 +191,6 @@ ASDSCSystemForm >> renderWlanPwdOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model wlanPwd;
+				required;
 				callback: [ :aString | self model wlanPwd: aString ] ]
 ]
