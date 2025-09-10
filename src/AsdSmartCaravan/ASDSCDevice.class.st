@@ -6,7 +6,8 @@ Class {
 		'pinNr',
 		'pin',
 		'deviceValue',
-		'displayValue'
+		'displayValue',
+		'devMode'
 	],
 	#category : #'AsdSmartCaravan-Model'
 }
@@ -68,6 +69,12 @@ ASDSCDevice >> bezDescription [
 ]
 
 { #category : #accessing }
+ASDSCDevice >> devMode [
+
+	^ devMode
+]
+
+{ #category : #accessing }
 ASDSCDevice >> deviceValue [
 
 	^ deviceValue
@@ -108,8 +115,7 @@ ASDSCDevice >> initialize [
 	super initialize.
 	deviceValue := 0.
 	displayValue := 'Aus'.
-
-	
+	devMode := true
 ]
 
 { #category : #accessing }

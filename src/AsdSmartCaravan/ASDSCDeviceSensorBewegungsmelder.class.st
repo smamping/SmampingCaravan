@@ -1,11 +1,11 @@
 Class {
-	#name : #ASDSCDeviceSensorMotion,
+	#name : #ASDSCDeviceSensorBewegungsmelder,
 	#superclass : #ASDSCDeviceSensor,
 	#category : #'AsdSmartCaravan-Model'
 }
 
 { #category : #voyage }
-ASDSCDeviceSensorMotion class >> isVoyageRoot [
+ASDSCDeviceSensorBewegungsmelder class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
 
@@ -13,7 +13,7 @@ ASDSCDeviceSensorMotion class >> isVoyageRoot [
 ]
 
 { #category : #accessing }
-ASDSCDeviceSensorMotion class >> type [
+ASDSCDeviceSensorBewegungsmelder class >> type [
 
 	"Title of the page that will be used in menus and URLs."
 
@@ -21,14 +21,14 @@ ASDSCDeviceSensorMotion class >> type [
 ]
 
 { #category : #initialization }
-ASDSCDeviceSensorMotion >> initialize [
+ASDSCDeviceSensorBewegungsmelder >> initialize [
 
 	super initialize.
 	self bez: self class type
 ]
 
 { #category : #testing }
-ASDSCDeviceSensorMotion >> isOn [
+ASDSCDeviceSensorBewegungsmelder >> isOn [
 
 	(self driver beDigitalInputOnPin: (self pinNr))  > 0
 		ifTrue: [ ^ true ]

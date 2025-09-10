@@ -158,11 +158,12 @@ ASDSCObjectViewTableModulesComponent >> renderDialog: html withModel: aModel [
 { #category : #rendering }
 ASDSCObjectViewTableModulesComponent >> renderDialogMenu: html [
 
-	| newEsp32Driver |
+	
 	html mdlAnchorButton
 		icon;
 		id: html nextId;
-		callback:[self show: addTask ]; "openDialogWithId: self rootDialogOpenId;
+		callback: [ self show: addTask ];
+		"openDialogWithId: self rootDialogOpenId;
 		onClickUpdateRootDialogWith: [ :r | self renderDialog: r ];"
 		with: [ html mdlIcon: 'add' ]
 ]

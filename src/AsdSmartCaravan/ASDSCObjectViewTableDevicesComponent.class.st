@@ -91,7 +91,7 @@ ASDSCObjectViewTableDevicesComponent >> initialize [
 	labelPinNr := 'Pin Nr.'.
 	labelSelectDevices := 'Endgerät '.
 	labelTyp := 'Typ'.
-	
+
 	self addTask: ASDSCInstallDevicesTask new.
 	self addTask addDecoration: ASDCardDecoration new
 ]
@@ -162,11 +162,12 @@ ASDSCObjectViewTableDevicesComponent >> renderDialog: html withModel: aModel [
 { #category : #rendering }
 ASDSCObjectViewTableDevicesComponent >> renderDialogMenu: html [
 
-	| newEsp32Driver |
+	
 	html mdlAnchorButton
 		icon;
 		id: html nextId;
-		callback:[self show: addTask ]; "openDialogWithId: self rootDialogOpenId;
+		callback: [ self show: addTask ];
+		"openDialogWithId: self rootDialogOpenId;
 		onClickUpdateRootDialogWith: [ :r | self renderDialog: r ];"
 		with: [ html mdlIcon: 'add' ]
 ]
@@ -212,23 +213,18 @@ ASDSCObjectViewTableDevicesComponent >> renderInnerContentOn: html [
 						with: [ 
 							html mdlTableCell
 								nonNumerical;
-								class: 'asdTableCell';
 								style: ' max-width: 20px;';
 								with: each type.
 							html mdlTableCell
 								nonNumerical;
-								class: 'asdTableCell';
 								style: ' max-width: 20px;';
 								with: each bez.
 							html mdlTableCell
 								nonNumerical;
-								class: 'asdTableCell';
 								style: ' max-width: 20px;';
 								with: each pinNr.
 							html mdlTableCell
 								nonNumerical;
-								class: 'asdTableCell';
-								
 								with: [ 
 									html mdlAnchorButton
 										icon;
@@ -240,10 +236,8 @@ ASDSCObjectViewTableDevicesComponent >> renderInnerContentOn: html [
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
-								
 								with: [ 
 									html mdlAnchorButton
-										
 										id: html nextId;
 										callback: [ self session rootComponent goToEditModuleView ];
 										with: 'Modul' ] ] ] ] ]

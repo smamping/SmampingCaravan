@@ -14,10 +14,17 @@ Class {
 { #category : #accessing }
 ASDSCInstallDevicesTask >> chooseModel [
 
-	^ self
-		  chooseFrom: self deviceSubs
-		  caption: 'Bitte Endgerät auswählen'.
-		
+	| deviceArt deviceTyp selDev |
+	deviceArt := self
+		             chooseFrom: #( 'Relay' 'Sensor' )
+		             caption: 'Bitte auswählen ob Relay oder Sensor'.
+	deviceArt isNil ifTrue: [ self chooseModel ].
+
+	deviceTyp := self
+		             chooseFrom: self deviceSubs
+		             caption: 'Bitte Endgerät auswählen'.
+	selDev := 'ASDSCDevice' , deviceArt , deviceTyp.
+	^ selDev asSymbol 
 ]
 
 { #category : #accessing }
@@ -30,10 +37,15 @@ ASDSCInstallDevicesTask >> confirmModel [
 ASDSCInstallDevicesTask >> createModel [
 
 	| selectedDeviceObject |
-	selectedDeviceObject := self selectedDevice
-		                        newFromDriver: self session esp32Driver.
+	selectedDeviceObject := self deviceClass newFromDriver:
+		                        self session esp32Driver.
+	self selected:  selectedDeviceObject
+]
 
-	^ ASDSCDevicesForm withModel: selectedDeviceObject andForm: true
+{ #category : #accessing }
+ASDSCInstallDevicesTask >> deviceClass [
+
+	^ Smalltalk classNamed: self selectedDevice 
 ]
 
 { #category : #accessing }
@@ -63,33 +75,32 @@ ASDSCInstallDevicesTask >> deviceSubs: anObject [
 { #category : #running }
 ASDSCInstallDevicesTask >> go [
 
-	[ 
-	self selected: self chooseModel.
-	self selected isNil ifTrue: [ self chooseModel ].
-	self confirmModel ] whileFalse.
+	self selectedDevice: self chooseModel.
+	Transcript show: self selectedDevice.
 
-	self tmpDevices
-		detect: [ :each | each type = self selected ]
-		ifFound: [ :class | 
-			self selectedDevice: class.
-
-			self show: self createModel onAnswer: [ :a | 
-				a ifNotNil: [ 
-					self session device: a.
-					self session model storeObject: a.
-					self session model installReady: true.
-					] ] ]
+	self createModel.
+	self
+		call: (ASDSCDevicesForm withModel: selected andForm: true)
+		onAnswer: [ :a | "self
+		show: (ASDSCDevicesForm withModel: selected andForm: true)
+		onAnswer: [ :a | 
+			a ifNotNil: [ 
+				self session device: a.
+				self session model storeObject: a ] ]"
+			a ifNotNil: [ 
+				self session device: a.
+				self session model storeObject: a ] ].
+		self session rootComponent goToEditDeviceView
 ]
 
 { #category : #initialization }
 ASDSCInstallDevicesTask >> initialize [
 
 	super initialize.
-	self addDecoration: (ASDCardDecoration new label: '').
+	
 	self tmpDevices: (ASDSCDevice allSubclasses reject: #isAbstract).
 
-	self deviceSubs: (self tmpDevices collect: [ :each | each type ]).
-	
+	self deviceSubs: (self tmpDevices collect: [ :each | each type ])
 ]
 
 { #category : #accessing }

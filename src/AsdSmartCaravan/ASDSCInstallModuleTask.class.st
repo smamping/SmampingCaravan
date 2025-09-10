@@ -25,21 +25,22 @@ ASDSCInstallModuleTask >> confirmModel [
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTask >> createModel [
+ASDSCInstallModuleTask >> deviceClass: aString [
 
-	| selectedDeviceObject |
-	selectedDeviceObject := self selectedDevice newFromDriver: self session esp32Driver AndPinNr: self devicePin.
-		                       
-	^ ASDSCDevicesForm withModel: selectedDeviceObject andForm: true
+	^ Smalltalk classNamed: aString
 ]
 
 { #category : #running }
 ASDSCInstallModuleTask >> go [
-|lichtTask|
-	
+
+	| taskType taskString |
 	self selected: self chooseModule.
-	lichtTask := ('ASDSCInstallModuleTask',self selected) asSymbol.
-self show: lichtTask new .
+	taskString := ('ASDSCInstallModuleTask' , self selected) asSymbol.
+	Transcript show: taskString.
+
+	taskType := self deviceClass: taskString.
+
+	self show: taskType new
 ]
 
 { #category : #initialization }

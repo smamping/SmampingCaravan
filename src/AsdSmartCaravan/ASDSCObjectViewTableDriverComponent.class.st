@@ -100,6 +100,7 @@ ASDSCObjectViewTableDriverComponent >> renderDialog: html withModel: aModel [
 						 serializeForm;
 						 callback: [ "serializeForm;"
 							 self session model storeObject: aModel.
+							self session esp32Driver: aModel.
 							 driverTable := ASDSCObjectViewTableDriverComponent withList:
 									                self session model esp32Drivers ];
 						 onComplete: ((html jQuery id: self id) load

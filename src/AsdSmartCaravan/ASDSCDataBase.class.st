@@ -192,13 +192,13 @@ ASDSCDataBase >> sensorDeviceMotion [
 { #category : #accessing }
 ASDSCDataBase >> sensorDeviceMotionFromBez: aString [
 
-	^ ASDSCDeviceSensorMotion selectOne: [ :each | each bez = aString ]
+	^ ASDSCDeviceSensorBewegungsmelder selectOne: [ :each | each bez = aString ]
 ]
 
 { #category : #accessing }
 ASDSCDataBase >> sensorDeviceMotionList [
 
-	^ ASDSCDeviceSensorMotion selectAll
+	^ ASDSCDeviceSensorBewegungsmelder selectAll
 ]
 
 { #category : #accessing }

@@ -301,7 +301,7 @@ height: 90% !important;
 }
 
 .mdl-button {
-    background-color: var(--element-zIndex1-bGcolor) !important;
+   border: 1px solid var(--element-border-bGcolor) !important;
     
 }
 
@@ -371,7 +371,7 @@ html{box-sizing:border-box}
 
 .mdl-dialog{
 width: 50% !important;
-height:  50% !important;
+border: 1px solid var(--element-border-bGcolor) !important;
 }
 
 .mdl-textfield__label:after{

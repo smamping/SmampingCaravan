@@ -58,8 +58,7 @@ ASDSCInstallModuleTaskLicht >> confirmNextRelay [
 { #category : #accessing }
 ASDSCInstallModuleTaskLicht >> createModel [
 
-	^ ASDSCDeviceModulLicht bez: self requestBezeichnung save
-	
+	^ ASDSCDeviceModulLicht bez: self requestBezeichnung
 ]
 
 { #category : #running }

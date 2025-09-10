@@ -22,7 +22,9 @@ ASDSCDeviceRelay class >> isVoyageRoot [
 ASDSCDeviceRelay >> initialize [
 
 	super initialize.
-
+	self devMode ifFalse: [ 
+		self driver beDigitalOutputOnPin: pinNr
+		 ]
 	
 ]
 
@@ -50,8 +52,8 @@ ASDSCDeviceRelay >> on [
 { #category : #accessing }
 ASDSCDeviceRelay >> pinNr: anObject [
 
-pinNr := anObject.
-self driver beDigitalOutputOnPin: pinNr
+	pinNr := anObject.
+	
 ]
 
 { #category : #private }

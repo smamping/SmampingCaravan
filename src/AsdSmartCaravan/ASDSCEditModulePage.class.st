@@ -33,10 +33,10 @@ ASDSCEditModulePage >> initialize [
 	modules := self session model deviceModules.
 	modules size < 1
 		ifTrue: [ 
-		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
+		self moduleComponente: ASDSCObjectViewTableModulesComponent new ]
 		ifFalse: [ 
-			self deviceComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: modules) ]
+			self moduleComponente:
+				(ASDSCObjectViewTableModulesComponent withList: modules) ]
 ]
 
 { #category : #accessing }
