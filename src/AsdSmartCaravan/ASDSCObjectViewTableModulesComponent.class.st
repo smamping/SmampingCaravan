@@ -89,7 +89,9 @@ ASDSCObjectViewTableModulesComponent >> initialize [
 	labelModuleTyp := 'Typ'.
 
 	self addTask: ASDSCInstallModuleTask new.
-	self addTask addDecoration: ASDCardDecoration new
+	self addDecoration: (ASDCardDecoration new
+			 label: 'Modul';
+			 yourself)
 ]
 
 { #category : #accessing }
@@ -133,7 +135,7 @@ ASDSCObjectViewTableModulesComponent >> renderDialog: html withModel: aModel [
 
 	| driverTable |
 	html form: [ 
-		html mdlDialogTitle: self labelDevice.
+		html mdlDialogTitle: self labelModuleBezeichnung.
 		html mdlDialogContent: [ 
 			html render: (ASDSCEsp32DriverForm withModel: aModel) ].
 		html mdlDialogActions: [ 

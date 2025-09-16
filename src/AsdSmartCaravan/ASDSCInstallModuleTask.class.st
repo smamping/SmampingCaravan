@@ -15,7 +15,7 @@ ASDSCInstallModuleTask >> chooseModule [
 
 	^ self
 		  chooseFrom: self modulesSubs
-		  caption: 'Bitte Endgerät auswählen'
+		  caption: 'Bitte Modul Art auswählen'
 ]
 
 { #category : #accessing }
@@ -36,7 +36,8 @@ ASDSCInstallModuleTask >> go [
 	| taskType taskString |
 	self selected: self chooseModule.
 	taskString := ('ASDSCInstallModuleTask' , self selected) asSymbol.
-	Transcript show: taskString.
+	Transcript show: ' module ' , taskString.
+	
 
 	taskType := self deviceClass: taskString.
 
@@ -50,9 +51,7 @@ ASDSCInstallModuleTask >> initialize [
 	self tmpModules: (ASDSCModulModel allSubclasses reject: #isAbstract).
 
 	self modulesSubs: (self tmpModules collect: [ :each | each type ]).
-	self addDecoration: (ASDCardDecoration new
-			 label: '';
-			 yourself)
+	
 ]
 
 { #category : #accessing }

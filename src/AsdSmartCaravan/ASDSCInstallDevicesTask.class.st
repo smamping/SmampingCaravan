@@ -76,21 +76,18 @@ ASDSCInstallDevicesTask >> deviceSubs: anObject [
 ASDSCInstallDevicesTask >> go [
 
 	self selectedDevice: self chooseModel.
-	Transcript show: self selectedDevice.
+	Transcript show: ' selectedDevice ' , self selectedDevice.
 
 	self createModel.
 	self
 		call: (ASDSCDevicesForm withModel: selected andForm: true)
-		onAnswer: [ :a | "self
-		show: (ASDSCDevicesForm withModel: selected andForm: true)
 		onAnswer: [ :a | 
 			a ifNotNil: [ 
+				
 				self session device: a.
-				self session model storeObject: a ] ]"
-			a ifNotNil: [ 
-				self session device: a.
-				self session model storeObject: a ] ].
-		self session rootComponent goToEditDeviceView
+				self session model storeObject: a.
+				Transcript show: ' models ' , a bez.
+				self session rootComponent goToEditModuleView ] ]
 ]
 
 { #category : #initialization }

@@ -41,15 +41,18 @@ ASDSCRoot class >> development [
 
 { #category : #initialization }
 ASDSCRoot class >> initialize [
+
 	self environment
 		at: #WADevelopmentConfiguration
-		ifPresent: [ :class | WAAdmin applicationDefaults addParent: class instance ].	"Remove development tools."
+		ifPresent: [ :class | 
+		WAAdmin applicationDefaults addParent: class instance ]. "Remove development tools."
 	^ (WAAdmin register: self asApplicationAt: 'AsdSmartCaravan')
-		preferenceAt: #sessionClass put: ASDSCSession;
-		addLibrary: JQDeploymentLibrary;
-		addLibrary: MDLLibrary;
-		addLibrary: ASDSCLibrary;
-		yourself
+		  preferenceAt: #sessionClass put: ASDSCSession;
+		  addLibrary: JQDeploymentLibrary;
+		addLibrary: JQUiDeploymentLibrary;
+		  addLibrary: MDLLibrary;
+		  addLibrary: ASDSCLibrary;
+		  yourself
 ]
 
 { #category : #'world menu' }
@@ -153,6 +156,12 @@ ASDSCRoot >> goToEditModuleView [
 ASDSCRoot >> goToEditSystemView [
 
 	self displayInstanceOf: ASDSCEditSystemPage
+]
+
+{ #category : #actions }
+ASDSCRoot >> goToHomeView [
+
+	self displayInstanceOf: ASDSCHomePage 
 ]
 
 { #category : #actions }

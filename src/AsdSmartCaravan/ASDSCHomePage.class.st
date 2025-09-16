@@ -34,27 +34,27 @@ ASDSCHomePage >> renderContentOn: html [
 		style: 'height: 100%;';
 		with: [ 
 			html mdlCell
+			middle;
 				class: 'grid-middle';
-				id:'#system'
-				middle;
+				id: '#system' middle;
 				size: 3;
 				with: [ 'Top' ].
 			html mdlCell
+			middle;
 				class: 'grid-cell-demo';
-				id: '#energie'
-				middle;
+				id: '#energie' middle;
 				size: 3;
 				with: 'Middle'.
 			html mdlCell
+			middle;
 				class: 'grid-cell-demo';
-				id: '#multimedia'
-				middle;
+				id: '#multimedia' middle;
 				size: 3;
 				with: 'Bottom'.
 			html mdlCell
+			middle;
 				class: 'grid-cell-demo';
-				id: '#sicherheit'
-				middle;
+				id: '#sicherheit' middle;
 				size: 3;
 				with: 'Stretch' ]
 ]

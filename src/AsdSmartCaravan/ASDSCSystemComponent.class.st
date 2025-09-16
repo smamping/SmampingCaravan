@@ -31,6 +31,7 @@ ASDSCSystemComponent >> form: anObject [
 ASDSCSystemComponent >> initialize [
 
 	super initialize.
+	self label: 'Systemeinstellungen'.
 	self session model system
 		ifNil: [ self model: ASDSCSystem new ]
 		ifNotNil: [ self model: self session model system ].

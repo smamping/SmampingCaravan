@@ -54,7 +54,20 @@ ASDSCEditDriverPage >> initialize [
 { #category : #rendering }
 ASDSCEditDriverPage >> renderContentOn: html [
 
-	html div
-		style: 'min-height: 400px;';
-		with:[html render: self driverComponente ]
+
+
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ html render: self driverComponente ].
+			html mdlCell
+				middle;
+				size: 2 ]
 ]

@@ -2,8 +2,10 @@ Class {
 	#name : #ASDSCEditDevicePage,
 	#superclass : #ASDSCPageEdit,
 	#instVars : [
-		'deviceComponente',
-		'systemComponente'
+		'deviceLichtComponente',
+		'deviceBewegungsmelderComponente',
+		'devicesLicht',
+		'devicesBewegungsmelder'
 	],
 	#category : #'AsdSmartCaravan-Pages'
 }
@@ -23,51 +25,92 @@ ASDSCEditDevicePage class >> priority [
 { #category : #hooks }
 ASDSCEditDevicePage >> children [
 
-	^ { self deviceComponente }
+^ { 
+		  self deviceLichtComponente.
+		  self deviceBewegungsmelderComponente  }
 ]
 
 { #category : #accessing }
-ASDSCEditDevicePage >> deviceComponente [
+ASDSCEditDevicePage >> deviceBewegungsmelderComponente [
 
-	^ deviceComponente
+	^ deviceBewegungsmelderComponente
 ]
 
 { #category : #accessing }
-ASDSCEditDevicePage >> deviceComponente: anObject [
+ASDSCEditDevicePage >> deviceBewegungsmelderComponente: anObject [
 
-	deviceComponente := anObject
+	deviceBewegungsmelderComponente := anObject
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> deviceLichtComponente [
+
+	^ deviceLichtComponente
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> deviceLichtComponente: anObject [
+
+	deviceLichtComponente := anObject
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> devicesBewegungsmelder [
+
+	^ devicesBewegungsmelder
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> devicesBewegungsmelder: anObject [
+
+	devicesBewegungsmelder := anObject
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> devicesLicht [
+
+	^ devicesLicht
+]
+
+{ #category : #accessing }
+ASDSCEditDevicePage >> devicesLicht: anObject [
+
+	devicesLicht := anObject
 ]
 
 { #category : #initalize }
 ASDSCEditDevicePage >> initialize [
 
-	| devices |
 	super initialize.
-	devices := self session model devices .
-	devices size < 1
+	self devicesLicht: self session model relayDevicesLicht.
+	self devicesBewegungsmelder: self session model sensorDeviceMotionList.
+	self devicesLicht size < 1
 		ifTrue: [ 
-		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
+			self deviceLichtComponente:
+				ASDSCObjectViewTableDevicesComponent new ]
 		ifFalse: [ 
-			self deviceComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: devices) ]
+			self deviceLichtComponente:
+				(ASDSCObjectViewTableDevicesComponent withList: self devicesLicht) ]
 ]
 
 { #category : #rendering }
 ASDSCEditDevicePage >> renderContentOn: html [
 
-	html div
-		style: 'min-height: 400px;';
-		with: [ html render: self deviceComponente ]
-]
-
-{ #category : #accessing }
-ASDSCEditDevicePage >> systemComponente [
-
-	^ systemComponente
-]
-
-{ #category : #accessing }
-ASDSCEditDevicePage >> systemComponente: anObject [
-
-	systemComponente := anObject
+	
+			html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ html render: self deviceLichtComponente ].
+			html mdlCell
+				middle;
+				size: 2 ]
+		
+	
 ]

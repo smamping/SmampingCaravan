@@ -15,7 +15,7 @@ Class {
 { #category : #accessing }
 ASDSCInstallModuleTaskLicht >> addRelayToModel [
 
-	^ (self modelModule addRelay: self session device ) save
+	^ (self modelModule addRelay: self session device) 
 ]
 
 { #category : #accessing }
@@ -64,19 +64,23 @@ ASDSCInstallModuleTaskLicht >> createModel [
 { #category : #running }
 ASDSCInstallModuleTaskLicht >> go [
 
-	[ 
 	self bez: self requestBezeichnung.
 
 	self modelModule: self createModel.
-	self session model storeObject: self modelModule.
+
 	self session model installReady: true.
-	self confirmMotion ifTrue: [
-		self session model 
-		  ].
+	self confirmMotion ifTrue: [ self session model ].
 
 	self chooseRelay.
 	self addRelayToModel.
-	self confirmNextRelay ] repeat
+	self halt.
+	self confirmNextRelay
+		ifTrue: [ 
+			self session model storeObject: self modelModule.
+			self go ]
+		ifFalse: [ 
+			self session model storeObject: self modelModule.
+			self session rootComponent goToHomeView ]
 ]
 
 { #category : #initialization }
@@ -84,11 +88,9 @@ ASDSCInstallModuleTaskLicht >> initialize [
 
 	super initialize.
 	relayInstances := self session model relayDevicesLicht.
-relayInstances isNotNil ifTrue: [  
-	relayBezList := relayInstances collect: [ :each | each bez ]].
-	self addDecoration: (ASDCardDecoration new
-			 label: '';
-			 yourself)
+	relayInstances isNotNil ifTrue: [ 
+		relayBezList := relayInstances collect: [ :each | each bez ] ].
+	
 ]
 
 { #category : #accessing }
@@ -130,6 +132,6 @@ ASDSCInstallModuleTaskLicht >> relayLichtList: anObject [
 { #category : #accessing }
 ASDSCInstallModuleTaskLicht >> requestBezeichnung [
 
-	self bez: (self request: 'Bitte Bezeichnung für das Modul auswählen').
-	self bez isNil ifTrue: [ self requestBezeichnung ].
+	^ (self request: 'Bitte Bezeichnung für das Modul auswählen').
+	
 ]

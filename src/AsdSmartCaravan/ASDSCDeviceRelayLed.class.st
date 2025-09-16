@@ -1,5 +1,5 @@
 Class {
-	#name : #ASDSCDeviceRelayWS28b,
+	#name : #ASDSCDeviceRelayLed,
 	#superclass : #ASDSCDeviceRelay,
 	#instVars : [
 		'pinRed',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #voyage }
-ASDSCDeviceRelayWS28b class >> isVoyageRoot [
+ASDSCDeviceRelayLed class >> isVoyageRoot [
 
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
@@ -20,7 +20,7 @@ ASDSCDeviceRelayWS28b class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
-ASDSCDeviceRelayWS28b class >> redLed: aRedId greenLed: aGreenId blueLed: aBlueId [
+ASDSCDeviceRelayLed class >> redLed: aRedId greenLed: aGreenId blueLed: aBlueId [
 
 	^ self new
 		  pinRed: aRedId;
@@ -30,7 +30,7 @@ ASDSCDeviceRelayWS28b class >> redLed: aRedId greenLed: aGreenId blueLed: aBlueI
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b class >> type [
+ASDSCDeviceRelayLed class >> type [
 
 	"Title of the page that will be used in menus and URLs."
 
@@ -38,56 +38,56 @@ ASDSCDeviceRelayWS28b class >> type [
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> color [
+ASDSCDeviceRelayLed >> color [
 
 	^ color
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> color: anObject [
+ASDSCDeviceRelayLed >> color: anObject [
 
 	color := anObject
 ]
 
 { #category : #initalize }
-ASDSCDeviceRelayWS28b >> initialize [
+ASDSCDeviceRelayLed >> initialize [
 
 	super initialize.
 	self bez: self class type
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinBlue [
+ASDSCDeviceRelayLed >> pinBlue [
 
 	^ pinBlue
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinBlue: anObject [
+ASDSCDeviceRelayLed >> pinBlue: anObject [
 
 	pinBlue := anObject
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinGreen [
+ASDSCDeviceRelayLed >> pinGreen [
 
 	^ pinGreen
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinGreen: anObject [
+ASDSCDeviceRelayLed >> pinGreen: anObject [
 
 	pinGreen := anObject
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinRed [
+ASDSCDeviceRelayLed >> pinRed [
 
 	^ pinRed
 ]
 
 { #category : #accessing }
-ASDSCDeviceRelayWS28b >> pinRed: anObject [
+ASDSCDeviceRelayLed >> pinRed: anObject [
 
 	pinRed := anObject
 ]

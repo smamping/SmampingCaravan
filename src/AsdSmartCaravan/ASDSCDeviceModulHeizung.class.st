@@ -8,6 +8,15 @@ Class {
 }
 
 { #category : #accessing }
+ASDSCDeviceModulHeizung class >> isVoyageRoot [
+
+	"Indicates that instances of this class are top level documents
+    in noSQL databases"
+
+	^ true
+]
+
+{ #category : #accessing }
 ASDSCDeviceModulHeizung class >> type [
 
 	^ 'Heizung'

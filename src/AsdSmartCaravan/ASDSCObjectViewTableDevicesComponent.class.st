@@ -205,26 +205,27 @@ ASDSCObjectViewTableDevicesComponent >> renderInnerContentOn: html [
 								with: self labelSelectDevices ] ].
 			html tableBody with: [ "style: 'overflow: scroll;height: 400px;';"
 				self list doWithIndex: [ :each :index | 
-					index odd
+					"index odd
 						ifTrue: [ rowColor := 'background-color: #3f7ba4;' ]
-						ifFalse: [ rowColor := 'background-color: #478fb7;' ].
+						ifFalse: [ rowColor := 'background-color: #478fb7;' ]."
 					html tableRow
 						style: rowColor;
 						with: [ 
 							html mdlTableCell
 								nonNumerical;
-								style: ' max-width: 20px;';
+								class: 'asdTableCell';
 								with: each type.
 							html mdlTableCell
 								nonNumerical;
-								style: ' max-width: 20px;';
+								class: 'asdTableCell';
 								with: each bez.
 							html mdlTableCell
 								nonNumerical;
-								style: ' max-width: 20px;';
+								class: 'asdTableCell';
 								with: each pinNr.
 							html mdlTableCell
 								nonNumerical;
+								class: 'asdTableCell';
 								with: [ 
 									html mdlAnchorButton
 										icon;
@@ -241,15 +242,4 @@ ASDSCObjectViewTableDevicesComponent >> renderInnerContentOn: html [
 										id: html nextId;
 										callback: [ self session rootComponent goToEditModuleView ];
 										with: 'Modul' ] ] ] ] ]
-]
-
-{ #category : #rendering }
-ASDSCObjectViewTableDevicesComponent >> renderSelectModelOn: html [
-
-	
-	html select
-		list: self deviceSubs;
-		titles: [ :each | 'Title: ' , each greaseString ];
-		selected: self selected;
-		callback: [ :v | self selected: v ]
 ]

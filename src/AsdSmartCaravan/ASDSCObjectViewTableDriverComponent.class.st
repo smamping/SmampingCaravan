@@ -162,22 +162,22 @@ ASDSCObjectViewTableDriverComponent >> renderInnerContentOn: html [
 						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
-							style: 'background-color: #0d1117; max-width: 20px;';
+							
 							with: each brokerIP.
 						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
-							style: 'background-color: #0d1117; max-width: 20px;';
+							
 							with: each deviceIp.
 						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
-							style: 'background-color: #0d1117; max-width: 20px;';
+							
 							with: each deviceName.
 						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
-							style: 'background-color: #0d1117;';
+							
 							with: [ 
 								html mdlAnchorButton
 									icon;
@@ -189,12 +189,12 @@ ASDSCObjectViewTableDriverComponent >> renderInnerContentOn: html [
 						html mdlTableCell
 							nonNumerical;
 							class: 'asdTableCell';
-							style: 'background-color: #0d1117;';
+							
 							with: [ 
 								html mdlAnchorButton
 									id: html nextId;
-									callback: [ self session esp32Driver: each .
-										self session rootComponent goToEditDeviceView.
-										];
+									callback: [ 
+										self session esp32Driver: each.
+										self session rootComponent goToEditDeviceView ];
 									with: 'Device' ] ] ] ] ]
 ]
