@@ -22,8 +22,9 @@ Class {
 		'installIndex',
 		'arrayInstallSize',
 		'esp32Driver',
-		'modulModel',
-		'device'
+		'modulModelLicht',
+		'deviceLicht',
+		'deviceMotion'
 	],
 	#category : #'AsdSmartCaravan-Core'
 }
@@ -51,15 +52,27 @@ ASDSCSession >> currentUser: anObject [
 ]
 
 { #category : #accessing }
-ASDSCSession >> device [
+ASDSCSession >> deviceLicht [
 
-	^ device
+	^ deviceLicht
 ]
 
 { #category : #accessing }
-ASDSCSession >> device: anObject [
+ASDSCSession >> deviceLicht: anObject [
 
-	device := anObject
+	deviceLicht := anObject
+]
+
+{ #category : #accessing }
+ASDSCSession >> deviceMotion [
+
+	^ deviceMotion
+]
+
+{ #category : #accessing }
+ASDSCSession >> deviceMotion: anObject [
+
+	deviceMotion := anObject
 ]
 
 { #category : #accessing }
@@ -120,15 +133,15 @@ ASDSCSession >> model [
 ]
 
 { #category : #accessing }
-ASDSCSession >> modulModel [
+ASDSCSession >> modulModelLicht [
 
-	^ modulModel
+	^ modulModelLicht
 ]
 
 { #category : #accessing }
-ASDSCSession >> modulModel: anObject [
+ASDSCSession >> modulModelLicht: anObject [
 
-	modulModel := anObject
+	modulModelLicht := anObject
 ]
 
 { #category : #accessing }

@@ -1,5 +1,5 @@
 Class {
-	#name : #ASDSCObjectViewTableModulesComponent,
+	#name : #ASDSCObjectViewTableModulesLichtComponent,
 	#superclass : #ASDObjectViewTableBaseComponent,
 	#instVars : [
 		'labelModuleBezeichnung',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #rendering }
-ASDSCObjectViewTableModulesComponent >> _renderDialog: html [
+ASDSCObjectViewTableModulesLichtComponent >> _renderDialog: html [
 
 	| tmpDevices devicesTable selected selectedDevice deviceSubs selectedIndex |
 	tmpDevices := ASDSCDevice allSubclasses reject: #isAbstract.
@@ -62,25 +62,25 @@ ASDSCObjectViewTableModulesComponent >> _renderDialog: html [
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> addTask [
+ASDSCObjectViewTableModulesLichtComponent >> addTask [
 
 	^ addTask
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> addTask: anObject [
+ASDSCObjectViewTableModulesLichtComponent >> addTask: anObject [
 
 	addTask := anObject
 ]
 
 { #category : #hooks }
-ASDSCObjectViewTableModulesComponent >> children [
+ASDSCObjectViewTableModulesLichtComponent >> children [
 
 	^ { self addTask  }
 ]
 
 { #category : #initialization }
-ASDSCObjectViewTableModulesComponent >> initialize [
+ASDSCObjectViewTableModulesLichtComponent >> initialize [
 
 	super initialize.
 	self id: 'tableModules'.
@@ -88,50 +88,47 @@ ASDSCObjectViewTableModulesComponent >> initialize [
 	labelModuleBezeichnung := 'Bezeichnung'.
 	labelModuleTyp := 'Typ'.
 
-	self addTask: ASDSCInstallModuleTask new.
-	self addDecoration: (ASDCardDecoration new
-			 label: 'Modul';
-			 yourself)
+	self addTask: ASDSCInstallModuleTaskLicht new
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelModuleBezeichnung [
+ASDSCObjectViewTableModulesLichtComponent >> labelModuleBezeichnung [
 
 	^ labelModuleBezeichnung
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelModuleBezeichnung: anObject [
+ASDSCObjectViewTableModulesLichtComponent >> labelModuleBezeichnung: anObject [
 
 	labelModuleBezeichnung := anObject
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelModuleTyp [
+ASDSCObjectViewTableModulesLichtComponent >> labelModuleTyp [
 
 	^ labelModuleTyp
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelModuleTyp: anObject [
+ASDSCObjectViewTableModulesLichtComponent >> labelModuleTyp: anObject [
 
 	labelModuleTyp := anObject
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelSelectModules [
+ASDSCObjectViewTableModulesLichtComponent >> labelSelectModules [
 
 	^ labelSelectModules
 ]
 
 { #category : #accessing }
-ASDSCObjectViewTableModulesComponent >> labelSelectModules: anObject [
+ASDSCObjectViewTableModulesLichtComponent >> labelSelectModules: anObject [
 
 	labelSelectModules := anObject
 ]
 
 { #category : #rendering }
-ASDSCObjectViewTableModulesComponent >> renderDialog: html withModel: aModel [
+ASDSCObjectViewTableModulesLichtComponent >> renderDialog: html withModel: aModel [
 
 	| driverTable |
 	html form: [ 
@@ -158,7 +155,7 @@ ASDSCObjectViewTableModulesComponent >> renderDialog: html withModel: aModel [
 ]
 
 { #category : #rendering }
-ASDSCObjectViewTableModulesComponent >> renderDialogMenu: html [
+ASDSCObjectViewTableModulesLichtComponent >> renderDialogMenu: html [
 
 	
 	html mdlAnchorButton
@@ -171,7 +168,7 @@ ASDSCObjectViewTableModulesComponent >> renderDialogMenu: html [
 ]
 
 { #category : #rendering }
-ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
+ASDSCObjectViewTableModulesLichtComponent >> renderInnerContentOn: html [
 
 	| rowColor |
 	html mdlTable
@@ -200,23 +197,21 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 								with: self labelSelectModules ] ].
 			html tableBody with: [ "style: 'overflow: scroll;height: 400px;';"
 				self list doWithIndex: [ :each :index | 
-					index odd
-						ifTrue: [ rowColor := 'background-color: #3f7ba4;' ]
-						ifFalse: [ rowColor := 'background-color: #478fb7;' ].
+					
 					html tableRow
 						style: rowColor;
 						with: [ 
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
-								style: ' max-width: 20px;';
+								
 								with: each type.
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
-								style: ' max-width: 20px;';
+								
 								with: each bez.
-							
+
 							html mdlTableCell
 								nonNumerical;
 								class: 'asdTableCell';
@@ -236,15 +231,4 @@ ASDSCObjectViewTableModulesComponent >> renderInnerContentOn: html [
 										id: html nextId;
 										callback: [ self session rootComponent goToEditModuleView ];
 										with: 'Modul' ] ] ] ] ]
-]
-
-{ #category : #rendering }
-ASDSCObjectViewTableModulesComponent >> renderSelectModelOn: html [
-
-	
-	html select
-		list: self deviceSubs;
-		titles: [ :each | 'Title: ' , each greaseString ];
-		selected: self selected;
-		callback: [ :v | self selected: v ]
 ]

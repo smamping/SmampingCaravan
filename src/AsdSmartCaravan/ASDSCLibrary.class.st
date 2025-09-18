@@ -47,6 +47,8 @@ ASDSCLibrary >> projectCss [
 	.mdl-layout.is-small-screen .mdl-layout__header {
     display: flex;
     min-height: 48px;
+
+    flex-direction: row-reverse  !important;
 }
 * {
   box-sizing: border-box;
@@ -563,9 +565,7 @@ width: 100%;
     flex-wrap: wrap;
 }
 
-.mdl-layout__header-row {
-justify-content: flex-end !important;
-}
+
 .sidenav {
   
   background-color: var(--element-zIndex2-bGcolor) !important;
@@ -591,6 +591,18 @@ justify-content: flex-end !important;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+.mdl-layout__header-row {
+   
+    flex-direction: row-reverse   !important;
+justify-content: flex-end !important;
+}
+
+.mdl-layout.is-small-screen .mdl-layout__header {
+    display: flex
+;
+    /* min-height: 48px; */
+    flex-direction: row-reverse;
 }
 
 

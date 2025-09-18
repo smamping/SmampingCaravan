@@ -1,5 +1,5 @@
 Class {
-	#name : #ASDSCInstallModuleTaskLicht,
+	#name : #ASDSCInstallModuleTaskHeizung,
 	#superclass : #WATask,
 	#instVars : [
 		'modelModule',
@@ -16,25 +16,25 @@ Class {
 }
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> addRelayToModel [
+ASDSCInstallModuleTaskHeizung >> addRelayToModel [
 
 	^ (self modelModule addRelay: self session device) 
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> bez [
+ASDSCInstallModuleTaskHeizung >> bez [
 
 	^ bez
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> bez: anObject [
+ASDSCInstallModuleTaskHeizung >> bez: anObject [
 
 	bez := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> chooseMotion [
+ASDSCInstallModuleTaskHeizung >> chooseMotion [
 
 	motionBez := self
 		             chooseFrom: motionInstancesBezList
@@ -47,7 +47,7 @@ ASDSCInstallModuleTaskLicht >> chooseMotion [
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> chooseRelay [
+ASDSCInstallModuleTaskHeizung >> chooseRelay [
 
 	self relayBez:
 		(self chooseFrom: relayBezList caption: 'Bitte Endgerät auswählen').
@@ -61,24 +61,24 @@ ASDSCInstallModuleTaskLicht >> chooseRelay [
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> confirmMotion [
+ASDSCInstallModuleTaskHeizung >> confirmMotion [
 
 	^ self confirm: 'Ein Bewegungssensor auswählen'
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> confirmNextRelay [
+ASDSCInstallModuleTaskHeizung >> confirmNextRelay [
 ^ self confirm: 'Ein weiteres Relay auswählen' 
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> createModel [
+ASDSCInstallModuleTaskHeizung >> createModel [
 
-	^ ASDSCDeviceModulLicht bez: self bez
+	^ ASDSCDeviceModulHeizung bez: self bez
 ]
 
 { #category : #running }
-ASDSCInstallModuleTaskLicht >> go [
+ASDSCInstallModuleTaskHeizung >> go [
 
 	self bez: self requestBezeichnung.
 
@@ -102,7 +102,7 @@ ASDSCInstallModuleTaskLicht >> go [
 ]
 
 { #category : #initialization }
-ASDSCInstallModuleTaskLicht >> initialize [
+ASDSCInstallModuleTaskHeizung >> initialize [
 
 	super initialize.
 	relayInstances := self session model relayDevicesLicht.
@@ -114,67 +114,67 @@ ASDSCInstallModuleTaskLicht >> initialize [
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> modelModule [
+ASDSCInstallModuleTaskHeizung >> modelModule [
 
 	^ modelModule
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> modelModule: anObject [
+ASDSCInstallModuleTaskHeizung >> modelModule: anObject [
 
 	modelModule := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> motionInstancesBezList [
+ASDSCInstallModuleTaskHeizung >> motionInstancesBezList [
 
 	^ motionInstancesBezList
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> motionInstancesBezList: anObject [
+ASDSCInstallModuleTaskHeizung >> motionInstancesBezList: anObject [
 
 	motionInstancesBezList := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> motionInstancesList [
+ASDSCInstallModuleTaskHeizung >> motionInstancesList [
 
 	^ motionInstancesList
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> motionInstancesList: anObject [
+ASDSCInstallModuleTaskHeizung >> motionInstancesList: anObject [
 
 	motionInstancesList := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> relayBez [
+ASDSCInstallModuleTaskHeizung >> relayBez [
 
 	^ relayBez
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> relayBez: anObject [
+ASDSCInstallModuleTaskHeizung >> relayBez: anObject [
 
 	relayBez := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> relayLichtList [
+ASDSCInstallModuleTaskHeizung >> relayLichtList [
 
 	^ relayLichtList
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> relayLichtList: anObject [
+ASDSCInstallModuleTaskHeizung >> relayLichtList: anObject [
 
 	relayLichtList := anObject
 ]
 
 { #category : #accessing }
-ASDSCInstallModuleTaskLicht >> requestBezeichnung [
+ASDSCInstallModuleTaskHeizung >> requestBezeichnung [
 
 	^ (self request: 'Bitte Bezeichnung für das Modul auswählen').
 	

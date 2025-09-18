@@ -128,6 +128,18 @@ ASDSCDataBase >> deviceModules [
 ]
 
 { #category : #accessing }
+ASDSCDataBase >> deviceModulesHeizung [
+
+	^ ASDSCDeviceModulHeizung selectAll
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> deviceModulesLicht [
+
+	^ ASDSCDeviceModulLicht selectAll
+]
+
+{ #category : #accessing }
 ASDSCDataBase >> devices [
 
 	^ ASDSCDevice selectAll 
@@ -175,6 +187,12 @@ ASDSCDataBase >> relayDeviceLichtFromBez: aString [
 
 	^ ASDSCDeviceRelayLicht selectOne: [ :each | 
 		  each bez = aString  ]
+]
+
+{ #category : #accessing }
+ASDSCDataBase >> relayDevicesLed [
+
+	^ ASDSCDeviceRelayLed selectAll
 ]
 
 { #category : #accessing }

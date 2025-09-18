@@ -208,12 +208,14 @@ ASDSCRoot >> initialRequest: aRequest [
 
 { #category : #initialization }
 ASDSCRoot >> initialize [
+
 	super initialize.
 	self header: self defaultHeader.
 	self session rootComponent: self.
 	self rightPanel: ASDComponentWithRightPanel new.
 	self componentInstances: Dictionary new.
-	self displayInstanceOf: self header possiblePages first
+	self displayInstanceOf: self header possiblePages first.
+	self session model installReady: false
 ]
 
 { #category : #rendering }

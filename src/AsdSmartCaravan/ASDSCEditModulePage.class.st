@@ -2,7 +2,8 @@ Class {
 	#name : #ASDSCEditModulePage,
 	#superclass : #ASDSCPageEdit,
 	#instVars : [
-		'moduleComponente'
+		'moduleComponenteLicht',
+		'moduleComponenteHeizung'
 	],
 	#category : #'AsdSmartCaravan-Pages'
 }
@@ -22,33 +23,56 @@ ASDSCEditModulePage class >> priority [
 { #category : #hooks }
 ASDSCEditModulePage >> children [
 
-	^ { self moduleComponente }
+	^ { self moduleComponenteLicht. self moduleComponenteHeizung }
 ]
 
 { #category : #initalize }
 ASDSCEditModulePage >> initialize [
 
-	| modules |
+	| modulesLicht modulesHeizung |
 	super initialize.
-	modules := self session model deviceModules.
-	modules size < 1
+	modulesLicht := self session model deviceModulesLicht.
+	modulesLicht size < 1
 		ifTrue: [ 
-		self moduleComponente: ASDSCObjectViewTableModulesComponent new ]
+			self moduleComponenteLicht:
+				ASDSCObjectViewTableModulesLichtComponent new ]
 		ifFalse: [ 
-			self moduleComponente:
-				(ASDSCObjectViewTableModulesComponent withList: modules) ]
+			self moduleComponenteLicht:
+				(ASDSCObjectViewTableModulesLichtComponent withList:
+					 modulesLicht) ].
+	modulesHeizung := self session model deviceModulesHeizung.
+	modulesHeizung size < 1
+		ifTrue: [ 
+			self moduleComponenteHeizung:
+				ASDSCObjectViewTableModulesHeizungComponent new ]
+		ifFalse: [ 
+			self moduleComponenteHeizung:
+				(ASDSCObjectViewTableModulesHeizungComponent withList:
+					 modulesHeizung) ]
 ]
 
 { #category : #accessing }
-ASDSCEditModulePage >> moduleComponente [
+ASDSCEditModulePage >> moduleComponenteHeizung [
 
-	^ moduleComponente
+	^ moduleComponenteHeizung
 ]
 
 { #category : #accessing }
-ASDSCEditModulePage >> moduleComponente: anObject [
+ASDSCEditModulePage >> moduleComponenteHeizung: anObject [
 
-	moduleComponente := anObject
+	moduleComponenteHeizung := anObject
+]
+
+{ #category : #accessing }
+ASDSCEditModulePage >> moduleComponenteLicht [
+
+	^ moduleComponenteLicht
+]
+
+{ #category : #accessing }
+ASDSCEditModulePage >> moduleComponenteLicht: anObject [
+
+	moduleComponenteLicht := anObject
 ]
 
 { #category : #rendering }
@@ -60,13 +84,12 @@ ASDSCEditModulePage >> renderContentOn: html [
 		with: [ 
 			html mdlCell
 				middle;
-				size: 2.
-			html mdlCell
-				middle;
-				size: 8;
-				with: [ html render: self moduleComponente ].
-			html mdlCell
-				middle;
-				size: 2 ]
-		
+				size: 12;
+				with: [ 
+					html render: (MDLTabWidget new
+								 addTabNamed: 'Licht Modul'
+								 content: [ html render: self moduleComponenteLicht ];
+								 addTabNamed: 'Heizungs Modul'
+								 content: [ html render: self moduleComponenteHeizung ];
+								 yourself) ] ]
 ]

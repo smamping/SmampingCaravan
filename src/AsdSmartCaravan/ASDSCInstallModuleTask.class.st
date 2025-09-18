@@ -36,12 +36,12 @@ ASDSCInstallModuleTask >> go [
 	| taskType taskString |
 	self selected: self chooseModule.
 	taskString := ('ASDSCInstallModuleTask' , self selected) asSymbol.
-	Transcript show: ' module ' , taskString.
 	
+
 
 	taskType := self deviceClass: taskString.
 
-	self show: taskType new
+	self call: taskType new
 ]
 
 { #category : #initialization }

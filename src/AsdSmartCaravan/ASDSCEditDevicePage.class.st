@@ -83,21 +83,65 @@ ASDSCEditDevicePage >> initialize [
 
 	super initialize.
 	self devicesLicht: self session model relayDevicesLicht.
-	self devicesBewegungsmelder: self session model sensorDeviceMotionList.
+	self devicesBewegungsmelder:
+		self session model sensorDeviceMotionList.
 	self devicesLicht size < 1
 		ifTrue: [ 
 			self deviceLichtComponente:
 				ASDSCObjectViewTableDevicesComponent new ]
 		ifFalse: [ 
 			self deviceLichtComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: self devicesLicht) ]
+				(ASDSCObjectViewTableDevicesComponent withList: self devicesLicht) ].
+			self devicesBewegungsmelder size < 1
+		ifTrue: [ 
+			self deviceBewegungsmelderComponente:
+				ASDSCObjectViewTableDevicesComponent new ]
+		ifFalse: [ 
+			self deviceBewegungsmelderComponente:
+				(ASDSCObjectViewTableDevicesComponent withList: self devicesBewegungsmelder) ]
 ]
 
 { #category : #rendering }
 ASDSCEditDevicePage >> renderContentOn: html [
 
-	
-			html mdlGrid
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 12;
+				with: [ 
+					html render: (MDLTabWidget new
+								 addTabNamed: 'Licht' content: [html render: self deviceLichtComponente ];
+								 addTabNamed: 'Bewegungsmelder'
+								 content:  [html render: self deviceBewegungsmelderComponente ];
+								 yourself) ] ]
+]
+
+{ #category : #rendering }
+ASDSCEditDevicePage >> renderTabBewegungsmelderOn: html [
+
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ html render: self deviceBewegungsmelderComponente ].
+			html mdlCell
+				middle;
+				size: 2 ]
+]
+
+{ #category : #rendering }
+ASDSCEditDevicePage >> renderTabLichtOn: html [
+
+	html mdlGrid
 		shadow: 0;
 		style: 'height: 100%;';
 		with: [ 
@@ -111,6 +155,23 @@ ASDSCEditDevicePage >> renderContentOn: html [
 			html mdlCell
 				middle;
 				size: 2 ]
-		
-	
+]
+
+{ #category : #rendering }
+ASDSCEditDevicePage >> renderTabOn: html [
+
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ html render: self deviceLichtComponente ].
+			html mdlCell
+				middle;
+				size: 2 ]
 ]
