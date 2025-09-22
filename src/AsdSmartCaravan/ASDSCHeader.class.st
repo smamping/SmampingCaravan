@@ -84,11 +84,10 @@ ASDSCHeader >> renderContentOn: html [
 		transparent;
 		with: [ "self renderDrawerOn: html"
 			html mdlLayoutHeaderRow: [ 
-				html mdlNavigationLink
+					html mdlNavigationLink
 						callback: [ self session rootComponent goToHomeView ];
-						with: [ 
-				html mdlLayoutTitle: 'Title'].
-				html mdlLayoutSpacer.
+						with: [ html mdlLayoutTitle: 'SmartCaravan' ].
+					html mdlLayoutSpacer.
 					"html text: '	Version ' , self rootComponent class version."
 					self renderButtonsOn: html
 					"html text: '	Version ' , self rootComponent class version." ] ].

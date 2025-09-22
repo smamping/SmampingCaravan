@@ -302,10 +302,7 @@ height: 90% !important;
 
 }
 
-.mdl-button {
-   border: 1px solid var(--element-border-bGcolor) !important;
-    
-}
+
 
 .containerCard{
  border: 1px solid var(--element-border-bGcolor) !important;
@@ -542,11 +539,11 @@ max-width: 20px;
 
 tr:nth-child(even)
 {
-background-color: var(--element-zIndex2-bGcolor) !important;
+background-color: var(--element-zIndex1-bGcolor) !important;
 
 tr:nth-child(odd)
 {
-background-color: var(--element-zIndex1-bGcolor) !important;
+background-color: var( --mainBg-color) !important;
 }
 
 

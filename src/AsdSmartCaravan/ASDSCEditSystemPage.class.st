@@ -37,9 +37,21 @@ ASDSCEditSystemPage >> initialize [
 { #category : #rendering }
 ASDSCEditSystemPage >> renderContentOn: html [
 
-	html div
-		style: 'min-height: 400px;';
-		with: [ html render: self systemComponente  ]
+
+		html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ html render: self systemComponente ].
+			html mdlCell
+				middle;
+				size: 2 ]
 ]
 
 { #category : #accessing }
