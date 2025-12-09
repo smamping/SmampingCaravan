@@ -46,19 +46,6 @@ ASDSCModulModel >> addSensor: aSensor [
 	sensorListe add: aSensor
 ]
 
-{ #category : 'magritte descriptions' }
-ASDSCModulModel >> descriptionRelayListe [
-
-	<magritteDescription>
-	^ MLDMAToManyRelationDescription new
-		  classes: (Array with: ASDSCDeviceRelay);
-		  label: 'Licht Schalter';
-		  default: Array new;
-		  accessor: #relayListe;
-		  priority: 90;
-		  yourself
-]
-
 { #category : 'accessing' }
 ASDSCModulModel >> driver [
 
