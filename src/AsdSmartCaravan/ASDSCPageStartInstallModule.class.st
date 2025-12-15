@@ -1,5 +1,5 @@
 Class {
-	#name : 'ASDSCPageStartInstall',
+	#name : 'ASDSCPageStartInstallModule',
 	#superclass : 'ASDSCComponent',
 	#category : 'AsdSmartCaravan-Core',
 	#package : 'AsdSmartCaravan',
@@ -7,43 +7,43 @@ Class {
 }
 
 { #category : 'testing' }
-ASDSCPageStartInstall class >> isAbstract [
+ASDSCPageStartInstallModule class >> isAbstract [
 
 	^ self = ASDSCPageStart
 ]
 
 { #category : 'accessing' }
-ASDSCPageStartInstall class >> pageName [
+ASDSCPageStartInstallModule class >> pageName [
 	"Title of the page that will be used in menus and URLs."
 
 	^ self subclassResponsibility
 ]
 
 { #category : 'accessing' }
-ASDSCPageStartInstall class >> pagesToDisplay [
+ASDSCPageStartInstallModule class >> pagesToDisplay [
 	^ (self allSubclasses reject: #isAbstract) sorted: #priority ascending
 ]
 
 { #category : 'accessing' }
-ASDSCPageStartInstall class >> pathName [
+ASDSCPageStartInstallModule class >> pathName [
 	"Use to define the URL name"
 
 	^ self pageName copyWithout: $  
 ]
 
 { #category : 'accessing' }
-ASDSCPageStartInstall class >> priority [
+ASDSCPageStartInstallModule class >> priority [
 	^ self subclassResponsibility
 ]
 
 { #category : 'initialize' }
-ASDSCPageStartInstall >> initialize [
+ASDSCPageStartInstallModule >> initialize [
 
 	super initialize.
 	self session rootComponent header: ASDSCStartHeader new
 ]
 
 { #category : 'accessing' }
-ASDSCPageStartInstall >> pathName [
+ASDSCPageStartInstallModule >> pathName [
 	^ self class pathName
 ]

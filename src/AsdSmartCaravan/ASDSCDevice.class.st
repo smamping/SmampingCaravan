@@ -66,21 +66,6 @@ ASDSCDevice >> bez: anObject [
 	bez := anObject
 ]
 
-{ #category : 'magritte descriptions' }
-ASDSCDevice >> descriptionPinNr [
-
-	<magritteDescription>
-	^ MAStringDescription new
-		  priority: 11;
-		  label: 'Pin Nr.';
-		  accessor: #pinNr;
-		  beRequired;
-		  requiredErrorMessage: 'Bitte eine Pin Nr. eingeben';
-		  comment: 'Bitte eine Pin Nr. eingeben';
-		  componentClass: MDLMATextInputComponent;
-		  yourself
-]
-
 { #category : 'accessing' }
 ASDSCDevice >> devMode [
 

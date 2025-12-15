@@ -11,7 +11,8 @@ Class {
 	#classTraits : 'TWithRootDialogComponent classTrait',
 	#instVars : [
 		'tooltipLabelopenRightPanel',
-		'tooltipLabelCloseRightPanel'
+		'tooltipLabelCloseRightPanel',
+		'titleLabel'
 	],
 	#category : 'AsdSmartCaravan-Components',
 	#package : 'AsdSmartCaravan',
@@ -23,7 +24,8 @@ ASDSCHeader >> initialize [
 
 super initialize.
 	self tooltipLabelopenRightPanel: 'Rechtes Panel öffnen'.
-	self tooltipLabelCloseRightPanel: 'Rechtes Panel schliessen'
+	self tooltipLabelCloseRightPanel: 'Rechtes Panel schliessen'.
+	self titleLabel: 'SmartCaravan'
 ]
 
 { #category : 'accessing' }
@@ -88,7 +90,7 @@ ASDSCHeader >> renderContentOn: html [
 			html mdlLayoutHeaderRow: [ 
 					html mdlNavigationLink
 						callback: [ self session rootComponent goToHomeView ];
-						with: [ html mdlLayoutTitle: 'SmartCaravan' ].
+						with: [ html mdlLayoutTitle: self titleLabel ].
 					html mdlLayoutSpacer.
 					"html text: '	Version ' , self rootComponent class version."
 					self renderButtonsOn: html
@@ -119,6 +121,18 @@ ASDSCHeader >> renderTabBarOn: html [
 				callback: [ self displayInstanceOf: aClass ];
 				isActiveIf: aClass = self rootComponent componentToDisplay class;
 				with: aClass pageName ] ]
+]
+
+{ #category : 'accessing' }
+ASDSCHeader >> titleLabel [
+
+	^ titleLabel
+]
+
+{ #category : 'accessing' }
+ASDSCHeader >> titleLabel: anObject [
+
+	titleLabel := anObject
 ]
 
 { #category : 'accessing' }

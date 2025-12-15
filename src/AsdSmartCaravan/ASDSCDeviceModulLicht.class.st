@@ -26,42 +26,6 @@ ASDSCDeviceModulLicht class >> type [
 	^ 'Licht'
 ]
 
-{ #category : 'magritte descriptions' }
-ASDSCDeviceModulLicht >> descriptionContainer [
-	<magritteContainer>
-	^ super descriptionContainer
-		componentRenderer: MDLMAFormRenderer;
-		yourself
-]
-
-{ #category : 'magritte descriptions' }
-ASDSCDeviceModulLicht >> descriptionDeviceSensorMotion [
-	<magritteDescription>
-	
-	^ MAToOneRelationDescription new
-			id:'sensorMotion';
-			componentClass: MAExternalEditorComponent;
-			classes: (Array with: ASDSCDeviceSensorBewegungsmelder);
-			accessor: #deviceSensorMotion;
-			label: 'Bewegungs Melder';
-			priority: 50;
-			yourself
-]
-
-{ #category : 'magritte descriptions' }
-ASDSCDeviceModulLicht >> descriptionDriver [
-	<magritteDescription>
-	
-	^ MAToOneRelationDescription new
-			id:'esp32Treiber';
-			componentClass: MAExternalEditorComponent;
-			classes: (Array with: ASDSCESP32Driver);
-			accessor: #driver;
-			label: 'ESP32 treiber';
-			priority: 50;
-			yourself
-]
-
 { #category : 'accessing' }
 ASDSCDeviceModulLicht >> deviceSensorMotion [
 

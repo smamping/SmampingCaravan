@@ -19,6 +19,11 @@ Class {
 }
 
 { #category : 'accessing' }
+ASDSCInstallModuleTaskSystem class >> label [ 
+^ 'Modul System'
+]
+
+{ #category : 'accessing' }
 ASDSCInstallModuleTaskSystem >> bez [
 
 	^ bez
@@ -45,16 +50,11 @@ frm addDecoration: dec.
 { #category : 'accessing' }
 ASDSCInstallModuleTaskSystem >> chooseRelay [
 
-	| frm dec |
-	frm := ASDSCDevicesForm
-		       withModel:
-		       (ASDSCDeviceRelayLicht
-			        driver: self session esp32Driver
-			        pinNr: 18)
-		       andForm: true.
-	dec := ASDCardDecoration new.
-	dec label: 'Licht Relay'.
-	frm addDecoration: dec.
+	| frm mod |
+	mod := ASDSCDeviceRelay driver: self session esp32Driver pinNr: 18.
+	mod type: 'light'.
+	frm := ASDSCDevicesForm withModel: mod andForm: true.
+
 	^ frm
 ]
 
@@ -119,6 +119,7 @@ ASDSCInstallModuleTaskSystem >> go [
 ASDSCInstallModuleTaskSystem >> initialize [
 
 	super initialize.
+	self addDecoration: ASDCardDecoration new
 	
 ]
 

@@ -18,6 +18,11 @@ Class {
 }
 
 { #category : 'accessing' }
+ASDSCInstallModuleTaskHeizung class >> label [ 
+^ 'Modul Heizung'
+]
+
+{ #category : 'accessing' }
 ASDSCInstallModuleTaskHeizung >> addRelayToModel [
 
 	^ (self modelModule addRelay: self session device) 
@@ -106,7 +111,7 @@ ASDSCInstallModuleTaskHeizung >> go [
 ASDSCInstallModuleTaskHeizung >> initialize [
 
 	super initialize.
-	
+	self addDecoration: ASDCardDecoration new
 ]
 
 { #category : 'accessing' }

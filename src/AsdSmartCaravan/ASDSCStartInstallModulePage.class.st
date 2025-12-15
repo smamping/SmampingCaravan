@@ -1,6 +1,9 @@
 Class {
 	#name : 'ASDSCStartInstallModulePage',
-	#superclass : 'ASDSCPage',
+	#superclass : 'ASDSCPageStartInstallModule',
+	#instVars : [
+		'menu'
+	],
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
 	#tag : 'Pages'
@@ -17,51 +20,54 @@ ASDSCStartInstallModulePage class >> priority [
 	^ 1
 ]
 
+{ #category : 'hooks' }
+ASDSCStartInstallModulePage >> children [
+
+	^ { self menu }
+]
+
 { #category : 'initalize' }
 ASDSCStartInstallModulePage >> initialize [
 
 	super initialize.
-	
+	self session rootComponent header: ASDSCStartInstallModuleHeader new
+]
+
+{ #category : 'accessing' }
+ASDSCStartInstallModulePage >> menu [
+
+	^ menu
 ]
 
 { #category : 'rendering' }
-ASDSCStartInstallModulePage >> rendeModalLoginButtonOn: html [
+ASDSCStartInstallModulePage >> renderCardContentOn: html [
 
-	html form: [ 
-		html render: (ASDLoginCardWidget new
-				 callback: [ :login :password | 
-					 self rootComponent
-						 tryConnectionWithLogin: login
-						 andPassword: password ];
-				 yourself) ].
-	self rootComponent class development ifTrue: [ 
-		html anchor
-			callback: [ self show: (WAInspector current on: self session) ];
-			with: 'Inspect Session' ]
+	html mdlCard
+		style: 'overflow: visible; margin: auto; padding: 15px;';
+		shadow: 2;
+		with: [ 
+			html mdlCardTitleContainer: [ 
+					html mdlCardTitleText: 'Module' level: 2 ].
+			html render: self menu ]
 ]
 
 { #category : 'rendering' }
 ASDSCStartInstallModulePage >> renderContentOn: html [
 
-	| ready |
-	ready := self session model installReady.
 
-	ready
-		ifTrue: [
-			self rootComponent goToOverviewView. 
-			]
-		ifFalse: [ 
-			html mdlGrid
-				shadow: 0;
-				style: 'align-items: center; height: 100%';
-				with: [ 
-					html mdlCell
-						middle;
-						desktopOffset: 3;
-						tabletOffset: 3;
-						phoneOffset: 2;
-						desktopSize: 8;
-						tabletSize: 5;
-						phoneSize: 2;
-						with: [ self rendeModalLoginButtonOn: html ] ] ]
+
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [ 
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [  self renderCardContentOn: html ].
+			html mdlCell
+				middle;
+				size: 2 ]
 ]

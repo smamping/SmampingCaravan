@@ -32,7 +32,7 @@ ASDSCEditModuleSystemPage >> initialize [
 
 	super initialize.
 	self session rootComponent header: ASDSCEditHeader new.
-	self moduleComponenteLicht: ASDSCInstallModuleTaskSystem new
+	self moduleComponenteSystem: ASDSCInstallModuleTaskSystem new
 	"self moduleComponenteHeizung: ASDSCDeviceModulHeizung new."
 ]
 

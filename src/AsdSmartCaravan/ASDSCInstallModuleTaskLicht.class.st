@@ -19,6 +19,11 @@ Class {
 }
 
 { #category : 'accessing' }
+ASDSCInstallModuleTaskLicht class >> label [ 
+^ 'Modul Licht'
+]
+
+{ #category : 'accessing' }
 ASDSCInstallModuleTaskLicht >> bez [
 
 	^ bez
@@ -119,7 +124,7 @@ ASDSCInstallModuleTaskLicht >> go [
 ASDSCInstallModuleTaskLicht >> initialize [
 
 	super initialize.
-	
+	self addDecoration: ASDCardDecoration new
 ]
 
 { #category : 'accessing' }
