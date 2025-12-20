@@ -36,7 +36,7 @@ ASDSCStartInstallModulePage >> initialize [
 { #category : 'accessing' }
 ASDSCStartInstallModulePage >> menu [
 
-	^ menu
+	^ menu ifNil: [ menu := ASDSCModuleMenu new ]
 ]
 
 { #category : 'rendering' }

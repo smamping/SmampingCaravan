@@ -119,8 +119,7 @@ ASDSCInstallModuleTaskSystem >> go [
 ASDSCInstallModuleTaskSystem >> initialize [
 
 	super initialize.
-	self addDecoration: ASDCardDecoration new
-	
+	"self addDecoration: ASDCardDecoration new"
 ]
 
 { #category : 'accessing' }

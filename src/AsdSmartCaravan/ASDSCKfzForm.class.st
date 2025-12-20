@@ -1,14 +1,18 @@
 Class {
-	#name : 'ASDSCSystemForm',
+	#name : 'ASDSCKfzForm',
 	#superclass : 'ASDForm',
 	#instVars : [
-		'labelHostName',
-		'labelIp',
-		'labelMqttIp',
-		'labelSsid',
-		'labelWlanPwd',
-		'labelIpCam',
-		'labelIpMultimedia'
+		'labelBj',
+		'labelBreite',
+		'labelDisplays',
+		'labelGas',
+		'labelHeizung',
+		'labelHersteller',
+		'laderegler',
+		'laenge',
+		'labelMultimediaSystem',
+		'wassertank',
+		'webCam'
 	],
 	#category : 'AsdSmartCaravan-Forms',
 	#package : 'AsdSmartCaravan',
@@ -16,70 +20,44 @@ Class {
 }
 
 { #category : 'accessing' }
-ASDSCSystemForm class >> componentTitle [
+ASDSCKfzForm class >> componentTitle [
 
 	^ 'SystemForm'
 ]
 
 { #category : 'initialization' }
-ASDSCSystemForm >> initialize [
+ASDSCKfzForm >> initialize [
 
 	super initialize.
-	labelHostName := 'Hostname'.
-	labelIp := 'ip Adresse'.
-	labelMqttIp := 'Ip Broker'.
-	labelSsid := 'Wlan Name'.
-	labelWlanPwd := 'Wlan Passwort'.
-	labelIpCam := 'Ip Kamera'.
-	labelIpMultimedia := 'Ip Multimediasystem'
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelHostName [
-
-	^ labelHostName
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelIp [
-
-	^ labelIp
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelIpCam [
-
-	^ labelIpCam
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelIpMultimedia [
-
-	^ labelIpMultimedia
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelMqttIp [
-
-	^ labelMqttIp
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelSsid [
-
-	^ labelSsid
-]
-
-{ #category : 'as yet unclassified' }
-ASDSCSystemForm >> labelWlanPwd [
-
-	^ labelWlanPwd
+	labelBj := 'Bau jahr'.
+	labelGas := 'Gas Stand'.
+	labelHeizung := 'Heizungssteuerung'.
+	laderegler := 'Energieverwaltung'.
+	laenge := 'Länge Kfz (in Meter)'.
+	wassertank := 'Wasserstand'.
+	labelMultimediaSystem := 'Multimediasystem'
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderFieldsOn: html [
+ASDSCKfzForm >> renderBjOn: html [
 
-	self renderIpOn: html.
+	html mdlTextFieldContainer
+		style: 'width: 350px';
+		with: [
+			html mdlTextFieldLabel
+				for: 'bj';
+				with: labelBj.
+			html mdlTextFieldInput
+				id: 'bj';
+				value: self model bj;
+				required;
+				callback: [ :aString | self model bj: aString ] ]
+]
+
+{ #category : 'rendering' }
+ASDSCKfzForm >> renderFieldsOn: html [
+
+	self renderBjOn: html.
 	self renderMqttIpOn: html.
 	self renderIpCamOn: html.
 	self renderIpMultimediaOn: html.
@@ -88,7 +66,7 @@ ASDSCSystemForm >> renderFieldsOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderHostNameOn: html [
+ASDSCKfzForm >> renderHostNameOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -104,7 +82,7 @@ ASDSCSystemForm >> renderHostNameOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderIpCamOn: html [
+ASDSCKfzForm >> renderIpCamOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -119,7 +97,7 @@ ASDSCSystemForm >> renderIpCamOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderIpMultimediaOn: html [
+ASDSCKfzForm >> renderIpMultimediaOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -134,7 +112,7 @@ ASDSCSystemForm >> renderIpMultimediaOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderIpOn: html [
+ASDSCKfzForm >> renderIpOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -150,7 +128,7 @@ ASDSCSystemForm >> renderIpOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderMqttIpOn: html [
+ASDSCKfzForm >> renderMqttIpOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -166,7 +144,7 @@ ASDSCSystemForm >> renderMqttIpOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderSsidOn: html [
+ASDSCKfzForm >> renderSsidOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
@@ -182,7 +160,7 @@ ASDSCSystemForm >> renderSsidOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCSystemForm >> renderWlanPwdOn: html [
+ASDSCKfzForm >> renderWlanPwdOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';

@@ -6,7 +6,14 @@ Class {
 		'hersteller',
 		'laenge',
 		'breite',
-		'kfzModel'
+		'kfzModel',
+		'heizung',
+		'gas',
+		'wassertank',
+		'laderegler',
+		'webCam',
+		'multimediaSystem',
+		'displays'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -126,6 +133,42 @@ ASDSCFahrzeug >> descriptionLaenge [
 ]
 
 { #category : 'accessing' }
+ASDSCFahrzeug >> displays [
+
+	^ displays
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> displays: anObject [
+
+	displays := anObject
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> gas [
+
+	^ gas
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> gas: anObject [
+
+	gas := anObject
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> heizung [
+
+	^ heizung
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> heizung: anObject [
+
+	heizung := anObject
+]
+
+{ #category : 'accessing' }
 ASDSCFahrzeug >> hersteller [
 	^ hersteller
 ]
@@ -146,6 +189,18 @@ ASDSCFahrzeug >> kfzModel: anObject [
 ]
 
 { #category : 'accessing' }
+ASDSCFahrzeug >> laderegler [
+
+	^ laderegler
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> laderegler: anObject [
+
+	laderegler := anObject
+]
+
+{ #category : 'accessing' }
 ASDSCFahrzeug >> laenge [
 	^ laenge
 ]
@@ -153,4 +208,40 @@ ASDSCFahrzeug >> laenge [
 { #category : 'accessing' }
 ASDSCFahrzeug >> laenge: anObject [
 	laenge := anObject
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> multimediaSystem [
+
+	^ multimediaSystem
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> multimediaSystem: anObject [
+
+	multimediaSystem := anObject
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> wassertank [
+
+	^ wassertank
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> wassertank: anObject [
+
+	wassertank := anObject
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> webCam [
+
+	^ webCam
+]
+
+{ #category : 'accessing' }
+ASDSCFahrzeug >> webCam: anObject [
+
+	webCam := anObject
 ]
