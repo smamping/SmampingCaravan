@@ -9,7 +9,7 @@ Class {
 		'labelHeizung',
 		'labelHersteller',
 		'laderegler',
-		'laenge',
+		'labelLaenge',
 		'labelMultimediaSystem',
 		'wassertank',
 		'webCam'
@@ -32,8 +32,9 @@ ASDSCKfzForm >> initialize [
 	labelBj := 'Bau jahr'.
 	labelGas := 'Gas Stand'.
 	labelHeizung := 'Heizungssteuerung'.
-	laderegler := 'Energieverwaltung'.
-	laenge := 'Länge Kfz (in Meter)'.
+	labelHersteller := 'Hersteller'.
+	labelLaenge := 'Länge Kfz (in Meter)'.
+
 	wassertank := 'Wasserstand'.
 	labelMultimediaSystem := 'Multimediasystem'
 ]
@@ -55,45 +56,45 @@ ASDSCKfzForm >> renderBjOn: html [
 ]
 
 { #category : 'rendering' }
+ASDSCKfzForm >> renderBreiteOn: html [
+
+	html mdlTextFieldContainer
+		style: 'width: 350px';
+		with: [
+			html mdlTextFieldLabel
+				for: 'breite';
+				with: labelBreite.
+			html mdlTextFieldInput
+				id: 'breite';
+				value: self model breite;
+				required;
+				callback: [ :aString | self model breite: aString ] ]
+]
+
+{ #category : 'rendering' }
 ASDSCKfzForm >> renderFieldsOn: html [
 
 	self renderBjOn: html.
-	self renderMqttIpOn: html.
-	self renderIpCamOn: html.
-	self renderIpMultimediaOn: html.
-	self renderSsidOn: html.
-	self renderWlanPwdOn: html
+	self renderBreiteOn: html.
+	self renderHerstellerOn: html.
+	self renderLaengeOn: html.
+	
 ]
 
 { #category : 'rendering' }
-ASDSCKfzForm >> renderHostNameOn: html [
+ASDSCKfzForm >> renderHerstellerOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
-				for: 'hostName';
-				with: self labelHostName.
+				for: 'hersteller';
+				with: labelHersteller.
 			html mdlTextFieldInput
-				id: 'hostName';
-				value: self model hostName;
+				id: 'hersteller';
+				value: self model hersteller;
 				required;
-				callback: [ :aString | self model hostName: aString ] ]
-]
-
-{ #category : 'rendering' }
-ASDSCKfzForm >> renderIpCamOn: html [
-
-	html mdlTextFieldContainer
-		style: 'width: 350px';
-		with: [ 
-			html mdlTextFieldLabel
-				for: html nextId;
-				with: self labelIpCam.
-			html mdlTextFieldInput
-				id: html lastId;
-				value: self model ipCam;
-				callback: [ :aString | self model ipCam: aString ] ]
+				callback: [ :aString | self model hersteller: aString ] ]
 ]
 
 { #category : 'rendering' }
@@ -112,65 +113,17 @@ ASDSCKfzForm >> renderIpMultimediaOn: html [
 ]
 
 { #category : 'rendering' }
-ASDSCKfzForm >> renderIpOn: html [
+ASDSCKfzForm >> renderLaengeOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
-				for: 'ip';
-				with: self labelIp.
+				for: 'laenge';
+				with: labelLaenge.
 			html mdlTextFieldInput
-				id: 'ip';
-				value: self model ip;
+				id: 'laenge';
+				value: self model laenge;
 				required;
-				callback: [ :aString | self model ip: aString ] ]
-]
-
-{ #category : 'rendering' }
-ASDSCKfzForm >> renderMqttIpOn: html [
-
-	html mdlTextFieldContainer
-		style: 'width: 350px';
-		with: [ 
-			html mdlTextFieldLabel
-				for: html nextId;
-				with: self labelMqttIp.
-			html mdlTextFieldInput
-				id: html lastId;
-				value: self model mqttIp;
-				required;
-				callback: [ :aString | self model mqttIp: aString ] ]
-]
-
-{ #category : 'rendering' }
-ASDSCKfzForm >> renderSsidOn: html [
-
-	html mdlTextFieldContainer
-		style: 'width: 350px';
-		with: [ 
-			html mdlTextFieldLabel
-				for: html nextId;
-				with: self labelSsid.
-			html mdlTextFieldInput
-				id: html lastId;
-				value: self model ssId;
-				required;
-				callback: [ :aString | self model ssId: aString ] ]
-]
-
-{ #category : 'rendering' }
-ASDSCKfzForm >> renderWlanPwdOn: html [
-
-	html mdlTextFieldContainer
-		style: 'width: 350px';
-		with: [ 
-			html mdlTextFieldLabel
-				for: html nextId;
-				with: self labelWlanPwd.
-			html mdlTextFieldInput
-				id: html lastId;
-				value: self model wlanPwd;
-				required;
-				callback: [ :aString | self model wlanPwd: aString ] ]
+				callback: [ :aString | self model laenge: aString ] ]
 ]

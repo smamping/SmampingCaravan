@@ -1,5 +1,5 @@
 Class {
-	#name : 'ASDSCInstallModuleTaskSystem',
+	#name : 'ASDSCInstallModuleTaskTuerVerieglung',
 	#superclass : 'WATask',
 	#instVars : [
 		'modelModule',
@@ -19,24 +19,25 @@ Class {
 }
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem class >> label [ 
-^ 'Modul System'
+ASDSCInstallModuleTaskTuerVerieglung class >> label [
+
+	^ 'Modul Türverieglung'
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> bez [
+ASDSCInstallModuleTaskTuerVerieglung >> bez [
 
 	^ bez
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> bez: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> bez: anObject [
 
 	bez := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> chooseMotion [
+ASDSCInstallModuleTaskTuerVerieglung >> chooseMotion [
 |frm dec | 
 frm := (ASDSCDevicesForm withModel: (ASDSCDeviceSensorBewegungsmelder driver: self session esp32Driver pinNr: 16 ) andForm: true).
 dec := ASDCardDecoration new.
@@ -48,7 +49,7 @@ frm addDecoration: dec.
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> chooseRelay [
+ASDSCInstallModuleTaskTuerVerieglung >> chooseRelay [
 
 	| frm mod |
 	mod := ASDSCDeviceRelay driver: self session esp32Driver pinNr: 18.
@@ -59,24 +60,24 @@ ASDSCInstallModuleTaskSystem >> chooseRelay [
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> confirmMotion [
+ASDSCInstallModuleTaskTuerVerieglung >> confirmMotion [
 
 	^ self confirm: 'Ein Bewegungssensor auswählen'
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> confirmNextRelay [
+ASDSCInstallModuleTaskTuerVerieglung >> confirmNextRelay [
 ^ self confirm: 'Ein weiteres Relay auswählen' 
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> createModel [
+ASDSCInstallModuleTaskTuerVerieglung >> createModel [
 
 	^ ASDSCDeviceModulLicht new bez: self bez
 ]
 
 { #category : 'running' }
-ASDSCInstallModuleTaskSystem >> go [
+ASDSCInstallModuleTaskTuerVerieglung >> go [
 
 	| drv motion relay |
 	self bez: self requestBezeichnung.
@@ -116,74 +117,74 @@ ASDSCInstallModuleTaskSystem >> go [
 ]
 
 { #category : 'initialization' }
-ASDSCInstallModuleTaskSystem >> initialize [
+ASDSCInstallModuleTaskTuerVerieglung >> initialize [
 
 	super initialize.
 	"self addDecoration: ASDCardDecoration new"
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> modelModule [
+ASDSCInstallModuleTaskTuerVerieglung >> modelModule [
 
 	^ modelModule
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> modelModule: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> modelModule: anObject [
 
 	modelModule := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> motionInstancesBezList [
+ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesBezList [
 
 	^ motionInstancesBezList
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> motionInstancesBezList: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesBezList: anObject [
 
 	motionInstancesBezList := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> motionInstancesList [
+ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesList [
 
 	^ motionInstancesList
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> motionInstancesList: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesList: anObject [
 
 	motionInstancesList := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> relayBez [
+ASDSCInstallModuleTaskTuerVerieglung >> relayBez [
 
 	^ relayBez
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> relayBez: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> relayBez: anObject [
 
 	relayBez := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> relayLichtList [
+ASDSCInstallModuleTaskTuerVerieglung >> relayLichtList [
 
 	^ relayLichtList
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> relayLichtList: anObject [
+ASDSCInstallModuleTaskTuerVerieglung >> relayLichtList: anObject [
 
 	relayLichtList := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskSystem >> requestBezeichnung [
+ASDSCInstallModuleTaskTuerVerieglung >> requestBezeichnung [
 
 	^ (self request: 'Bitte Bezeichnung für das Modul auswählen').
 	

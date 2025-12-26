@@ -87,7 +87,7 @@ ASDSCSystemForm >> renderFieldsOn: html [
 	self renderWlanPwdOn: html
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderHostNameOn: html [
 
 	html mdlTextFieldContainer
@@ -103,7 +103,7 @@ ASDSCSystemForm >> renderHostNameOn: html [
 				callback: [ :aString | self model hostName: aString ] ]
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderIpCamOn: html [
 
 	html mdlTextFieldContainer
@@ -133,7 +133,7 @@ ASDSCSystemForm >> renderIpMultimediaOn: html [
 				callback: [ :aString | self model ipMultimedia: aString ] ]
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderIpOn: html [
 
 	html mdlTextFieldContainer
@@ -149,7 +149,7 @@ ASDSCSystemForm >> renderIpOn: html [
 				callback: [ :aString | self model ip: aString ] ]
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderMqttIpOn: html [
 
 	html mdlTextFieldContainer
@@ -165,7 +165,7 @@ ASDSCSystemForm >> renderMqttIpOn: html [
 				callback: [ :aString | self model mqttIp: aString ] ]
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderSsidOn: html [
 
 	html mdlTextFieldContainer
@@ -181,7 +181,7 @@ ASDSCSystemForm >> renderSsidOn: html [
 				callback: [ :aString | self model ssId: aString ] ]
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCSystemForm >> renderWlanPwdOn: html [
 
 	html mdlTextFieldContainer

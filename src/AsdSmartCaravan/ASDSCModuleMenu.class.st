@@ -15,7 +15,7 @@ ASDSCModuleMenu >> moduleTasks [
 		^ Array
 		  with: ASDSCInstallModuleTaskLicht
 		  with: ASDSCInstallModuleTaskHeizung
-		  with: ASDSCInstallModuleTaskSystem
+		  with: ASDSCInstallModuleTaskTuerVerieglung
 		  "with: ASDSCInstallModuleTaskWebCam"
 ]
 
