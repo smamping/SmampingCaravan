@@ -1,6 +1,6 @@
 Class {
-	#name : 'ASDSCEditDriverPage',
-	#superclass : 'ASDSCPageEdit',
+	#name : 'ASDSCAdminDriverPage',
+	#superclass : 'ASDSCPageAdmin',
 	#instVars : [
 		'driverComponente'
 	],
@@ -10,37 +10,37 @@ Class {
 }
 
 { #category : 'accessing' }
-ASDSCEditDriverPage class >> pageName [
+ASDSCAdminDriverPage class >> pageName [
 
 	^ 'Treiber'
 ]
 
 { #category : 'accessing' }
-ASDSCEditDriverPage class >> priority [
+ASDSCAdminDriverPage class >> priority [
 
 	^ 3
 ]
 
 { #category : 'hooks' }
-ASDSCEditDriverPage >> children [
+ASDSCAdminDriverPage >> children [
 
 	^ { self driverComponente }
 ]
 
 { #category : 'accessing' }
-ASDSCEditDriverPage >> driverComponente [
+ASDSCAdminDriverPage >> driverComponente [
 
 	^ driverComponente
 ]
 
 { #category : 'accessing' }
-ASDSCEditDriverPage >> driverComponente: anObject [
+ASDSCAdminDriverPage >> driverComponente: anObject [
 
 	driverComponente := anObject
 ]
 
 { #category : 'initalize' }
-ASDSCEditDriverPage >> initialize [
+ASDSCAdminDriverPage >> initialize [
 
 	| drivers |
 	super initialize.
@@ -54,7 +54,7 @@ ASDSCEditDriverPage >> initialize [
 ]
 
 { #category : 'rendering' }
-ASDSCEditDriverPage >> renderContentOn: html [
+ASDSCAdminDriverPage >> renderContentOn: html [
 
 
 

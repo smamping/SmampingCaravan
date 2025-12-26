@@ -147,13 +147,13 @@ ASDSCRoot >> goToAdminView [
 { #category : 'actions' }
 ASDSCRoot >> goToEditDeviceView [
 
-	self displayInstanceOf: ASDSCEditDevicePage 
+	self displayInstanceOf: ASDSCAdminDevicePage 
 ]
 
 { #category : 'actions' }
 ASDSCRoot >> goToEditDriverView [
 
-	self displayInstanceOf: ASDSCEditDriverPage
+	self displayInstanceOf: ASDSCAdminDriverPage
 ]
 
 { #category : 'actions' }

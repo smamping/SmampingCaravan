@@ -1,6 +1,6 @@
 Class {
-	#name : 'ASDSCEditDevicePage',
-	#superclass : 'ASDSCPageEdit',
+	#name : 'ASDSCAdminDevicePage',
+	#superclass : 'ASDSCPageAdmin',
 	#instVars : [
 		'deviceLichtComponente',
 		'deviceBewegungsmelderComponente',
@@ -13,19 +13,19 @@ Class {
 }
 
 { #category : 'accessing' }
-ASDSCEditDevicePage class >> pageName [
+ASDSCAdminDevicePage class >> pageName [
 
 	^ 'Devices'
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage class >> priority [
+ASDSCAdminDevicePage class >> priority [
 
 	^ 3
 ]
 
 { #category : 'hooks' }
-ASDSCEditDevicePage >> children [
+ASDSCAdminDevicePage >> children [
 
 ^ { 
 		  self deviceLichtComponente.
@@ -33,62 +33,62 @@ ASDSCEditDevicePage >> children [
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> deviceBewegungsmelderComponente [
+ASDSCAdminDevicePage >> deviceBewegungsmelderComponente [
 
 	^ deviceBewegungsmelderComponente
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> deviceBewegungsmelderComponente: anObject [
+ASDSCAdminDevicePage >> deviceBewegungsmelderComponente: anObject [
 
 	deviceBewegungsmelderComponente := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> deviceLichtComponente [
+ASDSCAdminDevicePage >> deviceLichtComponente [
 
 	^ deviceLichtComponente
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> deviceLichtComponente: anObject [
+ASDSCAdminDevicePage >> deviceLichtComponente: anObject [
 
 	deviceLichtComponente := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> devicesBewegungsmelder [
+ASDSCAdminDevicePage >> devicesBewegungsmelder [
 
 	^ devicesBewegungsmelder
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> devicesBewegungsmelder: anObject [
+ASDSCAdminDevicePage >> devicesBewegungsmelder: anObject [
 
 	devicesBewegungsmelder := anObject
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> devicesLicht [
+ASDSCAdminDevicePage >> devicesLicht [
 
 	^ devicesLicht
 ]
 
 { #category : 'accessing' }
-ASDSCEditDevicePage >> devicesLicht: anObject [
+ASDSCAdminDevicePage >> devicesLicht: anObject [
 
 	devicesLicht := anObject
 ]
 
 { #category : 'initalize' }
-ASDSCEditDevicePage >> initialize [
+ASDSCAdminDevicePage >> initialize [
 
 	super initialize.
 
 ]
 
 { #category : 'rendering' }
-ASDSCEditDevicePage >> renderContentOn: html [
+ASDSCAdminDevicePage >> renderContentOn: html [
 
 	html mdlGrid
 		shadow: 0;
