@@ -2,7 +2,7 @@ Class {
 	#name : 'ASDSCEditModuleHeizungPage',
 	#superclass : 'ASDSCPageEdit',
 	#instVars : [
-		'moduleComponenteLicht'
+		'moduleComponenteHeizung'
 	],
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
@@ -24,37 +24,28 @@ ASDSCEditModuleHeizungPage class >> priority [
 { #category : 'hooks' }
 ASDSCEditModuleHeizungPage >> children [
 
-	^ { self moduleComponenteLicht". self moduleComponenteHeizung" }
+	^ { self moduleComponenteHeizung }
 ]
 
 { #category : 'initalize' }
 ASDSCEditModuleHeizungPage >> initialize [
 
 	super initialize.
-	self session rootComponent header: ASDSCEditHeader new.
-	self moduleComponenteLicht: ASDSCInstallModuleTaskLicht new.
-	self moduleComponenteLicht addDecoration: ASDCardDecoration new.
 	
-	"self moduleComponenteHeizung: ASDSCDeviceModulHeizung new."
+
+	self moduleComponenteHeizung: ASDSCDeviceModulHeizung new.
 ]
 
-{ #category : 'accessing' }
-ASDSCEditModuleHeizungPage >> moduleComponenteLicht [
+{ #category : 'as yet unclassified' }
+ASDSCEditModuleHeizungPage >> moduleComponenteHeizung [
 
-	^ moduleComponenteLicht
+	^ moduleComponenteHeizung
 ]
 
-{ #category : 'accessing' }
-ASDSCEditModuleHeizungPage >> moduleComponenteLicht: anObject [
+{ #category : 'as yet unclassified' }
+ASDSCEditModuleHeizungPage >> moduleComponenteHeizung: anObject [
 
-	moduleComponenteLicht := anObject
-]
-
-{ #category : 'rendering' }
-ASDSCEditModuleHeizungPage >> renderCartOn: html [
-
-	html render: self moduleComponenteLicht.
-	
+	moduleComponenteHeizung := anObject
 ]
 
 { #category : 'rendering' }
@@ -62,16 +53,25 @@ ASDSCEditModuleHeizungPage >> renderContentOn: html [
 
 	html mdlGrid
 		shadow: 0;
-		style: 'height: 100%;';
+		style: 'align-items: center; height: 100%';
 		with: [
 			html mdlCell
 				middle;
-				desktopOffset: 3;
-				tabletOffset: 3;
-				phoneOffset: 2;
-				desktopSize: 8;
-				tabletSize: 5;
-				phoneSize: 2;
-				with: [ self renderCartOn:html ]. 
-			 ]
+				size: 4;
+				with: [  ].
+			html mdlCell
+				middle;
+				size: 4;
+				with: [ self renderTableOn: html ].
+			html mdlCell
+				middle;
+				size: 4;
+				with: [  ] ]
+]
+
+{ #category : 'rendering' }
+ASDSCEditModuleHeizungPage >> renderTableOn: html [
+
+	html render: self moduleComponenteLicht.
+	
 ]

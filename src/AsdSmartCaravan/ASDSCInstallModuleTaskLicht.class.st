@@ -1,17 +1,11 @@
 Class {
 	#name : 'ASDSCInstallModuleTaskLicht',
-	#superclass : 'WATask',
+	#superclass : 'ASDSCInstallModuleTask',
 	#instVars : [
-		'modelModule',
 		'relayLichtList',
-		'relayInstances',
 		'motionInstancesBezList',
 		'motionInstancesList',
-		'motionBez',
-		'relayBezList',
-		'bez',
-		'relayBez',
-		'driver'
+		'motionBez'
 	],
 	#category : 'AsdSmartCaravan-Components',
 	#package : 'AsdSmartCaravan',
@@ -23,19 +17,7 @@ ASDSCInstallModuleTaskLicht class >> label [
 ^ 'Modul Licht'
 ]
 
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> bez [
-
-	^ bez
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> bez: anObject [
-
-	bez := anObject
-]
-
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> chooseMotion [
 
 	| frm |
@@ -49,7 +31,7 @@ ASDSCInstallModuleTaskLicht >> chooseMotion [
 	^ frm
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> chooseRelay [
 
 	| frm mod |
@@ -60,24 +42,19 @@ ASDSCInstallModuleTaskLicht >> chooseRelay [
 	^ frm
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> confirmMotion [
 
 	^ self confirm: 'Ein Bewegungssensor auswählen'
 ]
 
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> confirmNextRelay [
-^ self confirm: 'Ein weiteres Relay auswählen' 
-]
-
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> createModel [
 
 	^ ASDSCDeviceModulLicht new bez: self bez
 ]
 
-{ #category : 'running' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> go [
 
 	| drv motion relay |
@@ -124,72 +101,42 @@ ASDSCInstallModuleTaskLicht >> go [
 ASDSCInstallModuleTaskLicht >> initialize [
 
 	super initialize.
-	"self addDecoration: ASDCardDecoration new"
+	dec label: 'Licht Modul'.
+	self addDecoration: (WAWindowDecoration new title: 'Licht Modul')
 ]
 
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> modelModule [
-
-	^ modelModule
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> modelModule: anObject [
-
-	modelModule := anObject
-]
-
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> motionInstancesBezList [
 
 	^ motionInstancesBezList
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> motionInstancesBezList: anObject [
 
 	motionInstancesBezList := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> motionInstancesList [
 
 	^ motionInstancesList
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> motionInstancesList: anObject [
 
 	motionInstancesList := anObject
 ]
 
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> relayBez [
-
-	^ relayBez
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> relayBez: anObject [
-
-	relayBez := anObject
-]
-
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> relayLichtList [
 
 	^ relayLichtList
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> relayLichtList: anObject [
 
 	relayLichtList := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskLicht >> requestBezeichnung [
-
-	^ (self request: 'Bitte Bezeichnung für das Modul auswählen').
-	
 ]

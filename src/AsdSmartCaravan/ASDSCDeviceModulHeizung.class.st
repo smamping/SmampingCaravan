@@ -26,13 +26,13 @@ ASDSCDeviceModulHeizung class >> type [
 	^ 'Heizung'
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> deviceSensorTemperatur [
 
 	^ deviceSensorTemperatur
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> deviceSensorTemperatur: anObject [
 
 	deviceSensorTemperatur := anObject
@@ -44,25 +44,25 @@ ASDSCDeviceModulHeizung >> initialize [
 	self bez: self class type.
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> startModule [
 
 	^ startModule
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> startModule: anObject [
 
 	startModule := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> stopModule [
 
 	^ stopModule
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> stopModule: anObject [
 
 	stopModule := anObject

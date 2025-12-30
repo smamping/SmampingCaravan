@@ -31,30 +31,21 @@ ASDSCEditModuleTuerVerieglungPage >> children [
 ASDSCEditModuleTuerVerieglungPage >> initialize [
 
 	super initialize.
-	self session rootComponent header: ASDSCEditHeader new.
-	self moduleComponenteLicht: ASDSCInstallModuleTaskLicht new.
-	self moduleComponenteLicht addDecoration: ASDCardDecoration new.
+		self moduleComponenteLicht: ASDSCInstallModuleTaskLicht new.
 	
 	"self moduleComponenteHeizung: ASDSCDeviceModulHeizung new."
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCEditModuleTuerVerieglungPage >> moduleComponenteLicht [
 
 	^ moduleComponenteLicht
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCEditModuleTuerVerieglungPage >> moduleComponenteLicht: anObject [
 
 	moduleComponenteLicht := anObject
-]
-
-{ #category : 'rendering' }
-ASDSCEditModuleTuerVerieglungPage >> renderCartOn: html [
-
-	html render: self moduleComponenteLicht.
-	
 ]
 
 { #category : 'rendering' }
@@ -62,16 +53,25 @@ ASDSCEditModuleTuerVerieglungPage >> renderContentOn: html [
 
 	html mdlGrid
 		shadow: 0;
-		style: 'height: 100%;';
+		style: 'align-items: center; height: 100%';
 		with: [
 			html mdlCell
 				middle;
-				desktopOffset: 3;
-				tabletOffset: 3;
-				phoneOffset: 2;
-				desktopSize: 8;
-				tabletSize: 5;
-				phoneSize: 2;
-				with: [ self renderCartOn:html ]. 
-			 ]
+				size: 4;
+				with: [  ].
+			html mdlCell
+				middle;
+				size: 4;
+				with: [ self renderTableOn: html ].
+			html mdlCell
+				middle;
+				size: 4;
+				with: [  ] ]
+]
+
+{ #category : 'rendering' }
+ASDSCEditModuleTuerVerieglungPage >> renderTableOn: html [
+
+	html render: self moduleComponenteLicht.
+	
 ]

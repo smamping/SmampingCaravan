@@ -34,11 +34,12 @@ ASDSCModulesForm >> renderModuleBezeichnungOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
 				for: 'bezeichnungModule';
 				with: self labelDeviceBezeichnung.
 			html mdlTextFieldInput
+				class: 'frm';
 				id: 'bezeichnungModule';
 				value: self model bez;
 				required;

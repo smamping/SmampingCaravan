@@ -1,6 +1,9 @@
 Class {
 	#name : 'ASDSCPageEdit',
 	#superclass : 'ASDSCComponent',
+	#instVars : [
+		'moduleList'
+	],
 	#category : 'AsdSmartCaravan-Core',
 	#package : 'AsdSmartCaravan',
 	#tag : 'Core'
@@ -41,6 +44,19 @@ ASDSCPageEdit >> initialize [
 
 	super initialize.
 	self session rootComponent header: ASDSCEditHeader new.
+	self moduleList: OrderedCollection new.
+]
+
+{ #category : 'accessing' }
+ASDSCPageEdit >> moduleList [
+
+	^ moduleList
+]
+
+{ #category : 'accessing' }
+ASDSCPageEdit >> moduleList: anObject [
+
+	moduleList := anObject
 ]
 
 { #category : 'accessing' }

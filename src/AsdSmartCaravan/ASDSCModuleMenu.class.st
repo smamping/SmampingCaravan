@@ -24,17 +24,17 @@ ASDSCModuleMenu >> renderContentOn: html [
 
 	html mdlCardActions
 		border;
-		with: [ 
-			html mdlList: [ 
-					self moduleTasks do: [ :each | 
-							html mdlListItem: [ 
-									html mdlListPrimaryContent: [ 
+		with: [
+			html mdlList: [
+					self moduleTasks do: [ :each |
+							html mdlListItem class: [
+									html mdlListPrimaryContent: [
 											html mdlListItemTextBody: each label ].
-									html mdlListSecondaryContent: [ 
-											html mdlListItemSecondaryAction with: [ 
+									html mdlListSecondaryContent: [
+											html mdlListItemSecondaryAction with: [
 													html anchor
 														callback: [ self show: each new ];
-														with: [ 
+														with: [
 															html mdlButton
 																fab;
 																miniFab;

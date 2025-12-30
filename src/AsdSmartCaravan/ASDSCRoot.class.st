@@ -159,7 +159,7 @@ ASDSCRoot >> goToEditDriverView [
 { #category : 'actions' }
 ASDSCRoot >> goToEditModuleView [
 
-	self displayInstanceOf: ASDSCStartInstallModulePage 
+	self displayInstanceOf: ASDSCEditModulePage
 ]
 
 { #category : 'actions' }

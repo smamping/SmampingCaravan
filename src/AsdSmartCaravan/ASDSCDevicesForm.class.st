@@ -32,9 +32,21 @@ ASDSCDevicesForm >> labelDeviceBezeichnung [
 ]
 
 { #category : 'accessing' }
+ASDSCDevicesForm >> labelDeviceBezeichnung: anObject [
+
+	labelDeviceBezeichnung := anObject
+]
+
+{ #category : 'accessing' }
 ASDSCDevicesForm >> labelPinNr [
 
 	^ labelPinNr
+]
+
+{ #category : 'accessing' }
+ASDSCDevicesForm >> labelPinNr: anObject [
+
+	labelPinNr := anObject
 ]
 
 { #category : 'rendering' }
@@ -42,12 +54,13 @@ ASDSCDevicesForm >> renderDeviceBezeichnungOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
 				for: 'bezeichnung';
 				with: self labelDeviceBezeichnung.
 			html mdlTextFieldInput
 				id: 'bezeichnung';
+				class: 'frm';
 				value: self model bez;
 				required;
 				callback: [ :aString | self model bez: aString ] ]
@@ -66,12 +79,13 @@ ASDSCDevicesForm >> renderPinNrOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
 				for: 'pinNr';
 				with: self labelPinNr.
 			html mdlTextFieldInput
 				id: 'pinNr';
+				class: 'frm';
 				value: self model pinNr;
 				required;
 				callback: [ :aString | self model pinNr: aString ] ]

@@ -1,5 +1,5 @@
 Class {
-	#name : 'ASDSCDeviceSensorBewegungsmelder',
+	#name : 'ASDSCDeviceSensorDoor',
 	#superclass : 'ASDSCDeviceSensor',
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : 'voyage' }
-ASDSCDeviceSensorBewegungsmelder class >> isVoyageRoot [
+ASDSCDeviceSensorDoor class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
 
@@ -15,24 +15,23 @@ ASDSCDeviceSensorBewegungsmelder class >> isVoyageRoot [
 ]
 
 { #category : 'accessing' }
-ASDSCDeviceSensorBewegungsmelder class >> type [
-
+ASDSCDeviceSensorDoor class >> type [
 	"Title of the page that will be used in menus and URLs."
 
-	^ 'Bewegungsmelder'
+	^ 'TürKontakt'
 ]
 
 { #category : 'initialization' }
-ASDSCDeviceSensorBewegungsmelder >> initialize [
+ASDSCDeviceSensorDoor >> initialize [
 
 	super initialize.
 	
 ]
 
-{ #category : 'as yet unclassified' }
-ASDSCDeviceSensorBewegungsmelder >> isOn [
+{ #category : 'testing' }
+ASDSCDeviceSensorDoor >> isClosed [ 
 
-	(self driver beDigitalInputOnPin: (self pinNr))  > 0
+	(self driver beDigitalInputOnPin: self pinNr) > 0
 		ifTrue: [ ^ true ]
 		ifFalse: [ ^ false ]
 ]

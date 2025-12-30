@@ -1,17 +1,9 @@
 Class {
 	#name : 'ASDSCInstallModuleTaskTuerVerieglung',
-	#superclass : 'WATask',
+	#superclass : 'ASDSCInstallModuleTask',
 	#instVars : [
-		'modelModule',
-		'relayLichtList',
-		'relayInstances',
-		'motionInstancesBezList',
-		'motionInstancesList',
-		'motionBez',
 		'relayBezList',
-		'bez',
-		'relayBez',
-		'driver'
+		'relayBez'
 	],
 	#category : 'AsdSmartCaravan-Components',
 	#package : 'AsdSmartCaravan',
@@ -22,30 +14,6 @@ Class {
 ASDSCInstallModuleTaskTuerVerieglung class >> label [
 
 	^ 'Modul Türverieglung'
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> bez [
-
-	^ bez
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> bez: anObject [
-
-	bez := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> chooseMotion [
-|frm dec | 
-frm := (ASDSCDevicesForm withModel: (ASDSCDeviceSensorBewegungsmelder driver: self session esp32Driver pinNr: 16 ) andForm: true).
-dec := ASDCardDecoration new.
-dec label: 'Bewegungsmelder'.
-frm addDecoration: dec.
-^ frm
-
-
 ]
 
 { #category : 'accessing' }
@@ -60,12 +28,6 @@ ASDSCInstallModuleTaskTuerVerieglung >> chooseRelay [
 ]
 
 { #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> confirmMotion [
-
-	^ self confirm: 'Ein Bewegungssensor auswählen'
-]
-
-{ #category : 'accessing' }
 ASDSCInstallModuleTaskTuerVerieglung >> confirmNextRelay [
 ^ self confirm: 'Ein weiteres Relay auswählen' 
 ]
@@ -73,7 +35,7 @@ ASDSCInstallModuleTaskTuerVerieglung >> confirmNextRelay [
 { #category : 'accessing' }
 ASDSCInstallModuleTaskTuerVerieglung >> createModel [
 
-	^ ASDSCDeviceModulLicht new bez: self bez
+	^ ASDSCDeviceModulTuerVerieglung new bez: self bez
 ]
 
 { #category : 'running' }
@@ -120,43 +82,7 @@ ASDSCInstallModuleTaskTuerVerieglung >> go [
 ASDSCInstallModuleTaskTuerVerieglung >> initialize [
 
 	super initialize.
-	"self addDecoration: ASDCardDecoration new"
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> modelModule [
-
-	^ modelModule
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> modelModule: anObject [
-
-	modelModule := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesBezList [
-
-	^ motionInstancesBezList
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesBezList: anObject [
-
-	motionInstancesBezList := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesList [
-
-	^ motionInstancesList
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> motionInstancesList: anObject [
-
-	motionInstancesList := anObject
+	self addDecoration: (WAWindowDecoration new title: 'Sicherheits Modul')
 ]
 
 { #category : 'accessing' }
@@ -169,18 +95,6 @@ ASDSCInstallModuleTaskTuerVerieglung >> relayBez [
 ASDSCInstallModuleTaskTuerVerieglung >> relayBez: anObject [
 
 	relayBez := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> relayLichtList [
-
-	^ relayLichtList
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskTuerVerieglung >> relayLichtList: anObject [
-
-	relayLichtList := anObject
 ]
 
 { #category : 'accessing' }

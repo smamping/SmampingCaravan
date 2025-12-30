@@ -1,16 +1,10 @@
 Class {
 	#name : 'ASDSCInstallModuleTaskHeizung',
-	#superclass : 'WATask',
+	#superclass : 'ASDSCInstallModuleTask',
 	#instVars : [
-		'modelModule',
 		'relayTemperaturList',
-		'relayInstances',
-		'temperaturInstancesBezList',
-		'temperaturInstancesList',
 		'temperaturBez',
-		'relayBezList',
-		'bez',
-		'relayBez'
+		'temperaturInstancesBezList'
 	],
 	#category : 'AsdSmartCaravan-Components',
 	#package : 'AsdSmartCaravan',
@@ -26,18 +20,6 @@ ASDSCInstallModuleTaskHeizung class >> label [
 ASDSCInstallModuleTaskHeizung >> addRelayToModel [
 
 	^ (self modelModule addRelay: self session device) 
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> bez [
-
-	^ bez
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> bez: anObject [
-
-	bez := anObject
 ]
 
 { #category : 'accessing' }
@@ -111,31 +93,7 @@ ASDSCInstallModuleTaskHeizung >> go [
 ASDSCInstallModuleTaskHeizung >> initialize [
 
 	super initialize.
-	"self addDecoration: ASDCardDecoration new"
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> modelModule [
-
-	^ modelModule
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> modelModule: anObject [
-
-	modelModule := anObject
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> relayBez [
-
-	^ relayBez
-]
-
-{ #category : 'accessing' }
-ASDSCInstallModuleTaskHeizung >> relayBez: anObject [
-
-	relayBez := anObject
+	self addDecoration: (WAWindowDecoration new title: 'Heizungs Modul')
 ]
 
 { #category : 'accessing' }

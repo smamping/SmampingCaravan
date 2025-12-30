@@ -58,16 +58,17 @@ ASDSCEsp32DriverForm >> renderBrokerIPOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
 				for: 'brokerIP';
 				with: self labelBrokerIp.
 			html mdlTextFieldInput
 				id: 'brokerIP';
+				class: 'frm';
 				value: self model brokerIP;
 				callback: [ :aString | self model brokerIP: aString ];
 				required.
-				
+
 			html mdlTextFieldError: 'Bitte eine BrokerIp eingeben' ]
 ]
 
@@ -76,12 +77,13 @@ ASDSCEsp32DriverForm >> renderDeviceIdOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
-				for: html nextId;
+				for: 'deviceId';
 				with: self labelDeviceId.
 			html mdlTextFieldInput
-				id: html lastId;
+				class: 'frm';
+				id: 'deviceId';
 				value: self model deviceId;
 				callback: [ :aString | self model deviceId: aString ] ]
 ]
@@ -91,11 +93,12 @@ ASDSCEsp32DriverForm >> renderDeviceIpOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
 				for: html nextId;
 				with: self labelDeviceIp.
 			html mdlTextFieldInput
+				class: 'frm';
 				id: html lastId;
 				value: self model deviceIp;
 				callback: [ :aString | self model deviceIp: aString ] ]
@@ -106,12 +109,13 @@ ASDSCEsp32DriverForm >> renderDeviceNameOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
-		with: [ 
+		with: [
 			html mdlTextFieldLabel
-				for: html nextId;
+				for: 'deviceName';
 				with: self labelDeviceName.
 			html mdlTextFieldInput
-				id: html lastId;
+				id: 'deviceName';
+				class: 'frm';
 				value: self model deviceName;
 				required;
 				callback: [ :aString | self model deviceName: aString ] ]

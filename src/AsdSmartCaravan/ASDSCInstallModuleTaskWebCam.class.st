@@ -50,10 +50,7 @@ ASDSCInstallModuleTaskWebCam >> go [
 ASDSCInstallModuleTaskWebCam >> initialize [
 
 	super initialize.
-	self tmpModules: (ASDSCModulModel allSubclasses reject: #isAbstract).
-
-	self modulesSubs: (self tmpModules collect: [ :each | each type ]).
-	
+	self addDecoration: (WAWindowDecoration new title: 'Kamara Modul')
 ]
 
 { #category : 'accessing' }
