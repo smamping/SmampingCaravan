@@ -61,6 +61,35 @@ ASDSCModulesLichtForm >> labelMotionPanel: anObject [
 ]
 
 { #category : 'rendering' }
+ASDSCModulesLichtForm >> renderDriverOn: html [
+
+	self model deviceSensorMotion ifNotNil: [
+		html fieldSet
+			legend: self labelMotionPanel;
+			id: 'panelMotion';
+			with: [
+				html mdlList
+					style: 'width: 300px';
+					with: [
+						html mdlListItem
+							twoLine;
+							with: [
+								html mdlListPrimaryContent: [
+										html mdlIcon
+											listItemIcon;
+											with: #radar.
+										html text: self model deviceSensorMotion bez.
+										html mdlListItemSubTitle:
+											self model deviceSensorMotion pinNr ].
+								html mdlListSecondaryContent: [
+									html mdlListItemSecondaryAction html mdlAnchorButton
+										callback: [ self edit: self model deviceSensorMotion ];
+										icon;
+										with: [ "We could also use the #icon: method"
+											html mdlIcon: 'mode_edit' ] ] ] ] ] ]
+]
+
+{ #category : 'rendering' }
 ASDSCModulesLichtForm >> renderFieldsOn: html [
 
 	self renderModuleBezeichnungOn: html.
@@ -91,9 +120,9 @@ htmlId := 'motionIsOn'.
 ASDSCModulesLichtForm >> renderMotionSensorOn: html [
 
 	self model deviceSensorMotion ifNotNil: [
-		html
+		html fieldSet
 			legend: self labelMotionPanel;
-			id:'panelMotion';
+			id: 'panelMotion';
 			with: [
 				html mdlList
 					style: 'width: 300px';

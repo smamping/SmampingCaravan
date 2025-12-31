@@ -82,7 +82,8 @@ ASDSCInstallModuleTaskTuerVerieglung >> go [
 ASDSCInstallModuleTaskTuerVerieglung >> initialize [
 
 	super initialize.
-	self addDecoration: (WAWindowDecoration new title: 'Sicherheits Modul')
+	dec label: 'Sicherheits Modul'.
+	self addDecoration: dec
 ]
 
 { #category : 'accessing' }

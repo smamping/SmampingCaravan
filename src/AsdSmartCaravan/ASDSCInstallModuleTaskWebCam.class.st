@@ -50,7 +50,7 @@ ASDSCInstallModuleTaskWebCam >> go [
 ASDSCInstallModuleTaskWebCam >> initialize [
 
 	super initialize.
-	self addDecoration: (WAWindowDecoration new title: 'Kamara Modul')
+	
 ]
 
 { #category : 'accessing' }

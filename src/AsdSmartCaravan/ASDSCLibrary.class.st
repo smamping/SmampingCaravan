@@ -21,7 +21,7 @@ ASDSCLibrary >> darkBlueThemeCss [
 	/* #21517e;   #69d4fe; */
 :root {
             --mainBg-color: #04163a;
-            --element-zIndex1-bGcolor: #04163a;
+            --element-zIndex1-bGcolor: #001a50a8;
 				--element-zIndex2-bGcolor: #3f7ba4;
 				--element-zIndex3-bGcolor: #478fb7;
 				--element-border-bGcolor: #69d4fe;

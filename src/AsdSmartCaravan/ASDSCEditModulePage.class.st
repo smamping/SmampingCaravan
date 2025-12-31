@@ -21,10 +21,26 @@ ASDSCEditModulePage class >> priority [
 	^ 2
 ]
 
+{ #category : 'actions' }
+ASDSCEditModulePage >> addLichtItem [
+
+self call: self moduleComponenteLicht.
+
+
+
+	
+]
+
 { #category : 'hooks' }
 ASDSCEditModulePage >> children [
 
 	^ { self moduleComponenteLicht". self moduleComponenteHeizung" }
+]
+
+{ #category : 'actions' }
+ASDSCEditModulePage >> editLichtItem: anItem [
+
+	
 ]
 
 { #category : 'initalize' }
@@ -67,11 +83,19 @@ ASDSCEditModulePage >> renderContentOn: html [
 				middle;
 				size: 8;
 				with: [
-					self moduleList isNotEmpty ifTrue: [ self renderTableOn: html ] ].
+					].
 			html mdlCell
 				middle;
 				size: 2;
-				with: [  ] ].
+				with: [
+		 	html mdlAnchorButton
+			icon;
+			id: 'newLichtModule';
+			callback: [ self addLichtItem ];
+			with: [ html mdlIcon: 'add' ].
+		html mdlTooltip
+			for: 'newLichtModule';
+			with: 'self tooltipLabelopenRightPanel' ] ].
 	html mdlGrid
 		shadow: 0;
 		style: 'align-items: center; height: 100%';
@@ -95,21 +119,14 @@ ASDSCEditModulePage >> renderContentOn: html [
 ASDSCEditModulePage >> renderTableOn: html [
 
 	html render: (MDLTableWidget new
-			 
-			 addStringColumnNamed: 'Bezeichnung'
-			 evaluated: [ :x | x asString ];
-			 addStringColumnNamed: 'As words'
-			 evaluated: [ :x | x asWords capitalized ];
-			 addAjaxButtonColumnWithIconName: 'explore'
-			 onClick: [ :htmlCanvas :x |
-				 htmlCanvas javascript alert: 'Explore ' , x asString ]
-			 tooltip: 'Explore integer related to the row.';
-			 addButtonColumnWithIconName: 'delete' onClick: [ :x |
-				 Transcript
-					 show: x;
-					 show: ' deleted in callback.';
-					 cr ]
-			 tooltip: 'Delete integer in callback.';
-			 collection: (1000 to: 5000 by: 1000);
+			 addStringColumnNamed: 'Bezeichnung' evaluated: [ :x | x bez ];
+			 addNumericColumnNamed: 'Anzahl Lichter'
+			 evaluated: [ :x | x relayListe size ];
+			 addButtonColumnNamed: 'Bearbeiten'
+			 iconName: 'explore'
+			 onClick: [ :x |
+				self editLichtItem: x ]
+			 tooltip: 'Licht Module bearbeiten';
+			 collection: self moduleList;
 			 yourself)
 ]

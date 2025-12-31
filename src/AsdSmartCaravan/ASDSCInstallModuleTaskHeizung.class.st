@@ -93,7 +93,8 @@ ASDSCInstallModuleTaskHeizung >> go [
 ASDSCInstallModuleTaskHeizung >> initialize [
 
 	super initialize.
-	self addDecoration: (WAWindowDecoration new title: 'Heizungs Modul')
+	dec label: 'Heizungs Modul'.
+	self addDecoration: dec
 ]
 
 { #category : 'accessing' }
