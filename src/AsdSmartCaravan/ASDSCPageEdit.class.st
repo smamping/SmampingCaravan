@@ -40,7 +40,7 @@ ASDSCPageEdit class >> priority [
 ASDSCPageEdit >> initialize [
 
 	super initialize.
-	self session rootComponent header: ASDSCEditHeader new.
+	self session rootComponent header: ASDSCEditHeader new
 ]
 
 { #category : 'accessing' }

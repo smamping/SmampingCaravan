@@ -2,9 +2,7 @@ Class {
 	#name : 'ASDSCDeviceModulHeizung',
 	#superclass : 'ASDSCModulModel',
 	#instVars : [
-		'deviceSensorTemperatur',
-		'startModule',
-		'stopModule'
+		'deviceSensorTemperatur'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -20,7 +18,7 @@ ASDSCDeviceModulHeizung class >> isVoyageRoot [
 	^ true
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCDeviceModulHeizung class >> type [
 
 	^ 'Heizung'
@@ -38,10 +36,9 @@ ASDSCDeviceModulHeizung >> deviceSensorTemperatur: anObject [
 	deviceSensorTemperatur := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialize' }
 ASDSCDeviceModulHeizung >> initialize [
 	super initialize.
-	self bez: self class type.
 ]
 
 { #category : 'accessing' }

@@ -9,13 +9,12 @@ Class {
 { #category : 'accessing' }
 ASDSCSystemPage class >> pageName [
 
-	^ 'FahrzeugSystem Übersicht'
+	^ 'FahrzeugSystem'
 ]
 
 { #category : 'accessing' }
 ASDSCSystemPage class >> priority [
-
-	^ 1
+	^ 2
 ]
 
 { #category : 'rendering' }

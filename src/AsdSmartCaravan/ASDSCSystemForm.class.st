@@ -34,43 +34,43 @@ ASDSCSystemForm >> initialize [
 	labelIpMultimedia := 'Ip Multimediasystem'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelHostName [
 
 	^ labelHostName
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelIp [
 
 	^ labelIp
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelIpCam [
 
 	^ labelIpCam
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelIpMultimedia [
 
 	^ labelIpMultimedia
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelMqttIp [
 
 	^ labelMqttIp
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelSsid [
 
 	^ labelSsid
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCSystemForm >> labelWlanPwd [
 
 	^ labelWlanPwd
@@ -87,23 +87,23 @@ ASDSCSystemForm >> renderFieldsOn: html [
 	self renderWlanPwdOn: html
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderHostNameOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: 'hostName';
+				for: html nextId;
 				with: self labelHostName.
 			html mdlTextFieldInput
-				id: 'hostName';
+				id: html lastId;
+				
 				value: self model hostName;
-				required;
 				callback: [ :aString | self model hostName: aString ] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderIpCamOn: html [
 
 	html mdlTextFieldContainer
@@ -133,23 +133,22 @@ ASDSCSystemForm >> renderIpMultimediaOn: html [
 				callback: [ :aString | self model ipMultimedia: aString ] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderIpOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: 'ip';
+				for: html nextId;
 				with: self labelIp.
 			html mdlTextFieldInput
-				id: 'ip';
+				id: html lastId;
 				value: self model ip;
-				required;
 				callback: [ :aString | self model ip: aString ] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderMqttIpOn: html [
 
 	html mdlTextFieldContainer
@@ -161,11 +160,10 @@ ASDSCSystemForm >> renderMqttIpOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model mqttIp;
-				required;
 				callback: [ :aString | self model mqttIp: aString ] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderSsidOn: html [
 
 	html mdlTextFieldContainer
@@ -177,11 +175,10 @@ ASDSCSystemForm >> renderSsidOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model ssId;
-				required;
 				callback: [ :aString | self model ssId: aString ] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCSystemForm >> renderWlanPwdOn: html [
 
 	html mdlTextFieldContainer
@@ -193,6 +190,5 @@ ASDSCSystemForm >> renderWlanPwdOn: html [
 			html mdlTextFieldInput
 				id: html lastId;
 				value: self model wlanPwd;
-				required;
 				callback: [ :aString | self model wlanPwd: aString ] ]
 ]

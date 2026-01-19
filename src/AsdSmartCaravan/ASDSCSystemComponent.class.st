@@ -33,7 +33,6 @@ ASDSCSystemComponent >> form: anObject [
 ASDSCSystemComponent >> initialize [
 
 	super initialize.
-	self label: 'Systemeinstellungen'.
 	self session model system
 		ifNil: [ self model: ASDSCSystem new ]
 		ifNotNil: [ self model: self session model system ].
@@ -81,23 +80,13 @@ ASDSCSystemComponent >> renderContentOn: html [
 
 				html mdlCardActions with: [ 
 						html mdlButton
-						class: 'mdl-button mdl-js-button mdl-button--raised';
-								style:
-			'border: 1px solid #30363d; border-radius: 2px; color: color: #ffffff8a !important; margin: 0 10px 0 10px;';
-				raised;
-		
+							colored;
+							rippleEffect;
+							mdlTypographyFontBold;
 							beSubmit;
-							callback: [ "serializeForm;"
-								self session model system: self model.
-								self session rootComponent goToEditModuleView ];
-							with: 'save'. 
-						html mdlButton
-							class: 'mdl-button mdl-js-button mdl-button--raised';
-		style:
-			'border: 1px solid #30363d; border-radius: 2px; color: color: #ffffff8a !important; margin: 0 10px 0 10px;';
-							bePush;
-							callback: [ "serializeForm;"
-								
-								self session rootComponent goToEditDriverView ];
-							with: 'cancel' ] ] ]
+							
+									 callback: [ "serializeForm;"
+										 self session model system: self model.
+										 self session rootComponent goToEditDriverView ];
+							with: 'save' ] ] ]
 ]

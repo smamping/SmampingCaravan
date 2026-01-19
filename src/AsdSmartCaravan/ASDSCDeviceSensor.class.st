@@ -26,7 +26,12 @@ ASDSCDeviceSensor class >> isVoyageRoot [
 { #category : 'initialization' }
 ASDSCDeviceSensor >> initialize [
 
-	super initialize.
-	self devMode ifFalse: [ self driver beDigitalInputOnPin: pinNr ]
-	
+	super initialize
+]
+
+{ #category : 'accessing' }
+ASDSCDeviceSensor >> pinNr: anObject [
+
+	pinNr := anObject.
+	self driver beDigitalInputOnPin: pinNr
 ]

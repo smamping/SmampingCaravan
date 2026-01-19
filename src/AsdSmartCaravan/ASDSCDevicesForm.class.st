@@ -31,7 +31,7 @@ ASDSCDevicesForm >> labelDeviceBezeichnung [
 	^ labelDeviceBezeichnung
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 ASDSCDevicesForm >> labelPinNr [
 
 	^ labelPinNr
@@ -44,12 +44,11 @@ ASDSCDevicesForm >> renderDeviceBezeichnungOn: html [
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: 'bezeichnung';
+				for: html nextId;
 				with: self labelDeviceBezeichnung.
 			html mdlTextFieldInput
-				id: 'bezeichnung';
+				id: html lastId;
 				value: self model bez;
-				required;
 				callback: [ :aString | self model bez: aString ] ]
 ]
 
@@ -61,18 +60,17 @@ ASDSCDevicesForm >> renderFieldsOn: html [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 ASDSCDevicesForm >> renderPinNrOn: html [
 
 	html mdlTextFieldContainer
 		style: 'width: 350px';
 		with: [ 
 			html mdlTextFieldLabel
-				for: 'pinNr';
+				for: html nextId;
 				with: self labelPinNr.
 			html mdlTextFieldInput
-				id: 'pinNr';
+				id: html lastId;
 				value: self model pinNr;
-				required;
 				callback: [ :aString | self model pinNr: aString ] ]
 ]

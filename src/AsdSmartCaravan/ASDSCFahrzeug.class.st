@@ -6,14 +6,7 @@ Class {
 		'hersteller',
 		'laenge',
 		'breite',
-		'kfzModel',
-		'heizung',
-		'gas',
-		'wassertank',
-		'laderegler',
-		'webCam',
-		'multimediaSystem',
-		'displays'
+		'kfzModel'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',

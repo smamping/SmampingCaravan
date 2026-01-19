@@ -22,12 +22,8 @@ Class {
 		'installIndex',
 		'arrayInstallSize',
 		'esp32Driver',
-		'modulModelLicht',
-		'modulModelHeizung',
-		'deviceLicht',
-		'deviceMotion',
-		'rpiDriver',
-		'devMode'
+		'modulModel',
+		'device'
 	],
 	#category : 'AsdSmartCaravan-Core',
 	#package : 'AsdSmartCaravan',
@@ -60,6 +56,18 @@ ASDSCSession >> currentUser: anObject [
 ASDSCSession >> devMode [
 
 	^ devMode
+]
+
+{ #category : 'accessing' }
+ASDSCSession >> device [
+
+	^ device
+]
+
+{ #category : 'accessing' }
+ASDSCSession >> device: anObject [
+
+	device := anObject
 ]
 
 { #category : 'accessing' }
@@ -102,13 +110,10 @@ ASDSCSession >> esp32Driver: anObject [
 ASDSCSession >> initialize [
 
 	super initialize.
-	self currentUser:
-		(ASDSCUser benutzerName: 'asdmundt' password: 'saino' admin: false).
-
+	self currentUser: (ASDSCUser benutzerName: 'asdmundt' password: 'pwd' admin: false).
+	
 	model := ASDSCDataBase current.
-	installIndex := 1.
-	self model installReady: false.
-	devMode := true.
+	installIndex := 1
 ]
 
 { #category : 'accessing' }
@@ -144,6 +149,18 @@ ASDSCSession >> isLogged [
 { #category : 'accessing' }
 ASDSCSession >> model [
 	^ model
+]
+
+{ #category : 'accessing' }
+ASDSCSession >> modulModel [
+
+	^ modulModel
+]
+
+{ #category : 'accessing' }
+ASDSCSession >> modulModel: anObject [
+
+	modulModel := anObject
 ]
 
 { #category : 'accessing' }

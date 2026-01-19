@@ -1,14 +1,16 @@
 Class {
 	#name : 'ASDSCDeviceRelay',
 	#superclass : 'ASDSCDevice',
-	#instVars : [
-		'pinStatus',
-		'type'
-	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
 	#tag : 'Model'
 }
+
+{ #category : 'testing' }
+ASDSCDeviceRelay class >> isAbstract [
+
+	^ self = ASDSCDeviceRelay 
+]
 
 { #category : 'voyage' }
 ASDSCDeviceRelay class >> isVoyageRoot [
@@ -30,8 +32,8 @@ ASDSCDeviceRelay class >> type [
 ASDSCDeviceRelay >> initialize [
 
 	super initialize.
-	self bez: self class type.
-	self devMode ifFalse: [ self driver beDigitalOutputOnPin: pinNr ]
+
+	
 ]
 
 { #category : 'testing' }
@@ -56,6 +58,13 @@ ASDSCDeviceRelay >> on [
 ]
 
 { #category : 'accessing' }
+ASDSCDeviceRelay >> pinNr: anObject [
+
+pinNr := anObject.
+self driver beDigitalOutputOnPin: pinNr
+]
+
+{ #category : 'accessing' }
 ASDSCDeviceRelay >> pinStatus [
 
 	^ pinStatus
@@ -70,10 +79,6 @@ ASDSCDeviceRelay >> pinStatus: anObject [
 { #category : 'private' }
 ASDSCDeviceRelay >> setRelayState: aState [
 
-pinStatus < 1 ifTrue: [
-	self driver beDigitalOutputOnPin: pinNr.
-	pinStatus := 1.
-	  ]. 
 self driver digitalValue: aState intoPin: pinNr
 ]
 

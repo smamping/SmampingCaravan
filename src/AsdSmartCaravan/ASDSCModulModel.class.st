@@ -3,8 +3,7 @@ Class {
 	#superclass : 'ASDModel',
 	#instVars : [
 		'relayListe',
-		'sensorListe',
-		'driver'
+		'sensorListe'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -64,7 +63,7 @@ ASDSCModulModel >> initialize [
 	super initialize.
 	relayListe := OrderedCollection new.
 	sensorListe := OrderedCollection new.
-	self type: self class type.
+	
 ]
 
 { #category : 'accessing' }

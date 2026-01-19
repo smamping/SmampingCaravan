@@ -2,9 +2,7 @@ Class {
 	#name : 'ASDSCDeviceModulLicht',
 	#superclass : 'ASDSCModulModel',
 	#instVars : [
-		'deviceSensorMotion',
-		'motionSensorOn',
-		'withMotion'
+		'deviceSensorMotion'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -42,9 +40,7 @@ ASDSCDeviceModulLicht >> deviceSensorMotion: anObject [
 ASDSCDeviceModulLicht >> initialize [
 
 	super initialize.
-	self bez: self class type.
-	self withMotion: true.
-	self motionSensorOn: true
+	self bez: self class type
 ]
 
 { #category : 'accessing' }

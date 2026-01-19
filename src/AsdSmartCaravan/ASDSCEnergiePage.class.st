@@ -1,6 +1,6 @@
 Class {
 	#name : 'ASDSCEnergiePage',
-	#superclass : 'ASDSCPageEnergie',
+	#superclass : 'ASDSCPage',
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
 	#tag : 'Pages'

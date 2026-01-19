@@ -2,9 +2,7 @@ Class {
 	#name : 'ASDSCEditModulePage',
 	#superclass : 'ASDSCPageEdit',
 	#instVars : [
-		'moduleComponenteLicht',
-		'list',
-		'lichtForm'
+		'moduleComponente'
 	],
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
@@ -14,30 +12,45 @@ Class {
 { #category : 'accessing' }
 ASDSCEditModulePage class >> pageName [
 
-	^ 'ModuleLicht'
+	^ 'Module'
 ]
 
 { #category : 'accessing' }
 ASDSCEditModulePage class >> priority [
 
-	^ 2
+	^ 4
 ]
 
 { #category : 'hooks' }
 ASDSCEditModulePage >> children [
 
-	^ { self moduleComponenteLicht". self moduleComponenteHeizung" }
+	^ { self moduleComponente }
 ]
 
 { #category : 'initalize' }
 ASDSCEditModulePage >> initialize [
 
+	| devices |
 	super initialize.
-	self session rootComponent header: ASDSCEditHeader new.
-	self moduleComponenteLicht: ASDSCInstallModuleTaskLicht new.
-	self moduleComponenteLicht addDecoration: ASDCardDecoration new.
-	
-	"self moduleComponenteHeizung: ASDSCDeviceModulHeizung new."
+	devices := self session model devices .
+	devices size < 1
+		ifTrue: [ 
+		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
+		ifFalse: [ 
+			self deviceComponente:
+				(ASDSCObjectViewTableDevicesComponent withList: devices) ]
+]
+
+{ #category : 'accessing' }
+ASDSCEditModulePage >> moduleComponente [
+
+	^ moduleComponente
+]
+
+{ #category : 'accessing' }
+ASDSCEditModulePage >> moduleComponente: anObject [
+
+	moduleComponente := anObject
 ]
 
 { #category : 'accessing' }
@@ -79,18 +92,7 @@ iconName: 'explore'
 { #category : 'rendering' }
 ASDSCEditModulePage >> renderContentOn: html [
 
-	html mdlGrid
-		shadow: 0;
-		style: 'height: 100%;';
-		with: [
-			html mdlCell
-				middle;
-				size: 2.
-			html mdlCell
-				middle;
-				size: 8;
-				with: [  self renderCartOn: html ].
-			html mdlCell
-				middle;
-				size: 2 ]
+	html div
+		style: 'min-height: 400px;';
+		with: [ html render: self moduleComponente ]
 ]

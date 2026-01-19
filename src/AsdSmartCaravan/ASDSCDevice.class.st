@@ -1,14 +1,12 @@
 Class {
 	#name : 'ASDSCDevice',
-	#superclass : 'Object',
+	#superclass : 'ASDModel',
 	#instVars : [
-		'pinNr',
-		'deviceValue',
-		'displayValue',
-		'devMode',
 		'driver',
-		'bez',
-		'deviceArt'
+		'pinNr',
+		'pin',
+		'deviceValue',
+		'displayValue'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -36,6 +34,23 @@ ASDSCDevice class >> isVoyageRoot [
     in noSQL databases"
 
 	^ true
+]
+
+{ #category : 'instance creation' }
+ASDSCDevice class >> newFromDriver: aDriver [
+
+	^ self new
+		  driver: aDriver;
+		  yourself
+]
+
+{ #category : 'instance creation' }
+ASDSCDevice class >> newFromDriver: aDriver AndPinNr: aPinNr [
+
+	^ self new
+		  	driver:aDriver;
+			pinNr: aPinNr;
+		  yourself
 ]
 
 { #category : 'accessing' }
@@ -66,6 +81,21 @@ ASDSCDevice >> bez: anObject [
 	bez := anObject
 ]
 
+{ #category : 'magritte descriptions' }
+ASDSCDevice >> bezDescription [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  priority: 10;
+		  label: 'Bezeichnung';
+		  accessor: #bez;
+		  beRequired;
+		  requiredErrorMessage: 'Bitte eine Bezeichnung eingeben';
+		  comment: 'Bitte eine Bezeichnung eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
+]
+
 { #category : 'accessing' }
 ASDSCDevice >> devMode [
 
@@ -88,6 +118,17 @@ ASDSCDevice >> deviceArt: anObject [
 ASDSCDevice >> deviceValue [
 
 	^ deviceValue
+]
+
+{ #category : 'accessing' }
+ASDSCDevice >> displayString [
+
+	^ String streamContents: [ :s | 
+		  s
+			  nextPutAll: self type;
+			  space;
+			  nextPutAll: self bez;
+			  space ]
 ]
 
 { #category : 'accessing' }
@@ -114,9 +155,8 @@ ASDSCDevice >> initialize [
 	super initialize.
 	deviceValue := 0.
 	displayValue := 'Aus'.
-	devMode := true.
+
 	
-	"self driver: self module driver "
 ]
 
 { #category : 'accessing' }
@@ -129,4 +169,19 @@ ASDSCDevice >> pinNr [
 ASDSCDevice >> pinNr: anObject [
 
 	pinNr := anObject
+]
+
+{ #category : 'magritte descriptions' }
+ASDSCDevice >> pinNrDescription [
+
+	<magritteDescription>
+	^ MAStringDescription new
+		  priority: 11;
+		  label: 'Pin Nr.';
+		  accessor: #pinNr;
+		  beRequired;
+		  requiredErrorMessage: 'Bitte eine Pin Nr. eingeben';
+		  comment: 'Bitte eine Pin Nr. eingeben';
+		  componentClass: MDLMATextInputComponent;
+		  yourself
 ]

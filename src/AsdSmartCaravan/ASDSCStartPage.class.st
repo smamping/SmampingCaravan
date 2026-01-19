@@ -42,14 +42,24 @@ ASDSCStartPage >> rendeModalLoginButtonOn: html [
 
 { #category : 'rendering' }
 ASDSCStartPage >> renderContentOn: html [
-
-	| ready |
+|ready|
 	ready := self session model installReady.
-
+	ready printString.
 	ready
-		ifTrue: [
-			self rootComponent goToOverviewView. 
-			]
+		ifTrue: [ 
+			html mdlGrid
+				shadow: 0;
+				style: 'align-items: center; height: 100%';
+				with: [ 
+					html mdlCell
+						middle;
+						desktopOffset: 3;
+						tabletOffset: 3;
+						phoneOffset: 2;
+						desktopSize: 8;
+						tabletSize: 5;
+						phoneSize: 2;
+						with: [ html div ] ] ]
 		ifFalse: [ 
 			html mdlGrid
 				shadow: 0;

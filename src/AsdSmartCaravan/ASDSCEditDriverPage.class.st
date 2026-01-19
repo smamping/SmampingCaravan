@@ -18,7 +18,7 @@ ASDSCEditDriverPage class >> pageName [
 { #category : 'accessing' }
 ASDSCEditDriverPage class >> priority [
 
-	^ 3
+	^ 2
 ]
 
 { #category : 'hooks' }
@@ -47,29 +47,16 @@ ASDSCEditDriverPage >> initialize [
 	drivers := self session model esp32Drivers.
 	drivers size < 1
 		ifTrue: [ 
-		self driverComponente: ASDSCObjectViewTableDriverEsp32Component new ]
+		self driverComponente: ASDSCObjectViewTableDriverComponent new ]
 		ifFalse: [ 
 			self driverComponente:
-				(ASDSCObjectViewTableDriverEsp32Component withList: drivers) ]
+				(ASDSCObjectViewTableDriverComponent withList: drivers) ]
 ]
 
 { #category : 'rendering' }
 ASDSCEditDriverPage >> renderContentOn: html [
 
-
-
-	html mdlGrid
-		shadow: 0;
-		style: 'height: 100%;';
-		with: [ 
-			html mdlCell
-				middle;
-				size: 2.
-			html mdlCell
-				middle;
-				size: 8;
-				with: [ html render: self driverComponente ].
-			html mdlCell
-				middle;
-				size: 2 ]
+	html div
+		style: 'min-height: 400px;';
+		with:[html render: self driverComponente ]
 ]
