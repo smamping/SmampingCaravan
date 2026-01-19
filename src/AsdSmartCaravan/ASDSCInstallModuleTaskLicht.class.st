@@ -18,7 +18,7 @@ Class {
 	#tag : 'Components'
 }
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht class >> label [ 
 ^ 'Modul Licht'
 ]
@@ -120,7 +120,7 @@ ASDSCInstallModuleTaskLicht >> go [
 	^ self answer 
 ]
 
-{ #category : 'initialization' }
+{ #category : 'as yet unclassified' }
 ASDSCInstallModuleTaskLicht >> initialize [
 
 	super initialize.

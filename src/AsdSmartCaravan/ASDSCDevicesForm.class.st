@@ -31,7 +31,7 @@ ASDSCDevicesForm >> labelDeviceBezeichnung [
 	^ labelDeviceBezeichnung
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDevicesForm >> labelPinNr [
 
 	^ labelPinNr
@@ -61,7 +61,7 @@ ASDSCDevicesForm >> renderFieldsOn: html [
 	
 ]
 
-{ #category : 'rendering' }
+{ #category : 'as yet unclassified' }
 ASDSCDevicesForm >> renderPinNrOn: html [
 
 	html mdlTextFieldContainer

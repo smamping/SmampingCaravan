@@ -1,5 +1,5 @@
 Class {
-	#name : 'ASDSCModulesForm',
+	#name : 'ASDSCRequestForm',
 	#superclass : 'ASDForm',
 	#instVars : [
 		'labelDeviceBezeichnung'
@@ -10,39 +10,59 @@ Class {
 }
 
 { #category : 'accessing' }
-ASDSCModulesForm class >> componentTitle [
+ASDSCRequestForm class >> componentTitle [
 
-	^ self subclassResponsibility
+	^ 'Endgeräte'
 ]
 
 { #category : 'initialization' }
-ASDSCModulesForm >> initialize [
+ASDSCRequestForm >> initialize [
 
 	super initialize.
-	labelDeviceBezeichnung := 'Module Name'.
-
+	labelDeviceBezeichnung := 'Name'.
+	
 ]
 
 { #category : 'accessing' }
-ASDSCModulesForm >> labelDeviceBezeichnung [
+ASDSCRequestForm >> labelDeviceBezeichnung [
 
 	^ labelDeviceBezeichnung
 ]
 
 { #category : 'rendering' }
-ASDSCModulesForm >> renderModuleBezeichnungOn: html [
+ASDSCRequestForm >> renderButtonOn: html [
 
-	| list str |
-	list := OrderedCollection new.
-	str := ('deviceModules' , self model type asString , 'fromBez:') asSymbol.
+	html div
+		class: 'mdl-typography--text-right';
+		with: [
+			html mdlButton
+				raised;
+				rippleEffect;
+				beSubmit;
+				callback: [ self answer: nil ];
+				with: 'abbrechen'.
+			html space.
+			html mdlButton
+				raised;
+				primaryColor;
+				beSubmit;
+				id: #request;
+				disabled: 'disabled';
+				callback: [ self answer: self model ];
+				with: 'ok' ]
+]
+
+{ #category : 'rendering' }
+ASDSCRequestForm >> renderDeviceBezeichnungOn: html [
+| list str |
 	html mdlTextFieldContainer
 		style: 'width: 350px';
 		with: [
 			html mdlTextFieldLabel
-				for: 'bezeichnungModule';
+				for: 'bezeichnung';
 				with: self labelDeviceBezeichnung.
 			html mdlTextFieldInput
-				id: 'bezeichnungModule';
+				id: 'bezeichnung';
 				value: self model bez;
 				onChange: (html jQuery ajax
 						 serializeForm;
@@ -57,5 +77,15 @@ ASDSCModulesForm >> renderModuleBezeichnungOn: html [
 									 list count > 0
 										 ifTrue: [ r attributesAt: 'disabled' do: 'true' ]
 										 ifFalse: [ r attributesAt: 'disabled' do: 'false' ] ] ]);
-				callback: [ :aString | self model bez: aString ] ]
+				callback: [ :aString | self model bez: aString ].
+			html mdlTextFieldError: 'Input is not a number !' ]
+]
+
+{ #category : 'rendering' }
+ASDSCRequestForm >> renderFieldsOn: html [
+
+html form: [
+	self renderDeviceBezeichnungOn: html.
+	self renderButtonOn: html
+	]
 ]

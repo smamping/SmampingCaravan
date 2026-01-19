@@ -124,6 +124,12 @@ ASDSCDataBase >> allUsers [
 ]
 
 { #category : 'accessing' }
+ASDSCDataBase >> deviceModuleLichtFromBez: aString [
+
+	^ ASDSCDeviceModulLicht selectOne: [ :each | each bez = aString ]
+]
+
+{ #category : 'accessing' }
 ASDSCDataBase >> deviceModules [
 
 	^ ASDSCModulModel selectAll 

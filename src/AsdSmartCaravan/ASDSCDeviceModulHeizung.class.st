@@ -11,7 +11,7 @@ Class {
 	#tag : 'Model'
 }
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung class >> isVoyageRoot [
 
 	"Indicates that instances of this class are top level documents
@@ -20,7 +20,7 @@ ASDSCDeviceModulHeizung class >> isVoyageRoot [
 	^ true
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung class >> type [
 
 	^ 'Heizung'
@@ -38,7 +38,7 @@ ASDSCDeviceModulHeizung >> deviceSensorTemperatur: anObject [
 	deviceSensorTemperatur := anObject
 ]
 
-{ #category : 'initialize' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceModulHeizung >> initialize [
 	super initialize.
 	self bez: self class type.

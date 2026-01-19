@@ -2,7 +2,9 @@ Class {
 	#name : 'ASDSCEditModulePage',
 	#superclass : 'ASDSCPageEdit',
 	#instVars : [
-		'moduleComponenteLicht'
+		'moduleComponenteLicht',
+		'list',
+		'lichtForm'
 	],
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
@@ -66,12 +68,12 @@ ASDSCEditModulePage >> renderContentOn: html [
 		with: [
 			html mdlCell
 				middle;
-				desktopOffset: 3;
-				tabletOffset: 3;
-				phoneOffset: 2;
-				desktopSize: 8;
-				tabletSize: 5;
-				phoneSize: 2;
-				with: [ self renderCartOn:html ]. 
-			 ]
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [  self renderCartOn: html ].
+			html mdlCell
+				middle;
+				size: 2 ]
 ]

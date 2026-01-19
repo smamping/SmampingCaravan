@@ -64,7 +64,7 @@ ASDSCModulModel >> initialize [
 	super initialize.
 	relayListe := OrderedCollection new.
 	sensorListe := OrderedCollection new.
-	
+	self type: self class type.
 ]
 
 { #category : 'accessing' }

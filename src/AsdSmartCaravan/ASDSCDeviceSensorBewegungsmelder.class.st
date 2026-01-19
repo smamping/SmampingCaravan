@@ -6,7 +6,7 @@ Class {
 	#tag : 'Model'
 }
 
-{ #category : 'voyage' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceSensorBewegungsmelder class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents
     in noSQL databases"
@@ -14,7 +14,7 @@ ASDSCDeviceSensorBewegungsmelder class >> isVoyageRoot [
 	^ true
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceSensorBewegungsmelder class >> type [
 
 	"Title of the page that will be used in menus and URLs."
@@ -22,7 +22,7 @@ ASDSCDeviceSensorBewegungsmelder class >> type [
 	^ 'Bewegungsmelder'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'as yet unclassified' }
 ASDSCDeviceSensorBewegungsmelder >> initialize [
 
 	super initialize.
