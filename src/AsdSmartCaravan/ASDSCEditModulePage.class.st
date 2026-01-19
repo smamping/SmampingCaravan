@@ -55,8 +55,25 @@ ASDSCEditModulePage >> moduleComponenteLicht: anObject [
 { #category : 'rendering' }
 ASDSCEditModulePage >> renderCartOn: html [
 
-	html render: self moduleComponenteLicht.
-	
+		html
+		render:
+			(MDLTableWidget new
+				addStringColumnNamed: 'Name' evaluated: [ :x | x bez asString ];
+				addStringColumnNamed: 'Treiber' evaluated: [ :x | x driver deviceName asString  ];
+				addStringColumnNamed: 'Bewegungsmelder' evaluated: [ :x | x deviceSensorMotion bez ];
+				addAjaxButtonColumnNamed: 'Bearbeitenn'
+iconName: 'explore'
+					onClick: [ :htmlCanvas :x | htmlCanvas javascript alert: 'Explore ' , x asString ]
+					tooltip: 'Explore integer related to the row.';
+				addButtonColumnWithIconName: 'delete'
+					onClick: [ :x | 
+					Transcript
+						show: x;
+						show: ' deleted in callback.';
+						cr ]
+					tooltip: 'Delete integer in callback.';
+				collection: self model deviceModulesLicht;
+				yourself)
 ]
 
 { #category : 'rendering' }

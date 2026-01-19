@@ -120,7 +120,7 @@ ASDSCInstallModuleTaskLicht >> go [
 	^ self answer 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 ASDSCInstallModuleTaskLicht >> initialize [
 
 	super initialize.
