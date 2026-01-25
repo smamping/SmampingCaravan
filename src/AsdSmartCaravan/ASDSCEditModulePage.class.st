@@ -2,7 +2,10 @@ Class {
 	#name : 'ASDSCEditModulePage',
 	#superclass : 'ASDSCPageEdit',
 	#instVars : [
-		'moduleComponente'
+		'moduleComponenteLicht',
+		'list',
+		'lichtForm',
+		'divID'
 	],
 	#category : 'AsdSmartCaravan-Pages',
 	#package : 'AsdSmartCaravan',
@@ -12,45 +15,57 @@ Class {
 { #category : 'accessing' }
 ASDSCEditModulePage class >> pageName [
 
-	^ 'Module'
+	^ 'ModuleLicht'
 ]
 
 { #category : 'accessing' }
 ASDSCEditModulePage class >> priority [
 
-	^ 4
+	^ 2
+]
+
+{ #category : 'actions' }
+ASDSCEditModulePage >> add [
+
+	self call: (self moduleComponenteLicht
+			 addDecoration: ASDCardDecoration new;
+			 yourself)
 ]
 
 { #category : 'hooks' }
 ASDSCEditModulePage >> children [
 
-	^ { self moduleComponente }
+	^ { self moduleComponenteLicht . self lichtForm }
+]
+
+{ #category : 'accessing' }
+ASDSCEditModulePage >> divID [
+
+	^ divID
 ]
 
 { #category : 'initalize' }
 ASDSCEditModulePage >> initialize [
 
-	| devices |
 	super initialize.
-	devices := self session model devices .
-	devices size < 1
-		ifTrue: [ 
-		self deviceComponente: ASDSCObjectViewTableDevicesComponent new ]
-		ifFalse: [ 
-			self deviceComponente:
-				(ASDSCObjectViewTableDevicesComponent withList: devices) ]
+	divID := #lichtForm.
+	self session rootComponent header: ASDSCEditHeader new.
+	self moduleComponenteLicht: ASDSCInstallModuleTaskLicht new.
+	self lichtForm: (ASDSCModulesLichtForm withModel: ASDSCDeviceModulLicht new)
+
+	"self moduleComponenteHeizung: ASDSCDeviceModulHeizung new."
 ]
 
 { #category : 'accessing' }
-ASDSCEditModulePage >> moduleComponente [
+ASDSCEditModulePage >> lichtForm [
 
-	^ moduleComponente
+	^ lichtForm
 ]
 
 { #category : 'accessing' }
-ASDSCEditModulePage >> moduleComponente: anObject [
+ASDSCEditModulePage >> lichtForm: anObject [
 
-	moduleComponente := anObject
+	lichtForm := anObject
 ]
 
 { #category : 'accessing' }
@@ -68,31 +83,66 @@ ASDSCEditModulePage >> moduleComponenteLicht: anObject [
 { #category : 'rendering' }
 ASDSCEditModulePage >> renderCartOn: html [
 
-		html
-		render:
-			(MDLTableWidget new
-				addStringColumnNamed: 'Name' evaluated: [ :x | x bez asString ];
-				addStringColumnNamed: 'Treiber' evaluated: [ :x | x driver deviceName asString  ];
-				addStringColumnNamed: 'Bewegungsmelder' evaluated: [ :x | x deviceSensorMotion bez ];
-				addAjaxButtonColumnNamed: 'Bearbeitenn'
-iconName: 'explore'
-					onClick: [ :htmlCanvas :x | htmlCanvas javascript alert: 'Explore ' , x asString ]
-					tooltip: 'Explore integer related to the row.';
-				addButtonColumnWithIconName: 'delete'
-					onClick: [ :x | 
-					Transcript
-						show: x;
-						show: ' deleted in callback.';
-						cr ]
-					tooltip: 'Delete integer in callback.';
-				collection: self model deviceModulesLicht;
-				yourself)
+	html render: (MDLTableWidget new
+			 addStringColumnNamed: 'Name' evaluated: [ :x | x bez asString ];
+			 addStringColumnNamed: 'Treiber'
+			 evaluated: [ :x | x driver deviceName asString ];
+			 addStringColumnNamed: 'Bewegungsmelder'
+			 evaluated: [ :x | x deviceSensorMotion bez ];
+			 addAjaxButtonColumnNamed: 'Bearbeiten'
+			 iconName: 'explore'
+			 onClick: [ :htmlCanvas :x |
+				 htmlCanvas jQuery ajax script: [ :s |
+					self lichtForm model: x.
+						 s << (s jQuery: self divID) html: [ :r | self renderFormOn: r ] ] ]
+			 tooltip: 'Explore integer related to the row.';
+			 collection: self session model deviceModulesLicht;
+			 yourself)
 ]
 
 { #category : 'rendering' }
 ASDSCEditModulePage >> renderContentOn: html [
 
+	html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [
+			html mdlCell
+				middle;
+				size: 2;
+				with: [
+					html mdlAnchorButton
+						callback: [ self add ];
+						fab;
+						colored;
+						with: '+' ].
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ self renderCartOn: html ].
+			html mdlCell
+				middle;
+				size: 2 ].
+				html mdlGrid
+		shadow: 0;
+		style: 'height: 100%;';
+		with: [
+			html mdlCell
+				middle;
+				size: 2.
+			html mdlCell
+				middle;
+				size: 8;
+				with: [ self renderFormOn: html ].
+			html mdlCell
+				middle;
+				size: 2 ]
+]
+
+{ #category : 'rendering' }
+ASDSCEditModulePage >> renderFormOn: html [
+
 	html div
-		style: 'min-height: 400px;';
-		with: [ html render: self moduleComponente ]
+		id: self divID;
+		with: [ html render: self lichtForm ]
 ]

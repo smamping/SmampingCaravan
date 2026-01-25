@@ -22,6 +22,30 @@ ASDSCModulesLichtForm >> initialize [
 ]
 
 { #category : 'rendering' }
+ASDSCModulesLichtForm >> renderDriverTableOn: html [
+
+	html render: (MDLTableWidget new
+			 addStringColumnNamed: 'Name' evaluated: [ :x | x driver deviceName asString ];
+			 addStringColumnNamed: 'Treiber'
+			 evaluated: [ :x | x driver deviceName asString ];
+			 addStringColumnNamed: 'Bewegungsmelder'
+			 evaluated: [ :x | x deviceSensorMotion bez ];
+			 addAjaxButtonColumnNamed: 'Bearbeiten'
+			 iconName: 'explore'
+			 onClick: [ :htmlCanvas :x |
+				 htmlCanvas javascript alert: 'Explore ' , x asString ]
+			 tooltip: 'Explore integer related to the row.';
+			 addButtonColumnWithIconName: 'delete' onClick: [ :x |
+				 Transcript
+					 show: x;
+					 show: ' deleted in callback.';
+					 cr ]
+			 tooltip: 'Delete integer in callback.';
+			 collection: self session model deviceModulesLicht;
+			 yourself)
+]
+
+{ #category : 'rendering' }
 ASDSCModulesLichtForm >> renderFieldsOn: html [
 
 	self renderModuleBezeichnungOn: html.

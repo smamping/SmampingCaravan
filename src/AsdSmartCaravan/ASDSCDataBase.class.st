@@ -132,7 +132,7 @@ ASDSCDataBase >> deviceModuleLichtFromBez: aString [
 { #category : 'accessing' }
 ASDSCDataBase >> deviceModules [
 
-	^ deviceModules
+	^ ASDSCModulModel selectAll 
 ]
 
 { #category : 'accessing' }
@@ -174,7 +174,7 @@ ASDSCDataBase >> fahrzeug: anObject [
 { #category : 'initialization' }
 ASDSCDataBase >> initialize [
 
-	super initialize.
+	
 	self installReady: false 
 ]
 
@@ -200,12 +200,6 @@ ASDSCDataBase >> relayDeviceFromType: aString [
 ASDSCDataBase >> relayDevicesLed [
 
 	^ ASDSCDeviceRelayLed selectAll
-]
-
-{ #category : 'accessing' }
-ASDSCDataBase >> relayDevicesLicht [
-
-	^ ASDSCDeviceRelayLicht selectAll 
 ]
 
 { #category : 'accessing' }

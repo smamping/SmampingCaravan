@@ -68,31 +68,27 @@ ASDSCHomePage >> renderCardMultiMediaOn: html [
 ASDSCHomePage >> renderContentOn: html [
 
 	html mdlGrid
-		shadow: 0;
-		style: 'height: 100%;';
-		with: [ 
-			html mdlCell
-				class: 'grid-middle';
-				id:'#system'
-				middle;
-				size: 3;
-				with: [ 'Top' ].
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#energie'
-				middle;
-				size: 3;
-				with: 'Middle'.
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#multimedia'
-				middle;
-				size: 3;
-				with: 'Bottom'.
-			html mdlCell
-				class: 'grid-cell-demo';
-				id: '#sicherheit'
-				middle;
-				size: 3;
-				with: 'Stretch' ]
+				shadow: 0;
+				style: 'align-items: center; height: 100%';
+				with: [ 
+					html mdlCell
+						middle;
+						size: 12;
+						with: [ 
+							html mdlGrid
+								shadow: 0;
+								style: 'align-items: center; height: 100%';
+								with: [ 
+									html mdlCell
+										middle;
+										size: 4;
+										with: [ self renderCardCarSystemOn: html ].
+									html mdlCell
+										middle;
+										size: 4;
+										with: [  ].
+									html mdlCell
+										middle;
+										size: 4;
+										with: [  ] ] ] ] 
 ]

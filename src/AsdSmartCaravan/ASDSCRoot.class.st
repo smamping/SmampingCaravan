@@ -43,15 +43,18 @@ ASDSCRoot class >> development [
 
 { #category : 'initialization' }
 ASDSCRoot class >> initialize [
+
 	self environment
 		at: #WADevelopmentConfiguration
-		ifPresent: [ :class | WAAdmin applicationDefaults addParent: class instance ].	"Remove development tools."
+		ifPresent: [ :class | 
+		WAAdmin applicationDefaults addParent: class instance ]. "Remove development tools."
 	^ (WAAdmin register: self asApplicationAt: 'AsdSmartCaravan')
-		preferenceAt: #sessionClass put: ASDSCSession;
-		addLibrary: JQDeploymentLibrary;
-		addLibrary: MDLLibrary;
-		addLibrary: ASDSCLibrary;
-		yourself
+		  preferenceAt: #sessionClass put: ASDSCSession;
+		  addLibrary: JQDeploymentLibrary;
+		addLibrary: JQUiDeploymentLibrary;
+		  addLibrary: MDLLibrary;
+		  addLibrary: ASDSCLibrary;
+		  yourself
 ]
 
 { #category : 'world menu' }
@@ -125,7 +128,9 @@ ASDSCRoot >> defaultHeader [
 
 { #category : 'updating' }
 ASDSCRoot >> displayInstanceOf: aComponentClass [
-	self componentToDisplay: (self componentInstances at: aComponentClass ifAbsentPut: [ aComponentClass new ])
+	self session resetStates.
+	"self componentToDisplay: (self componentInstances at: aComponentClass ifAbsentPut: [ aComponentClass new ])"
+	self componentToDisplay: (self componentInstances at: aComponentClass ifPresent:[aComponentClass new] ifAbsentPut: [ aComponentClass new ])
 ]
 
 { #category : 'accessing' }
@@ -154,7 +159,7 @@ ASDSCRoot >> goToEditDriverView [
 { #category : 'actions' }
 ASDSCRoot >> goToEditModuleView [
 
-	self displayInstanceOf: ASDSCEditModulePage 
+	self displayInstanceOf: ASDSCStartInstallModulePage 
 ]
 
 { #category : 'actions' }
@@ -213,12 +218,14 @@ ASDSCRoot >> initialRequest: aRequest [
 
 { #category : 'initialization' }
 ASDSCRoot >> initialize [
+
 	super initialize.
 	self header: self defaultHeader.
 	self session rootComponent: self.
 	self rightPanel: ASDComponentWithRightPanel new.
 	self componentInstances: Dictionary new.
-	self displayInstanceOf: self header possiblePages first
+	self displayInstanceOf: self header possiblePages first.
+	self session model installReady: false
 ]
 
 { #category : 'rendering' }
@@ -265,7 +272,7 @@ ASDSCRoot >> tryConnectionWithLogin: login andPassword: password [
 	| user installReady |
 	user := self session model userFromLogin: login andPassword: password.
 	installReady := self session model installReady.
-	
+	"installReady := false."
 	user
 		ifNotNil: [ :arg | 
 			self session currentUser: arg.

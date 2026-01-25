@@ -26,7 +26,7 @@ ASDSCDeviceSensorBewegungsmelder class >> type [
 ASDSCDeviceSensorBewegungsmelder >> initialize [
 
 	super initialize.
-	
+	self bez: self class type 
 ]
 
 { #category : 'testing' }

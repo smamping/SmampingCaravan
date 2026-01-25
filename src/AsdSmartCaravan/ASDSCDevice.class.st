@@ -1,12 +1,14 @@
 Class {
 	#name : 'ASDSCDevice',
-	#superclass : 'ASDModel',
+	#superclass : 'Object',
 	#instVars : [
-		'driver',
 		'pinNr',
-		'pin',
 		'deviceValue',
-		'displayValue'
+		'displayValue',
+		'devMode',
+		'driver',
+		'bez',
+		'deviceArt'
 	],
 	#category : 'AsdSmartCaravan-Model',
 	#package : 'AsdSmartCaravan',
@@ -34,23 +36,6 @@ ASDSCDevice class >> isVoyageRoot [
     in noSQL databases"
 
 	^ true
-]
-
-{ #category : 'instance creation' }
-ASDSCDevice class >> newFromDriver: aDriver [
-
-	^ self new
-		  driver: aDriver;
-		  yourself
-]
-
-{ #category : 'instance creation' }
-ASDSCDevice class >> newFromDriver: aDriver AndPinNr: aPinNr [
-
-	^ self new
-		  	driver:aDriver;
-			pinNr: aPinNr;
-		  yourself
 ]
 
 { #category : 'accessing' }
@@ -149,14 +134,15 @@ ASDSCDevice >> driver: anObject [
 	driver := anObject
 ]
 
-{ #category : 'initalize' }
+{ #category : 'initialization' }
 ASDSCDevice >> initialize [
 
 	super initialize.
 	deviceValue := 0.
 	displayValue := 'Aus'.
-
-	
+	devMode := true.
+	self bez: ''
+	"self driver: self module driver "
 ]
 
 { #category : 'accessing' }

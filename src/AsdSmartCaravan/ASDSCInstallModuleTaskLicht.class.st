@@ -92,7 +92,7 @@ ASDSCInstallModuleTaskLicht >> go [
 			        andForm: true).
 
 
-	drv ifNotNil: [ 
+	drv ifNotNil: [
 		self session devMode ifFalse: [ drv setup ].
 
 		self modelModule driver: drv.
@@ -100,15 +100,16 @@ ASDSCInstallModuleTaskLicht >> go [
 		self session model storeObject: drv.
 		self session model storeObject: self modelModule.
 		self session esp32Driver: drv ].
-	self confirmMotion ifTrue: [ 
+	self confirmMotion ifTrue: [
 		motion := self call: self chooseMotion.
-		motion ifNotNil: [ 
+		motion ifNotNil: [
+			self modelModule withMotion: true.
 			self session model storeObject: motion.
 			self modelModule deviceSensorMotion: motion.
 			self session model storeObject: self modelModule ] ].
-	[ 
+	[
 	relay := self call: self chooseRelay.
-	relay ifNotNil: [ 
+	relay ifNotNil: [
 		self session model storeObject: relay.
 		self modelModule addRelay: relay.
 		self session model storeObject: self modelModule ].
@@ -117,7 +118,7 @@ ASDSCInstallModuleTaskLicht >> go [
 
 	self session model installReady: true.
 	self inform: 'gespeichert'.
-	^ self answer 
+	self answer: self modelModule
 ]
 
 { #category : 'initialization' }

@@ -11,7 +11,8 @@ Class {
 	#classTraits : 'TWithRootDialogComponent classTrait',
 	#instVars : [
 		'tooltipLabelopenRightPanel',
-		'tooltipLabelCloseRightPanel'
+		'tooltipLabelCloseRightPanel',
+		'titleLabel'
 	],
 	#category : 'AsdSmartCaravan-Components',
 	#package : 'AsdSmartCaravan',
@@ -21,9 +22,10 @@ Class {
 { #category : 'initialization' }
 ASDSCHeader >> initialize [
 
-	super initialize.
+super initialize.
 	self tooltipLabelopenRightPanel: 'Rechtes Panel öffnen'.
-	self tooltipLabelCloseRightPanel: 'Rechtes Panel schliessen'
+	self tooltipLabelCloseRightPanel: 'Rechtes Panel schliessen'.
+	self titleLabel: 'SmartCaravan'
 ]
 
 { #category : 'accessing' }
@@ -48,49 +50,26 @@ ASDSCHeader >> renderAccountButtonOn: html [
 		html mdlButton icon
 			id: #bottomLeftButton;
 			with: [ html mdlIcon: #account_circle ].
-		html mdlMenu
-			bottomRight;
-			for: #bottomLeftButton;
-			with: [ 
-				html mdlMenuItem: 'Einstellungen'.
-				html mdlMenuItem
-					fullBleedDivider;
-					with: 'Konto'.
-				html mdlMenuItem
-					disabled;
-					with: 'Disabled Action'.
-				html mdlMenuItem: 'Yet Another Action' ] ]
+		] 
 ]
 
 { #category : 'rendering' }
 ASDSCHeader >> renderButtonMenu: html [
-	self session isLogged
-		ifFalse: [ ^ self ].
-	html
-		mdlNavigation: [ "	html mdlAnchorButton
-		icon;
-		id: html nextId;
-		class: 'closeNav';
-		with: [ html mdlIcon: 'close_fullscreen' ].
-	html mdlTooltip
-		for: html lastId;
-		with: self tooltipLabelCloseRightPanel"
-			html mdlButton icon
-				id: #bottomLeftButton;
-				with: [ html mdlIcon: #settings ].
-			html mdlMenu
-				style: 'width: 200px; height 400px;';
-				bottomRight;
-				for: #bottomLeftButton;
-				with: [  ].
-			html mdlAnchorButton
-				icon;
-				id: html nextId;
-				class: 'openNav';
-				with: [ html mdlIcon: 'more_vert' ].
-			html mdlTooltip
-				for: html lastId;
-				with: self tooltipLabelopenRightPanel ]
+
+	self session isLogged ifFalse: [ ^ self ].
+	html mdlNavigation: [ 
+		html mdlButton icon
+			id: #bottomLeftButton;
+			with: [ html mdlIcon: #settings ].
+		
+		html mdlAnchorButton
+			icon;
+			id: html nextId;
+			class: 'openNav';
+			with: [ html mdlIcon: 'more_vert' ].
+		html mdlTooltip
+			for: html lastId;
+			with: self tooltipLabelopenRightPanel ]
 ]
 
 { #category : 'rendering' }
@@ -104,13 +83,19 @@ ASDSCHeader >> renderButtonsOn: html [
 
 { #category : 'rendering' }
 ASDSCHeader >> renderContentOn: html [
+
 	html mdlLayoutHeader
 		transparent;
 		with: [ "self renderDrawerOn: html"
-			html
-				mdlLayoutHeaderRow: [ self renderButtonsOn: html
-					"html text: '	Version ' , self rootComponent class version." ]].
-			self renderDrawerOn: html 
+			html mdlLayoutHeaderRow: [ 
+					html mdlNavigationLink
+						callback: [ self session rootComponent goToHomeView ];
+						with: [ html mdlLayoutTitle: self titleLabel ].
+					html mdlLayoutSpacer.
+					"html text: '	Version ' , self rootComponent class version."
+					self renderButtonsOn: html
+					"html text: '	Version ' , self rootComponent class version." ] ].
+	self renderDrawerOn: html
 ]
 
 { #category : 'rendering' }
